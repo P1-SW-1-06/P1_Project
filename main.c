@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-
+//emil was here
 
 int main() {
     struct person{
