@@ -1,13 +1,12 @@
 #include "main.h"
 
-
 typedef enum {
     ignore, limited_importance, important, very_important
 } preference_scale;
 
 typedef enum {
     car, bus, train, bike
-}transport_types;
+} transport_types;
 
 typedef struct {
     char name[50];
@@ -15,7 +14,7 @@ typedef struct {
     preference_scale environment;
     preference_scale cost;
     transport_types included_transport_types;
-    char* place_of_work;
+    char *place_of_work;
 } people_data;
 
 int scan_number_of_people();
@@ -48,16 +47,14 @@ int scan_number_of_people() {
             || tempchar != '\n') {
             printf("invalid input\n");
             people = 0;
-        } else if(people == 9) {
+        } else if (people == 9) {
             printf("Put more information about number of people here\n");
             people = 0;
-        }
-        else{
+        } else {
             printf("You chose to optimize for: %d people\n", people);
         }
     }
     return people;
-
 }
 
 void scan_people_preferences(people_data *array, int number_of_people) {
@@ -70,7 +67,8 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         fflush(stdin); //Clears buffer to make sure scanf is not skipped
         printf("Please enter name of person nr. %d\n", i + 1);
-        scanf("%50[^\n]", array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
+        scanf("%50[^\n]",
+              array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
 
         while (array[i].max_time == 0) {
