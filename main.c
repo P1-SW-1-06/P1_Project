@@ -60,7 +60,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         fflush(stdin); //Clears buffer to make sure scanf is not skipped
         printf("Please enter name of person nr. %d\n", i + 1);
-        scanf("%50[0-9a-zA-Z ]", array[i].name); // scanf only reads the first 50 characters and disregards the rest
+        scanf("%50[^\n]", array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
 
         while (array[i].max_time == 0) {
