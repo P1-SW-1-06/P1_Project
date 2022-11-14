@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//hej
 
 typedef enum {
     ignore, limited_importance, important, very_important
@@ -65,7 +64,7 @@ int scan_number_of_people() {
 
 void scan_people_preferences(people_data *array, int number_of_people) {
     for (int i = 0; i < number_of_people; ++i) {
-        char *name;
+        char name[50]; // names can at mx be 50 characters long
         array[i].max_time = 0;
         array[i].environment = -1;
         array[i].cost = -1;
@@ -73,7 +72,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         fflush(stdin); //Clears buffer to make sure scanf is not skipped
         printf("Please enter name of person nr. %d\n", i + 1);
-        scanf("%s", array[i].name);
+        scanf("%50[^\n]", array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
 
         while (array[i].max_time == 0) {
@@ -81,7 +80,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
             char tempchar;
 
             fflush(stdin); //Clears buffer to make sure scanf is not skipped
-            printf("Please enter the max amount minutes person %d want to commute\n", i + 1);
+            printf("Please enter the max amount of minutes person %d want to commute\n", i + 1);
             if (scanf("%d%c", &array[i].max_time, &tempchar) != 2
                 || tempchar != '\n') {
                 printf("invalid input\n");
