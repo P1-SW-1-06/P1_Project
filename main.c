@@ -1,17 +1,24 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 //hej
 
-typedef enum preference_scale {
+typedef enum {
     ignore, limited_importance, important, very_important
 } preference_scale;
+
+typedef enum {
+    car, bus, train, bike
+}transport_types;
 
 typedef struct {
     char name[50];
     int max_time;
     preference_scale environment;
     preference_scale cost;
+    transport_types included_transport_types;
+    char* place_of_work;
 } people_data;
 
 int scan_number_of_people();
@@ -44,11 +51,16 @@ int scan_number_of_people() {
             || tempchar != '\n') {
             printf("invalid input\n");
             people = 0;
-        } else {
+        } else if(people == 9) {
+            printf("Put more information about number of people here\n");
+            people = 0;
+        }
+        else{
             printf("You chose to optimize for: %d people\n", people);
         }
     }
     return people;
+
 }
 
 void scan_people_preferences(people_data *array, int number_of_people) {
