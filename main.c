@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+//hej
+
 typedef enum preference_scale {
     ignore, limited_importance, important, very_important
 } preference_scale;
