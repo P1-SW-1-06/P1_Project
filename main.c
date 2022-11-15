@@ -21,6 +21,8 @@ int scan_number_of_people();
 
 void scan_people_preferences(people_data *array, int number_of_people);
 
+void max_time(people_data *array, int person_number);
+
 int main() {
 
     int number_of_people = scan_number_of_people();
@@ -71,7 +73,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
               array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
 
-        while (array[i].max_time == 0) {
+        /*while (array[i].max_time == 0) {
 
             char tempchar;
 
@@ -84,7 +86,10 @@ void scan_people_preferences(people_data *array, int number_of_people) {
             } else {
                 printf("Person %d max travel time is %d minutes\n", i + 1, array[i].max_time);
             }
-        }
+        }*/
+
+        max_time(array, i);
+
         while (array[i].environment == -1) {
 
             char tempchar;
@@ -115,3 +120,21 @@ void scan_people_preferences(people_data *array, int number_of_people) {
         }
     }
 }
+
+void max_time(people_data *array, int person_number){
+    while (array[person_number].max_time == 0) {
+
+        char tempchar;
+
+        fflush(stdin); //Clears buffer to make sure scanf is not skipped
+        printf("Please enter the max amount of minutes %s want to commute\n", array[person_number].name);
+        if (scanf("%d%c", &array[person_number].max_time, &tempchar) != 2
+            || tempchar != '\n') {
+            printf("invalid input\n");
+            array[person_number].max_time = 0;
+        } else {
+            printf("%s's max travel time is %d minutes\n", array[person_number].name, array[person_number].max_time);
+        }
+    }
+}
+
