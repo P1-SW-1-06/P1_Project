@@ -17,11 +17,23 @@ typedef struct {
     char *place_of_work;
 } people_data;
 
+typedef struct {
+    char name[50];
+
+} city_data;
+
 int scan_number_of_people();
 
 void scan_people_preferences(people_data *array, int number_of_people);
 
 void max_time(people_data *array, int person_number);
+
+void scan_transport_exclusions(char* name);
+
+void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike, char ex_train);
+
+void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char ex_train, char* name);
+
 
 int main() {
 
@@ -87,8 +99,9 @@ void scan_people_preferences(people_data *array, int number_of_people) {
                 printf("Person %d max travel time is %d minutes\n", i + 1, array[i].max_time);
             }
         }*/
-
+        scan_transport_exclusions(array[i].name);
         max_time(array, i);
+
 
         while (array[i].environment == -1) {
 
@@ -138,3 +151,71 @@ void max_time(people_data *array, int person_number){
     }
 }
 
+void scan_transport_exclusions(char* name){
+    int choice = -1;
+    char ex_car = 'x', ex_bus = 'x', ex_bike = 'x', ex_train = 'x';
+    char tempchar;
+    while(choice != 0) {
+        printf("Does %s want to exclude any of these transportation types?\n", name);
+        print_transport_exclude_checkbox(ex_car, ex_bus, ex_bike, ex_train);
+        fflush(stdin);
+        printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\n4 for train\nPress 0 when satisfied\n");
+        if (scanf("%d%c", &choice, &tempchar) != 2
+            || tempchar != '\n' || choice > 4 || choice < 0) {
+            printf("invalid input\n");
+        }
+        else {
+            if (choice == 0){
+                print_transport_choices(ex_car, ex_bus, ex_bike, ex_train, name);
+                break;
+            }
+            else if (choice == 1){
+                if (ex_car == 'x') {
+                    ex_car = ' ';
+                }
+                else {
+                    ex_car = 'x';
+                }
+            }
+            else if (choice == 2){
+                if (ex_bus == 'x') {
+                    ex_bus = ' ';
+                }
+                else {
+                    ex_bus = 'x';
+                }
+            }
+            else if (choice == 3){
+                if (ex_bike == 'x') {
+                    ex_bike = ' ';
+                }
+                else {
+                    ex_bike = 'x';
+                }
+            }
+            else if (choice == 4){
+                if (ex_train == 'x') {
+                    ex_train = ' ';
+                }
+                else {
+                    ex_train = 'x';
+                }
+            }
+            print_transport_exclude_checkbox(ex_car, ex_bus, ex_bike, ex_train);
+            choice = -1;
+        }
+    }
+}
+void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike, char ex_train){
+    printf("Included transportations types\n");
+    printf("1-car[%c]  2-bus[%c]  3-bike[%c]  4-train[%c]\n",ex_car,ex_bus,ex_bike,ex_train);
+    printf("\n");
+}
+void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char ex_train, char* name){
+    printf("%s chose ",name);
+    if (ex_car == 'x') { printf("car, ");}
+    if (ex_bus == 'x') { printf("bus, ");}
+    if (ex_bike == 'x') { printf("bike, ");}
+    if (ex_train == 'x') { printf("train, ");}
+    printf("as possible transportations types to use.\n");
+}
