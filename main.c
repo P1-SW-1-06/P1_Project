@@ -125,7 +125,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
         while (array[i].environment == -1) {
             char tempchar;
             fflush(stdin); //Clears buffer to make sure scanf is not skipped
-            printf("On a scale of 1-3 how important is the environment for you\n");
+            printf("On a scale of 1-3 how important is the environment for you followed by enter\n");
             if (scanf("%d%c", &array[i].environment, &tempchar) != 2
                 || tempchar != '\n' || array[i].environment > 3 || array[i].environment < 1) {
                 printf("invalid input\n");
@@ -137,7 +137,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
         while (array[i].cost == -1) {
             char tempchar;
             fflush(stdin); //Clears buffer to make sure scanf is not skipped
-            printf("How important is money for you\n");
+            printf("How important is money for you followed by enter\n");
             if (scanf("%d%c", &array[i].cost, &tempchar) != 2
                 || tempchar != '\n' || array[i].cost > 3 || array[i].cost < 1) {
                 printf("invalid input\n");
