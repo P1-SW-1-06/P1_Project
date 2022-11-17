@@ -63,18 +63,14 @@ void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char ex_tra
 
 
 int main() {
-
     int number_of_people = scan_number_of_people();
     people_data people_data_arr[number_of_people];
-
     scan_people_preferences(people_data_arr, number_of_people);
-
     for (int i = 0; i < number_of_people; ++i) {
         printf("%s %d %d %d\n", people_data_arr[i].name, people_data_arr[i].max_time,
                people_data_arr[i].environment, people_data_arr[i].cost);
     }
 }
-
 
 int scan_number_of_people() {
     int people = 0;
@@ -83,7 +79,7 @@ int scan_number_of_people() {
         char tempchar;
 
         fflush(stdin); //Clears buffer to make sure scanf is not skipped
-        printf("Please enter number of people you want to optimize for\n");
+        printf("Please enter number of people you want to optimize for followed by enter\n");
         if (scanf("%d%c", &people, &tempchar) != 2
             || tempchar != '\n') {
             printf("invalid input\n");
@@ -100,18 +96,15 @@ int scan_number_of_people() {
 
 void scan_people_preferences(people_data *array, int number_of_people) {
     for (int i = 0; i < number_of_people; ++i) {
-        char name[50]; // names can at mx be 50 characters long
+        char name[50]; // names can at max be 50 characters long
         array[i].max_time = 0;
         array[i].environment = -1;
         array[i].cost = -1;
 
-
         fflush(stdin); //Clears buffer to make sure scanf is not skipped
         printf("Please enter name of person nr. %d\n", i + 1);
-        scanf("%50[^\n]",
-              array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
+        scanf("%50[^\n]",array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
-
         /*while (array[i].max_time == 0) {
 
             char tempchar;
@@ -129,11 +122,8 @@ void scan_people_preferences(people_data *array, int number_of_people) {
         scan_transport_exclusions(array[i].name);
         max_time(array, i);
 
-
         while (array[i].environment == -1) {
-
             char tempchar;
-
             fflush(stdin); //Clears buffer to make sure scanf is not skipped
             printf("On a scale of 1-3 how important is the environment for you\n");
             if (scanf("%d%c", &array[i].environment, &tempchar) != 2
@@ -145,9 +135,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
             }
         }
         while (array[i].cost == -1) {
-
             char tempchar;
-
             fflush(stdin); //Clears buffer to make sure scanf is not skipped
             printf("How important is money for you\n");
             if (scanf("%d%c", &array[i].cost, &tempchar) != 2
@@ -163,11 +151,9 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
 void max_time(people_data *array, int person_number){
     while (array[person_number].max_time == 0) {
-
         char tempchar;
-
         fflush(stdin); //Clears buffer to make sure scanf is not skipped
-        printf("Please enter the max amount of minutes %s want to commute\n", array[person_number].name);
+        printf("Please enter the max amount of minutes %s want to commute followed by enter\n", array[person_number].name);
         if (scanf("%d%c", &array[person_number].max_time, &tempchar) != 2
             || tempchar != '\n') {
             printf("invalid input\n");
