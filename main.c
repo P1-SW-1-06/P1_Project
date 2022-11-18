@@ -12,6 +12,7 @@ typedef struct {
     int preference_time;
     transport_types included_transport_types[4];
     char *place_of_work;
+    char *Hello_world;
 } people_data;
 
 typedef struct {
