@@ -216,15 +216,15 @@ void commuting_preferences(people_data *array, int person_number) {
         scanf("%s \t%d", input, &value);
         convert_to_lowercase(input);
         if (strcmp(input, "env") == 0 && (value < 100 && value > 0) && ((remainder - value + co2)>= 0) ) {
-            co2 += value;
+            co2 = value;
             valid = 1;
         }
         else if (strcmp(input, "cost") == 0 && (value < 100 && value > 0) && ((remainder - value + cost)>= 0)) {
-            cost += value;
+            cost = value;
             valid = 1;
         }
         else if (strcmp(input, "time") == 0 && (value < 100 && value > 0) && ((remainder - value + time)>= 0)) {
-            time += value;
+            time = value;
             valid = 1;
         }
         else
