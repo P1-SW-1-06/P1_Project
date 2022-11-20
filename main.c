@@ -1,4 +1,5 @@
 #include "main.h"
+#include "import_handler.h"
 
 typedef enum {
     car, bus, train, bike
@@ -12,13 +13,14 @@ typedef struct {
     int preference_time;
     transport_types included_transport_types[4];
     char *place_of_work;
-    char *Hello_world;
 } people_data;
 
 typedef struct {
     char name[50];
 
 } city_data;
+
+
 
 /***
  * a function that takes the number of people from the user
@@ -70,6 +72,7 @@ void convert_to_lowercase(char *str);
 void commuting_preferences(people_data *array, int person_number);
 
 int main() {
+
     int number_of_people = scan_number_of_people();
     people_data people_data_arr[number_of_people];
     scan_people_preferences(people_data_arr, number_of_people);
