@@ -248,9 +248,9 @@ void commuting_preferences(people_data *array, int person_number) {
                     || tempchar != '\n') {
                     printf("invalid input\n");
                 }
-                if (choice == 'y')
+                if (choice == 'y' || choice == 'Y')
                     break;
-                if (choice == 'n') {
+                if (choice == 'n' || choice == 'N') {
                     remainder = 100;
                     cost = 0;
                     co2 = 0;
