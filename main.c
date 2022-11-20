@@ -206,7 +206,8 @@ void commuting_preferences(people_data *array, int person_number) {
 
 
     int co2 = 0, cost = 0, time = 0, remainder = 100;
-    printf("%s please distribute 100 points in the categories environment, cost and time based on what is most important to you when it comes to commuting\n",array[person_number].name);
+    printf("%s please distribute 100 points in the categories environment, cost and time based on what is most important to you when it comes to commuting\n",
+           array[person_number].name);
     while (remainder > 0) {
         char input[5];
         int value = 0, valid = 0;
@@ -216,26 +217,49 @@ void commuting_preferences(people_data *array, int person_number) {
         fflush(stdin);
         scanf("%s \t%d", input, &value);
         convert_to_lowercase(input);
-        if (strcmp(input, "env") == 0 && (value < 100 && value > 0) && ((remainder - value + co2)>= 0) ) {
+        if (strcmp(input, "env") == 0 && (value < 100 && value > 0) && ((100 - value - time - cost) >= 0)) {
             co2 = value;
             valid = 1;
-        }
-        else if (strcmp(input, "cost") == 0 && (value < 100 && value > 0) && ((remainder - value + cost)>= 0)) {
+        } else if (strcmp(input, "cost") == 0 && (value < 100 && value > 0) && ((100 - value - co2 - time) >= 0)) {
             cost = value;
             valid = 1;
-        }
-        else if (strcmp(input, "time") == 0 && (value < 100 && value > 0) && ((remainder - value + time)>= 0)) {
+        } else if (strcmp(input, "time") == 0 && (value < 100 && value > 0) && ((100 - value - co2 - cost) >= 0)) {
             time = value;
             valid = 1;
-        }
-        else
+        } else
             printf("invalid input\n");
 
-        if((remainder - value)>= 0 && (value > 0) && valid == 1)
-            remainder -= value;
+        if ((100 - co2 - cost - time) >= 0 && (value > 0) && valid == 1)
+            remainder = 100 - co2 - cost - time;
         //system("cls");
 
+        if (remainder == 0) {
 
+            printf("You chose the following distribution:\n");
+            printf("Env \tCost \tTime\n");
+            printf("%d \t%d \t%d \n", co2, cost, time);
+            printf("Are you happy with your choices? Y/N");
+
+            while (1) {
+                char tempchar;
+                char choice;
+                fflush(stdin);
+                if (scanf("%c%c", &choice, &tempchar) != 2
+                    || tempchar != '\n') {
+                    printf("invalid input\n");
+                }
+                if (choice == 'y')
+                    break;
+                if (choice == 'n') {
+                    remainder = 100;
+                    cost = 0;
+                    co2 = 0;
+                    time = 0;
+                    break;
+                } else
+                    printf("invalid input\n");
+            }
+        }
     }
     array[person_number].preference_time = time;
     array[person_number].preference_cost = cost;
