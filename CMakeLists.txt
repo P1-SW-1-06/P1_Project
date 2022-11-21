@@ -3,5 +3,4 @@ project(P1_Project C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(main main.c)
-add_executable(import_handler.c import_handler.h)
+add_executable(main main.c import_handler.c import_handler.h)
