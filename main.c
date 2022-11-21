@@ -84,6 +84,12 @@ void convert_to_lowercase(char *str);
 
 void commuting_preferences(people_data *array, int person_number);
 
+/***
+ * Ask the user for job location
+ * @param city char pointer as a string which contains the name of the city
+ * @param input ask user for loaction of job from a list
+ * @return the choosen city for workplace
+ */
 char* place_of_work();
 
 int main() {
