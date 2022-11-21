@@ -87,7 +87,9 @@ void commuting_preferences(people_data *array, int person_number);
 char* place_of_work();
 
 int main() {
-    transport_struct transport_data = import_data();
+    transport_struct *transport_data = import_data();
+
+    printf("%lf", transport_data[1].cost);
 
     int number_of_people = scan_number_of_people();
     people_data* people_data_arr = malloc(number_of_people * sizeof(people_data));
