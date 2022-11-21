@@ -1,5 +1,6 @@
 #include "main.h"
 #include "import_handler.h"
+#include <malloc.h>
 
 typedef enum {
     car, bus, train, bike
@@ -10,16 +11,20 @@ typedef enum {
 } cities;
 
 typedef struct {
+int include_car;
+int include_bus;
+int include_bike;
+int include_train;
+}exclusions;
+
+typedef struct {
     char name[50];
     int max_time;
     int preference_environment;
     int preference_cost;
     int preference_time;
     transport_types included_transport_types[4];
-    int include_car;
-    int include_bus;
-    int include_bike;
-    int include_train;
+    exclusions exclusion;
     char *place_of_work;
 } people_data;
 
@@ -53,7 +58,7 @@ void max_time(people_data *array, int person_number);
  * a function that facilitates users excluding different transportation types they want to use personally
  * @param name taking in the name to  personalize prints
  */
-void scan_transport_exclusions(char *name);
+void scan_transport_exclusions(people_data *array, int person_number, char *name);
 
 /***
  * a function that prints the checkboxes for visualization of what transport types are selected
@@ -81,14 +86,31 @@ void commuting_preferences(people_data *array, int person_number);
 int main() {
 
     int number_of_people = scan_number_of_people();
-    people_data people_data_arr[number_of_people];
-    scan_people_preferences(people_data_arr, number_of_people);
+    people_data* data_set = malloc(number_of_people * sizeof(people_data));
+    if (data_set == NULL){
+        printf("Memmory not allocated");
+    }
+    scan_people_preferences(data_set, number_of_people);
 
     for (int i = 0; i < number_of_people; ++i) {
-        printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n", i + 1, people_data_arr[i].name,
-               people_data_arr[i].max_time,
-               people_data_arr[i].preference_environment, people_data_arr[i].preference_cost,
-               people_data_arr[i].preference_time), people_data_arr[i].included_transport_types[0];
+        printf("Person:%d Name:%s\n Max time:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n", i + 1, data_set[i].name,
+               data_set[i].max_time,
+               data_set[i].preference_environment, data_set[i].preference_cost,
+               data_set[i].preference_time);
+        printf(" transport types included:\n");
+        if (data_set[i].exclusion.include_car == 1){
+            printf(" car,");
+        }
+        if (data_set[i].exclusion.include_bus == 1){
+            printf(" bus,");
+        }
+        if (data_set[i].exclusion.include_bike == 1){
+            printf(" bike,");
+        }
+        if (data_set[i].exclusion.include_train == 1){
+            printf(" train,");
+        }
+        printf("\n");
     }
 }
 
@@ -125,7 +147,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
               array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
 
-        scan_transport_exclusions(array[i].name);
+        scan_transport_exclusions(array, i+1, array[i].name);
 
         max_time(array, i);
         commuting_preferences(array, i);
@@ -149,9 +171,14 @@ void max_time(people_data *array, int person_number) {
     }
 }
 
-void scan_transport_exclusions(char *name) {
+void scan_transport_exclusions(people_data *array, int person_number, char *name) {
     int choice = -1;
     char ex_car = 'x', ex_bus = 'x', ex_bike = 'x', ex_train = 'x';
+    array[person_number-1].exclusion.include_car = 1;
+    array[person_number-1].exclusion.include_bus = 1;
+    array[person_number-1].exclusion.include_bike = 1;
+    array[person_number-1].exclusion.include_train = 1;
+
     char tempchar;
     while (choice != 0) {
         //system("cls");
@@ -195,6 +222,18 @@ void scan_transport_exclusions(char *name) {
             choice = -1;
         }
     }
+    if (ex_car == ' '){
+        array[person_number-1].exclusion.include_car = 0;
+    }
+    if (ex_bus == ' '){
+        array[person_number-1].exclusion.include_bus = 0;
+    }
+    if (ex_bike == ' '){
+        array[person_number-1].exclusion.include_bike = 0;
+    }
+    if (ex_train == ' '){
+        array[person_number-1].exclusion.include_train = 0;
+    }
 }
 
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike, char ex_train) {
@@ -216,24 +255,25 @@ void commuting_preferences(people_data *array, int person_number) {
 
 
     int co2 = 0, cost = 0, time = 0, remainder = 100;
-    printf("%s please distribute 100 points in the categories environment, cost and time based on what is most important to you when it comes to commuting\n",
+    printf("%s please distribute 100 points in the categories environment, cost and time \n"
+           "based on what is most important to you when it comes to commuting\n\n",
            array[person_number].name);
     while (remainder > 0) {
         char input[5];
         int value = 0, valid = 0;
 
         printf("Env \tCost \tTime \tRemaining\n");
-        printf("%d \t%d \t%d \t%d\n", co2, cost, time, remainder);
+        printf("%d \t%d \t%d \t%d\n\n", co2, cost, time, remainder);
         fflush(stdin);
         scanf("%s \t%d", input, &value);
         convert_to_lowercase(input);
-        if (strcmp(input, "env") == 0 && (value < 100 && value > 0) && ((100 - value - time - cost) >= 0)) {
+        if (strcmp(input, "env") == 0 && (value <= 100 && value > 0) && ((100 - value - time - cost) >= 0)) {
             co2 = value;
             valid = 1;
-        } else if (strcmp(input, "cost") == 0 && (value < 100 && value > 0) && ((100 - value - co2 - time) >= 0)) {
+        } else if (strcmp(input, "cost") == 0 && (value <= 100 && value > 0) && ((100 - value - co2 - time) >= 0)) {
             cost = value;
             valid = 1;
-        } else if (strcmp(input, "time") == 0 && (value < 100 && value > 0) && ((100 - value - co2 - cost) >= 0)) {
+        } else if (strcmp(input, "time") == 0 && (value <= 100 && value > 0) && ((100 - value - co2 - cost) >= 0)) {
             time = value;
             valid = 1;
         } else
@@ -248,7 +288,7 @@ void commuting_preferences(people_data *array, int person_number) {
             printf("You chose the following distribution:\n");
             printf("Env \tCost \tTime\n");
             printf("%d \t%d \t%d \n", co2, cost, time);
-            printf("Are you happy with your choices? Y/N");
+            printf("Are you happy with your choices? Y/N\n");
 
             while (1) {
                 char tempchar;
