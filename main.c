@@ -1,6 +1,6 @@
 #include "main.h"
 #include "import_handler.h"
-#include <malloc.h>
+#include <stdlib.h>
 
 
 typedef enum {
@@ -93,7 +93,7 @@ void commuting_preferences(people_data *array, int person_number);
 char* place_of_work();
 
 int main() {
-    import_data();
+    transport_struct transport_data = import_data();
 
     int number_of_people = scan_number_of_people();
     people_data* data_set = malloc(number_of_people * sizeof(people_data));
@@ -152,7 +152,6 @@ int scan_number_of_people() {
 
 void scan_people_preferences(people_data *array, int number_of_people) {
     for (int i = 0; i < number_of_people; ++i) {
-        char name[50]; // names can at max be 50 characters long
         array[i].max_time = 0;
 
         fflush(stdin); //Clears buffer to make sure scanf is not skipped
@@ -164,7 +163,8 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         array[i].place_of_work = place_of_work();
         printf("%s\n",array[i].place_of_work);
-        scan_transport_exclusions(array, i+1, array[i].name);
+
+        scan_transport_exclusions(array, i, array[i].name);
 
 
         max_time(array, i);
@@ -192,10 +192,10 @@ void max_time(people_data *array, int person_number) {
 void scan_transport_exclusions(people_data *array, int person_number, char *name) {
     int choice = -1;
     char ex_car = 'x', ex_bus = 'x', ex_bike = 'x', ex_train = 'x';
-    array[person_number-1].exclusion.include_car = 1;
-    array[person_number-1].exclusion.include_bus = 1;
-    array[person_number-1].exclusion.include_bike = 1;
-    array[person_number-1].exclusion.include_train = 1;
+    array[person_number].exclusion.include_car = 1;
+    array[person_number].exclusion.include_bus = 1;
+    array[person_number].exclusion.include_bike = 1;
+    array[person_number].exclusion.include_train = 1;
 
     char tempchar;
     while (choice != 0) {
@@ -241,16 +241,16 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         }
     }
     if (ex_car == ' '){
-        array[person_number-1].exclusion.include_car = 0;
+        array[person_number].exclusion.include_car = 0;
     }
     if (ex_bus == ' '){
-        array[person_number-1].exclusion.include_bus = 0;
+        array[person_number].exclusion.include_bus = 0;
     }
     if (ex_bike == ' '){
-        array[person_number-1].exclusion.include_bike = 0;
+        array[person_number].exclusion.include_bike = 0;
     }
     if (ex_train == ' '){
-        array[person_number-1].exclusion.include_train = 0;
+        array[person_number].exclusion.include_train = 0;
     }
 }
 

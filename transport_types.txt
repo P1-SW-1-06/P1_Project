@@ -1,2 +1,4 @@
-Type,    Speed,     Cost,      CO2.
-Bus,     37.0,      10.0,      21.0.
+Type    Speed     Cost      CO2
+Bus     37.0      10.0      21.0
+Car     38.0      12.0      25.0
+Bike    10.0      0.0       0.0
