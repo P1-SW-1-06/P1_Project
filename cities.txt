@@ -1,0 +1,17 @@
+By              connection      distance
+frederikshavn   hjorring        33
+frederikshavn   saeby           15
+frederikshavn   aalborg         65
+saeby           frederikshavn   15
+saeby           aalborg         54
+hjorring        fredeikshavn    33
+hjorring        bronderslev     25
+bronderslev     hjorring        25
+bronderslev     norresundby     29
+norresundby     bronderslev     29
+norresundby     aalborg         3
+aalborg         frederikshavn   65
+aalborg         saeby           54
+aalborg         norresundby     3
+aalborg         stovring        22
+stovring        aalborg         22
