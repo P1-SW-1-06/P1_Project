@@ -176,10 +176,10 @@ void max_time(people_data *array, int person_number) {
 void scan_transport_exclusions(people_data *array, int person_number, char *name) {
     int choice = -1;
     char ex_car = 'x', ex_bus = 'x', ex_bike = 'x', ex_train = 'x';
-    array[person_number-1].exclusion.include_car = 1;
-    array[person_number-1].exclusion.include_bus = 1;
-    array[person_number-1].exclusion.include_bike = 1;
-    array[person_number-1].exclusion.include_train = 1;
+    array[person_number].exclusion.include_car = 1;
+    array[person_number].exclusion.include_bus = 1;
+    array[person_number].exclusion.include_bike = 1;
+    array[person_number].exclusion.include_train = 1;
 
     char tempchar;
     while (choice != 0) {
@@ -225,16 +225,16 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         }
     }
     if (ex_car == ' '){
-        array[person_number-1].exclusion.include_car = 0;
+        array[person_number].exclusion.include_car = 0;
     }
     if (ex_bus == ' '){
-        array[person_number-1].exclusion.include_bus = 0;
+        array[person_number].exclusion.include_bus = 0;
     }
     if (ex_bike == ' '){
-        array[person_number-1].exclusion.include_bike = 0;
+        array[person_number].exclusion.include_bike = 0;
     }
     if (ex_train == ' '){
-        array[person_number-1].exclusion.include_train = 0;
+        array[person_number].exclusion.include_train = 0;
     }
 }
 
