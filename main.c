@@ -84,6 +84,8 @@ void convert_to_lowercase(char *str);
 
 void commuting_preferences(people_data *array, int person_number);
 
+char* place_of_work();
+
 int main() {
     import_data();
 
@@ -95,10 +97,13 @@ int main() {
     scan_people_preferences(data_set, number_of_people);
 
     for (int i = 0; i < number_of_people; ++i) {
-        printf("Person:%d Name:%s\n Max time:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n", i + 1, data_set[i].name,
+
+        printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n", i + 1,
+               data_set[i].name,
                data_set[i].max_time,
                data_set[i].preference_environment, data_set[i].preference_cost,
-               data_set[i].preference_time);
+               data_set[i].preference_time, data_set[i].place_of_work), data_set[i].included_transport_types[0];
+               
         printf(" transport types included:\n");
         if (data_set[i].exclusion.include_car == 1){
             printf(" car,");
@@ -113,6 +118,7 @@ int main() {
             printf(" train,");
         }
         printf("\n");
+
     }
 }
 
@@ -149,7 +155,12 @@ void scan_people_preferences(people_data *array, int number_of_people) {
               array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
 
-        scan_transport_exclusions(array, i, array[i].name);
+
+        array[i].place_of_work = place_of_work();
+        printf("%s\n",array[i].place_of_work);
+        scan_transport_exclusions(array, i+1, array[i].name);
+
+
 
         max_time(array, i);
         commuting_preferences(array, i);
@@ -324,3 +335,39 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
     }
 }
 
+char* place_of_work() {
+    char *city;
+    int input;
+    printf("Where is your job located? Press the given number\n"
+           "[1]:Aalborg\n"
+           "[2]:Noerresundby\n"
+           "[3]:Stoevring\n"
+           "[4]:Frederikshavn\n"
+           "[5]:Broenderslev\n"
+           "[6]:Hjoerring\n"
+           "[7]:Thisted\n"
+           "[8]:Hobro\n");
+    scanf("%d", &input);
+
+    switch (input) {
+        case 1:
+            city = "Aalborg"; break;
+        case 2:
+            city = "Noerresundby"; break;
+        case 3:
+            city = "Stoevring"; break;
+        case 4:
+            city = "Frederikshavn"; break;
+        case 5:
+            city = "Broenderslev"; break;
+        case 6:
+            city = "Hjoerring"; break;
+        case 7:
+            city = "Thisted"; break;
+        case 8:
+            city = "Hobro"; break;
+        default:
+            ;break;
+    }
+    return city;
+}
