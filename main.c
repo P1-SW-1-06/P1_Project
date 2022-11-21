@@ -161,6 +161,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
         scan_transport_exclusions(array, i+1, array[i].name);
 
 
+
         max_time(array, i);
         commuting_preferences(array, i);
 
