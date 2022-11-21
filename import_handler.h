@@ -12,8 +12,9 @@ typedef struct {
     double co2;
     double cost;
     double speed;
-} transport_data;
+    int num_of_vehicle;
+} transport_struct;
 
-transport_data import_data();
+transport_struct import_data();
 
 #endif //MAIN_C_IMPORT_HANDLER_H
