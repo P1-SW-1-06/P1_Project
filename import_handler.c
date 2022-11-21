@@ -6,24 +6,24 @@
 #include <stdlib.h>
 #include "import_handler.h"
 
-#define NUM_OF_TRANSPORT_TYPES 20
+#define NUM_OF_TRANSPORT_TYPES 2
 
 int file_exists(FILE *file);
-void read_data(transport_data *data, FILE *file);
-void print_data(transport_data *data);
+void read_data(transport_struct *data, FILE *file);
+void print_data(transport_struct *data);
 
-transport_data import_data() {
+transport_struct import_data() {
     FILE *transport_file = fopen("transport_types.txt", "r");
     if (!file_exists(transport_file)) {
         fclose(transport_file);
         exit(0);
     }
 
-    transport_data transport_types[NUM_OF_TRANSPORT_TYPES];
+    transport_struct transport_data[NUM_OF_TRANSPORT_TYPES];
 
-    read_data(transport_types, transport_file);
+    read_data(transport_data, transport_file);
 
-    print_data(transport_types);
+    print_data(transport_data);
 
     fclose(transport_file);
 
@@ -37,7 +37,7 @@ int file_exists(FILE *file) {
 }
 
 //"%[^1-9 ,]" "%[ A-Za-z^,]" "%[A-Za-z]" "%[A-Za-z^ ]" "%[1-9^,]" "%[^.]"
-void read_data(transport_data *data, FILE *file) {
+void read_data(transport_struct *data, FILE *file) {
     char* garbage = "";
     // * "Do not store this", [^\n] "any character except newline"
     fscanf(file, "%*[^\n]\n");
@@ -46,7 +46,7 @@ void read_data(transport_data *data, FILE *file) {
     }
 }
 
-void print_data(transport_data *data) {
+void print_data(transport_struct *data) {
     for (int i = 0; i < NUM_OF_TRANSPORT_TYPES; ++i) {
         printf("----\n");
         printf("%s %lf %lf %lf\n", data->name, data->speed, data->cost, data->co2);
