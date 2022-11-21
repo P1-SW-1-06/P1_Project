@@ -19,7 +19,8 @@ transport_struct * import_data() {
         exit(0);
     }
 
-    transport_struct transport_data[NUM_OF_TRANSPORT_TYPES];
+    transport_struct * transport_data;
+    transport_data = malloc(NUM_OF_TRANSPORT_TYPES * sizeof(transport_struct));
 
     read_data(transport_data, transport_file);
 
