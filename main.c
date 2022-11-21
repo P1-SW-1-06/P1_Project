@@ -158,7 +158,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         array[i].place_of_work = place_of_work();
         printf("%s\n",array[i].place_of_work);
-        scan_transport_exclusions(array, i+1, array[i].name);
+        scan_transport_exclusions(array, i, array[i].name);
 
 
 
