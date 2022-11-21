@@ -1,6 +1,6 @@
 #include "main.h"
 #include "import_handler.h"
-#include <malloc.h>
+#include <stdlib.h>
 
 
 typedef enum {
