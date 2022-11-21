@@ -146,7 +146,6 @@ int scan_number_of_people() {
 
 void scan_people_preferences(people_data *array, int number_of_people) {
     for (int i = 0; i < number_of_people; ++i) {
-        char name[50]; // names can at max be 50 characters long
         array[i].max_time = 0;
 
         fflush(stdin); //Clears buffer to make sure scanf is not skipped
