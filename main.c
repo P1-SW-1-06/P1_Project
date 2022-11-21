@@ -12,10 +12,10 @@ typedef enum {
 } cities;
 
 typedef struct {
-int include_car;
-int include_bus;
-int include_bike;
-int include_train;
+    int include_car;
+    int include_bus;
+    int include_bike;
+    int include_train;
 }exclusions;
 
 typedef struct {
@@ -103,7 +103,7 @@ int main() {
                data_set[i].max_time,
                data_set[i].preference_environment, data_set[i].preference_cost,
                data_set[i].preference_time, data_set[i].place_of_work), data_set[i].included_transport_types[0];
-               
+
         printf(" transport types included:\n");
         if (data_set[i].exclusion.include_car == 1){
             printf(" car,");
@@ -157,8 +157,8 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         array[i].place_of_work = place_of_work();
         printf("%s\n",array[i].place_of_work);
-        scan_transport_exclusions(array, i, array[i].name);
 
+        scan_transport_exclusions(array, i, array[i].name);
 
 
         max_time(array, i);
@@ -337,36 +337,48 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
 char* place_of_work() {
     char *city;
     int input;
-    printf("Where is your job located? Press the given number\n"
-           "[1]:Aalborg\n"
-           "[2]:Noerresundby\n"
-           "[3]:Stoevring\n"
-           "[4]:Frederikshavn\n"
-           "[5]:Broenderslev\n"
-           "[6]:Hjoerring\n"
-           "[7]:Thisted\n"
-           "[8]:Hobro\n");
-    scanf("%d", &input);
 
-    switch (input) {
-        case 1:
-            city = "Aalborg"; break;
-        case 2:
-            city = "Noerresundby"; break;
-        case 3:
-            city = "Stoevring"; break;
-        case 4:
-            city = "Frederikshavn"; break;
-        case 5:
-            city = "Broenderslev"; break;
-        case 6:
-            city = "Hjoerring"; break;
-        case 7:
-            city = "Thisted"; break;
-        case 8:
-            city = "Hobro"; break;
-        default:
-            ;break;
-    }
+    do {
+        printf("Where is your job located? Press the given number\n"
+               "[1]:Aalborg\n"
+               "[2]:Noerresundby\n"
+               "[3]:Stoevring\n"
+               "[4]:Frederikshavn\n"
+               "[5]:Broenderslev\n"
+               "[6]:Hjoerring\n"
+               "[7]:Thisted\n"
+               "[8]:Hobro\n");
+        scanf("%d", &input);
+
+        switch (input) {
+            case 1:
+                city = "Aalborg";
+                break;
+            case 2:
+                city = "Noerresundby";
+                break;
+            case 3:
+                city = "Stoevring";
+                break;
+            case 4:
+                city = "Frederikshavn";
+                break;
+            case 5:
+                city = "Broenderslev";
+                break;
+            case 6:
+                city = "Hjoerring";
+                break;
+            case 7:
+                city = "Thisted";
+                break;
+            case 8:
+                city = "Hobro";
+                break;
+            default:
+                printf("Invalid input\n");
+                break;
+        }
+    } while (input < 1 || input > 8);
     return city;
 }
