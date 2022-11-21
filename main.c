@@ -90,31 +90,31 @@ int main() {
     transport_struct transport_data = import_data();
 
     int number_of_people = scan_number_of_people();
-    people_data* data_set = malloc(number_of_people * sizeof(people_data));
-    if (data_set == NULL){
+    people_data* people_data_arr = malloc(number_of_people * sizeof(people_data));
+    if (people_data_arr == NULL){
         printf("Memmory not allocated");
     }
-    scan_people_preferences(data_set, number_of_people);
+    scan_people_preferences(people_data_arr, number_of_people);
 
     for (int i = 0; i < number_of_people; ++i) {
 
         printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n", i + 1,
-               data_set[i].name,
-               data_set[i].max_time,
-               data_set[i].preference_environment, data_set[i].preference_cost,
-               data_set[i].preference_time, data_set[i].place_of_work), data_set[i].included_transport_types[0];
-
+               people_data_arr[i].name,
+               people_data_arr[i].max_time,
+               people_data_arr[i].preference_environment, people_data_arr[i].preference_cost,
+               people_data_arr[i].preference_time, people_data_arr[i].place_of_work), people_data_arr[i].included_transport_types[0];
+               
         printf(" transport types included:\n");
-        if (data_set[i].exclusion.include_car == 1){
+        if (people_data_arr[i].exclusion.include_car == 1){
             printf(" car,");
         }
-        if (data_set[i].exclusion.include_bus == 1){
+        if (people_data_arr[i].exclusion.include_bus == 1){
             printf(" bus,");
         }
-        if (data_set[i].exclusion.include_bike == 1){
+        if (people_data_arr[i].exclusion.include_bike == 1){
             printf(" bike,");
         }
-        if (data_set[i].exclusion.include_train == 1){
+        if (people_data_arr[i].exclusion.include_train == 1){
             printf(" train,");
         }
         printf("\n");
