@@ -8,7 +8,7 @@ typedef enum {
 } transport_types;
 
 typedef enum {
-    frederikshavn, aalborg, hjoerring, hobro, stoevring, thisted, noerresundby
+    frederikshavn, aalborg, hjoerring, hobro, stoevring, thisted, noerresundby, broenderslev
 } cities;
 
 typedef struct {
