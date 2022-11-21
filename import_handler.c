@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "import_handler.h"
 
-#define NUM_OF_TRANSPORT_TYPES 3
+#define NUM_OF_TRANSPORT_TYPES 100
 
 int file_exists(FILE *file);
 void read_data(transport_struct *data, FILE *file);
@@ -27,6 +27,7 @@ transport_struct import_data() {
 
     fclose(transport_file);
 
+    return *transport_data;
 }
 
 int file_exists(FILE *file) {
