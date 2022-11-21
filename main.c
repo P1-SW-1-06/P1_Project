@@ -78,7 +78,7 @@ int main() {
     scan_people_preferences(people_data_arr, number_of_people);
 
     for (int i = 0; i < number_of_people; ++i) {
-        printf("Person:%d Name:%s Maxtime:%d Pref\n Env:%d\n Cost:%d\n Time:%d\n", i + 1, people_data_arr[i].name,
+        printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n", i + 1, people_data_arr[i].name,
                people_data_arr[i].max_time,
                people_data_arr[i].preference_environment, people_data_arr[i].preference_cost,
                people_data_arr[i].preference_time), people_data_arr[i].included_transport_types[0];
