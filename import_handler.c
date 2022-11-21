@@ -6,27 +6,28 @@
 #include <stdlib.h>
 #include "import_handler.h"
 
-#define NUM_OF_TRANSPORT_TYPES 20
+#define NUM_OF_TRANSPORT_TYPES 100
 
 int file_exists(FILE *file);
-void read_data(transport_data *data, FILE *file);
-void print_data(transport_data *data);
+void read_data(transport_struct *data, FILE *file);
+void print_data(transport_struct *data);
 
-transport_data import_data() {
+transport_struct import_data() {
     FILE *transport_file = fopen("transport_types.txt", "r");
     if (!file_exists(transport_file)) {
         fclose(transport_file);
         exit(0);
     }
 
-    transport_data transport_types[NUM_OF_TRANSPORT_TYPES];
+    transport_struct transport_data[NUM_OF_TRANSPORT_TYPES];
 
-    read_data(transport_types, transport_file);
+    read_data(transport_data, transport_file);
 
-    print_data(transport_types);
+    print_data(transport_data);
 
     fclose(transport_file);
 
+    return *transport_data;
 }
 
 int file_exists(FILE *file) {
@@ -36,19 +37,22 @@ int file_exists(FILE *file) {
     } return 1;
 }
 
-//"%[^1-9 ,]" "%[ A-Za-z^,]" "%[A-Za-z]" "%[A-Za-z^ ]" "%[1-9^,]" "%[^.]"
-void read_data(transport_data *data, FILE *file) {
-    char* garbage = "";
+void read_data(transport_struct *data, FILE *file) {
     // * "Do not store this", [^\n] "any character except newline"
     fscanf(file, "%*[^\n]\n");
-    for (int i = 0; i < NUM_OF_TRANSPORT_TYPES; ++i) {
-        fscanf(file, "%[]s" "%s" "%lf" "%lf" "%lf", data->name, data->speed, data->cost, data->co2);
+    data[0].num_of_vehicle = 0;
+    int i = 0;
+    while (fscanf(file, "%s" "%lf" "%lf" "%lf", data[i].name, &data[i].speed, &data[i].cost, &data[i].co2) == 4) {
+        i++;
+        data[0].num_of_vehicle += 1;
     }
 }
 
-void print_data(transport_data *data) {
-    for (int i = 0; i < NUM_OF_TRANSPORT_TYPES; ++i) {
+void print_data(transport_struct *data) {
+    int i = 0;
+    while (i < data[0].num_of_vehicle) {
         printf("----\n");
-        printf("%s %lf %lf %lf\n", data->name, data->speed, data->cost, data->co2);
+        printf("'%s' '%lf' '%lf' '%lf'\n", data[i].name, data[i].speed, data[i].cost, data[i].co2);
+        ++i;
     }
 }
