@@ -12,7 +12,7 @@ int file_exists(FILE *file);
 void read_data(transport_struct *data, FILE *file);
 void print_data(transport_struct *data);
 
-transport_struct import_data() {
+transport_struct * import_data() {
     FILE *transport_file = fopen("transport_types.txt", "r");
     if (!file_exists(transport_file)) {
         fclose(transport_file);
@@ -27,7 +27,7 @@ transport_struct import_data() {
 
     fclose(transport_file);
 
-    return *transport_data;
+    return transport_data;
 }
 
 int file_exists(FILE *file) {

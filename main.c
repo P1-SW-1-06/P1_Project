@@ -71,7 +71,9 @@ void convert_to_lowercase(char *str);
 void commuting_preferences(people_data *array, int person_number);
 
 int main() {
-    transport_struct transport_data = import_data();
+    transport_struct *transport_data = import_data();
+
+    printf("%lf", transport_data[1].co2);
 
     int number_of_people = scan_number_of_people();
     people_data people_data_arr[number_of_people];

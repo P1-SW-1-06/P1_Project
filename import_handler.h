@@ -15,6 +15,6 @@ typedef struct {
     int num_of_vehicle;
 } transport_struct;
 
-transport_struct import_data();
+transport_struct * import_data();
 
 #endif //MAIN_C_IMPORT_HANDLER_H
