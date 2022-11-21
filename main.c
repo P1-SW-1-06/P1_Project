@@ -99,10 +99,10 @@ int main() {
     for (int i = 0; i < number_of_people; ++i) {
 
         printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n", i + 1,
-               people_data_arr[i].name,
-               people_data_arr[i].max_time,
-               people_data_arr[i].preference_environment, people_data_arr[i].preference_cost,
-               people_data_arr[i].preference_time, people_data_arr[i].place_of_work), people_data_arr[i].included_transport_types[0];
+               data_set[i].name,
+               data_set[i].max_time,
+               data_set[i].preference_environment, data_set[i].preference_cost,
+               data_set[i].preference_time, data_set[i].place_of_work), data_set[i].included_transport_types[0];
                
         printf(" transport types included:\n");
         if (data_set[i].exclusion.include_car == 1){
@@ -157,7 +157,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
 
         array[i].place_of_work = place_of_work();
-        printf("%s\n",&place_of_work);
+        printf("%s\n",array[i].place_of_work);
         scan_transport_exclusions(array, i+1, array[i].name);
 
 
