@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "import_handler.h"
 
-#define NUM_OF_TRANSPORT_TYPES 2
+#define NUM_OF_TRANSPORT_TYPES 3
 
 int file_exists(FILE *file);
 void read_data(transport_struct *data, FILE *file);
@@ -36,19 +36,22 @@ int file_exists(FILE *file) {
     } return 1;
 }
 
-//"%[^1-9 ,]" "%[ A-Za-z^,]" "%[A-Za-z]" "%[A-Za-z^ ]" "%[1-9^,]" "%[^.]"
 void read_data(transport_struct *data, FILE *file) {
     // * "Do not store this", [^\n] "any character except newline"
     fscanf(file, "%*[^\n]\n");
+    data[0].num_of_vehicle = 0;
     int i = 0;
     while (fscanf(file, "%s" "%lf" "%lf" "%lf", data[i].name, &data[i].speed, &data[i].cost, &data[i].co2) == 4) {
         i++;
+        data[0].num_of_vehicle += 1;
     }
 }
 
 void print_data(transport_struct *data) {
-    for (int i = 0; i < NUM_OF_TRANSPORT_TYPES; ++i) {
+    int i = 0;
+    while (i < data[0].num_of_vehicle) {
         printf("----\n");
-        printf("'%s' '%lf' '%lf' '%lf'\n", data->name, data->speed, data->cost, data->co2);
+        printf("'%s' '%lf' '%lf' '%lf'\n", data[i].name, data[i].speed, data[i].cost, data[i].co2);
+        ++i;
     }
 }

@@ -12,6 +12,7 @@ typedef struct {
     double co2;
     double cost;
     double speed;
+    int num_of_vehicle;
 } transport_struct;
 
 transport_struct import_data();
