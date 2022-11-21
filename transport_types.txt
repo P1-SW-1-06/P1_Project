@@ -1,2 +1,2 @@
-Type,    Speed,     Cost,      CO2.
-Bus,     37.0,      10.0,      21.0.
+Type    Speed     Cost      CO2
+Bus     37.0      10.0      21.0

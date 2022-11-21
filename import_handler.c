@@ -38,17 +38,17 @@ int file_exists(FILE *file) {
 
 //"%[^1-9 ,]" "%[ A-Za-z^,]" "%[A-Za-z]" "%[A-Za-z^ ]" "%[1-9^,]" "%[^.]"
 void read_data(transport_struct *data, FILE *file) {
-    char* garbage = "";
     // * "Do not store this", [^\n] "any character except newline"
     fscanf(file, "%*[^\n]\n");
-    for (int i = 0; i < NUM_OF_TRANSPORT_TYPES; ++i) {
-        fscanf(file, "%[]s" "%s" "%lf" "%lf" "%lf", data->name, data->speed, data->cost, data->co2);
+    int i = 0;
+    while (fscanf(file, "%s" "%lf" "%lf" "%lf", data[i].name, &data[i].speed, &data[i].cost, &data[i].co2) == 4) {
+        i++;
     }
 }
 
 void print_data(transport_struct *data) {
     for (int i = 0; i < NUM_OF_TRANSPORT_TYPES; ++i) {
         printf("----\n");
-        printf("%s %lf %lf %lf\n", data->name, data->speed, data->cost, data->co2);
+        printf("'%s' '%lf' '%lf' '%lf'\n", data->name, data->speed, data->cost, data->co2);
     }
 }
