@@ -7,7 +7,7 @@ typedef enum {
 
 typedef enum {
     frederikshavn, aalborg, hjoerring, hobro, stoevring, thisted, noerresundby
-}cities;
+} cities;
 
 typedef struct {
     char name[50];
@@ -16,6 +16,10 @@ typedef struct {
     int preference_cost;
     int preference_time;
     transport_types included_transport_types[4];
+    int include_car;
+    int include_bus;
+    int include_bike;
+    int include_train;
     char *place_of_work;
 } people_data;
 
