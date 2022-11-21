@@ -2,6 +2,7 @@
 #include "import_handler.h"
 #include <malloc.h>
 
+
 typedef enum {
     car, bus, train, bike
 } transport_types;
@@ -84,6 +85,7 @@ void convert_to_lowercase(char *str);
 void commuting_preferences(people_data *array, int person_number);
 
 int main() {
+    import_data();
 
     int number_of_people = scan_number_of_people();
     people_data* data_set = malloc(number_of_people * sizeof(people_data));
