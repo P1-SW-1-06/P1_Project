@@ -5,6 +5,10 @@ typedef enum {
     car, bus, train, bike
 } transport_types;
 
+typedef enum {
+    frederikshavn, aalborg, hjoerring, hobro, stoevring, thisted, noerresundby
+}cities;
+
 typedef struct {
     char name[50];
     int max_time;
@@ -19,7 +23,6 @@ typedef struct {
     char name[50];
 
 } city_data;
-
 
 
 /***
