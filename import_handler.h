@@ -26,14 +26,14 @@ int file_exists(FILE *file);
 
 /**
  * @description A function that reads a file and place the input in an array in a loop that runs until it no longer receives 4 input
- * @param data Is an array where the data is stored
+ * @param data Is a pointer to an array of type transport_struct
  * @param file The file where the data is drawn from
  */
 void read_data(transport_struct *data, FILE *file);
 
 /**
  * @description A function that prints an array as long as there is something to print
- * @param data Is an array where the data is stored
+ * @param data Is a pointer to an array of type transport_struct
  */
 void print_data(transport_struct *data);
 
