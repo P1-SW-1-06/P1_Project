@@ -1,16 +1,9 @@
-//
-//
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "import_handler.h"
 
 #define NUM_OF_TRANSPORT_TYPES 10
 
-int file_exists(FILE *file);
-void read_data(transport_struct *data, FILE *file);
-void print_data(transport_struct *data);
 
 transport_struct *import_data() {
     FILE *transport_file = fopen("transport_types.txt", "r");

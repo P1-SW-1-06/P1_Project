@@ -1,7 +1,3 @@
-//
-// Created by Anders Overgaard Lisberg on 20/11/2022.
-//
-
 #ifndef MAIN_C_IMPORT_HANDLER_H
 #define MAIN_C_IMPORT_HANDLER_H
 
@@ -16,31 +12,29 @@ typedef struct {
 } transport_struct;
 
 /**
- * A function that has a pointer to a file as input.
- * A function that open the file transport_types.txt and checks if the file exists.
- * A function that allocate space in malloc for transport_data
- * @return Returns transport_data, the data from the input file
+ * @description A function that has a pointer to a file as input, opens the file transport_types.txt and checks if the file exists, allocate space in malloc for transport_data
+ * @return Returns a pointer to the input file
  */
 transport_struct *import_data();
 
 /**
- *
- * @param file
- * @return
+ * @description A function that checks if the file exists
+ * @param file Taking in a pointer to file
+ * @return Returning true if the file exists and false if it does not
  */
 int file_exists(FILE *file);
 
 /**
- *
- * @param data
+ * A function that reads a file and place the input in an array in a loop that runs until it no longer receives 4 input
+ * @param data Is an array where the data is stored
+ * @param file The file where the data is drawn from
  */
-void print_data(transport_struct *data);
+void read_data(transport_struct *data, FILE *file);
 
 /**
- *
- * @param data
- * @param file
+ * A function that prints an array as long as there is something to print
+ * @param data Is an array where the data is stored
  */
-void read_data(transport_struct *data, FILE *file)
+void print_data(transport_struct *data);
 
 #endif //MAIN_C_IMPORT_HANDLER_H
