@@ -15,6 +15,23 @@ typedef struct {
     int num_of_vehicle;
 } transport_struct;
 
+/**
+ *
+ * @return
+ */
 transport_struct * import_data();
+
+/**
+ *
+ * @param file
+ * @return
+ */
+int file_exists(FILE *file);
+
+/**
+ *
+ * @param data
+ */
+void print_data(transport_struct *data);
 
 #endif //MAIN_C_IMPORT_HANDLER_H
