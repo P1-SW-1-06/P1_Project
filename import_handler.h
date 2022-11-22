@@ -16,10 +16,12 @@ typedef struct {
 } transport_struct;
 
 /**
- *
- * @return
+ * A function that has a pointer to a file as input.
+ * A function that open the file transport_types.txt and checks if the file exists.
+ * A function that allocate space in malloc for transport_data
+ * @return Returns transport_data, the data from the input file
  */
-transport_struct * import_data();
+transport_struct *import_data();
 
 /**
  *
@@ -33,5 +35,12 @@ int file_exists(FILE *file);
  * @param data
  */
 void print_data(transport_struct *data);
+
+/**
+ *
+ * @param data
+ * @param file
+ */
+void read_data(transport_struct *data, FILE *file)
 
 #endif //MAIN_C_IMPORT_HANDLER_H
