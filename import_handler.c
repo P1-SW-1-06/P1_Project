@@ -1,30 +1,23 @@
-//
-// Created by Anders Overgaard Lisberg on 20/11/2022.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "import_handler.h"
 
-#define NUM_OF_TRANSPORT_TYPES 100
+#define NUM_OF_TRANSPORT_TYPES 10
 
-int file_exists(FILE *file);
-void read_data(transport_struct *data, FILE *file);
-void print_data(transport_struct *data);
 
-transport_struct * import_data() {
+transport_struct *import_data() {
     FILE *transport_file = fopen("transport_types.txt", "r");
     if (!file_exists(transport_file)) {
         fclose(transport_file);
         exit(0);
     }
 
-    transport_struct * transport_data;
+    transport_struct *transport_data;
     transport_data = malloc(NUM_OF_TRANSPORT_TYPES * sizeof(transport_struct));
 
     read_data(transport_data, transport_file);
 
-    print_data(transport_data);
+    // print_data(transport_data);
 
     fclose(transport_file);
 
