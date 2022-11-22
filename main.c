@@ -209,37 +209,53 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         if (scanf("%d%c", &choice, &tempchar) != 2
             || tempchar != '\n' || (choice > 4 && choice != 9) || choice < 0) {
             printf("invalid input\n");
-        } else {
-            if (choice == 0) {
-                print_transport_choices(ex_car, ex_bus, ex_bike, ex_train, name);
-                break;
-            } else if (choice == 1) {
-                if (ex_car == 'x') {
-                    ex_car = ' ';
-                } else {
-                    ex_car = 'x';
+        }else if (ex_car == ' ' && ex_bus == ' ' && ex_bike == ' ' && ex_train == ' '){
+            printf("You must have at least 1 possible mean of transportation\n");
+        }else {
+            switch (choice) {
+                case 0: {
+                    print_transport_choices(ex_car, ex_bus, ex_bike, ex_train, name);
+                    break;
                 }
-            } else if (choice == 2) {
-                if (ex_bus == 'x') {
-                    ex_bus = ' ';
-                } else {
-                    ex_bus = 'x';
+                case 1: {
+                    if (ex_car == ' '){
+                        ex_car = 'x';
+                    } else if (ex_bus == ' ' && ex_bike == ' ' && ex_train == ' ') {
+                        printf("You must have at least 1 possible mean of transportation\n");
+                    } else {
+                        ex_car = ' ';
+                    } break;
                 }
-            } else if (choice == 3) {
-                if (ex_bike == 'x') {
-                    ex_bike = ' ';
-                } else {
-                    ex_bike = 'x';
+                case 2:{
+                    if (ex_bus == ' '){
+                        ex_bus = 'x';
+                    } else if (ex_bike == ' ' && ex_train == ' ' && ex_car == ' ') {
+                        printf("You must have at least 1 possible mean of transportation\n");
+                    } else {
+                        ex_bus = ' ';
+                    } break;
                 }
-            } else if (choice == 4) {
-                if (ex_train == 'x') {
-                    ex_train = ' ';
-                } else {
-                    ex_train = 'x';
+                case 3: {
+                    if (ex_bike == ' '){
+                        ex_bike = 'x';
+                    } else if (ex_car == ' ' && ex_bus == ' ' && ex_train == ' ') {
+                        printf("You must have at least 1 possible mean of transportation\n");
+                    } else {
+                        ex_bike = ' ';
+                    } break;
                 }
+                case 4:{
+                    if (ex_train == ' '){
+                        ex_train = 'x';
+                    } else if (ex_car == ' ' && ex_bus == ' ' && ex_bike == ' ') {
+                        printf("You must have at least 1 possible mean of transportation\n");
+                    } else {
+                        ex_train = ' ';
+                    } break;
+                }
+                default:
+                    choice = -1;
             }
-            print_transport_exclude_checkbox(ex_car, ex_bus, ex_bike, ex_train);
-            choice = -1;
         }
     }
     if (ex_car == ' '){
@@ -257,7 +273,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
 }
 
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike, char ex_train) {
-    printf("\nIncluded transportations types indicated by x\n");
+    printf("Included transportations types indicated by x\n");
     printf("1-car[%c]  2-bus[%c]  3-bike[%c]  4-train[%c]\n", ex_car, ex_bus, ex_bike, ex_train);
     printf("\n");
 }
