@@ -21,6 +21,7 @@
 
 #include "import_handler.h"
 #include "user_input.h"
+#include "dijkstra.h"
 
 /* -- Prototypes -- */
 /**
