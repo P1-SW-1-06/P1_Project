@@ -1,7 +1,6 @@
-#ifndef MAIN_C_IMPORT_HANDLER_H
-#define MAIN_C_IMPORT_HANDLER_H
+#pragma once
 
-
+#include "main.h"
 
 typedef struct {
     char name[20];
@@ -38,5 +37,3 @@ void read_data(transport_struct *data, FILE *file);
  * @param data Is a pointer to an array of type transport_struct
  */
 void print_data(transport_struct *data);
-
-#endif //MAIN_C_IMPORT_HANDLER_H
