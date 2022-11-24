@@ -1,7 +1,21 @@
-#ifndef MAIN_C_IMPORT_HANDLER_H
-#define MAIN_C_IMPORT_HANDLER_H
+/** @file import_handler.h
+ *  @brief Function and struct prototypes used in user_input.h.
+ *
+ *  This contains the prototypes for the
+ *  functions and structs used in the program.
+ *
+ *  @author
+ *  @bug No known bugs.
+ *  @tests !!No tests have been run.!!
+*/
 
+#pragma once
 
+/* -- Includes -- */
+#include "main.h" /* Necessary libraries are included in main.h */
+
+/* -- Prototypes -- */
+#define NUM_OF_TRANSPORT_TYPES 10
 
 typedef struct {
     char name[20];
@@ -38,5 +52,3 @@ void read_data(transport_struct *data, FILE *file);
  * @param data Is a pointer to an array of type transport_struct
  */
 void print_data(transport_struct *data);
-
-#endif //MAIN_C_IMPORT_HANDLER_H

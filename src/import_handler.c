@@ -1,9 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
+/** @file import_handler.c
+ *  @brief Imports information from transport_types.txt
+ *
+ *  Handles imports of data from transport_types.txt.
+ *  It will error and exit if FILE if not found.
+ *  Remember to free memory allocated by malloc.
+ *
+ *  @author
+ *  @bug No known bugs.
+ *  @tests !!No tests have been run.!!
+*/
+
+/* -- Includes -- */
 #include "import_handler.h"
-
-#define NUM_OF_TRANSPORT_TYPES 10
-
 
 transport_struct *import_data() {
     FILE *transport_file = fopen("transport_types.txt", "r");
