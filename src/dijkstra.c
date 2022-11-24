@@ -71,7 +71,7 @@ int find_number_of_cities(){
 }
 
 char** create_city_name_array(int number_of_cities){
-    FILE *city_data = fopen("City_information.txt","r");
+    FILE *city_data = fopen("city_information.txt","r");
     if(city_data == NULL){
         printf("file not found");
     }

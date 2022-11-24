@@ -16,11 +16,11 @@ int main() {
     char** city_name = create_city_name_array(nr);
     int** city_distance_array = create_city_distance_matrix(nr, city_name);
 
-    int* dijkstra_arrey = dijkstra(city_distance_array, index_city_names(place_of_work, city_name, nr),nr);
+    int* dijkstra_array = dijkstra(city_distance_array, index_city_names(place_of_work, city_name, nr),nr);
     printf("The distance from your workplace to\n");
     for (int i = 0; i < nr; ++i) {
-        if (dijkstra_arrey[i] <= 95) { // mangler MAX_distance i if statement i stedet for 95
-            printf("%s is %d\n",city_name[i], dijkstra_arrey[i]);
+        if (dijkstra_array[i] <= 95) { // mangler MAX_distance i if statement i stedet for 95
+            printf("%s is %d\n",city_name[i], dijkstra_array[i]);
         }
     }
     printf("%lf", transport_data[1].cost);
