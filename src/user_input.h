@@ -1,20 +1,20 @@
 /** @file user_input.h
- *  @brief Function prototypes for the user inputs.
+ *  @brief Function and struct prototypes used in user_input.h.
  *
  *  This contains the prototypes for the
- *  driver and eventually any macros, constants,
- *  or global variables you will need.
+ *  functions and structs used in the program.
  *
- *  @author Harry Q. Bovik (hqbovik)
- *  @author Fred Hacker (fhacker)
+ *  @author
  *  @bug No known bugs.
- *  @tests No tests have been run.
+ *  @tests !!No tests have been run.!!
 */
 
 #pragma once
 
+/* -- Includes -- */
 #include "import_handler.h"
 
+/* -- Prototypes -- */
 typedef enum {
     car, bus, train, bike
 } transport_types;

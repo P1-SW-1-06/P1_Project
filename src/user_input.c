@@ -1,10 +1,17 @@
+/** @file user_input
+ *  @brief Function and struct prototypes used in user_input.h.
+ *
+ *  This contains the prototypes for the
+ *  functions and structs used in the program.
+ *
+ *  @author
+ *  @bug No known bugs.
+ *  @tests !!No tests have been run.!!
+*/
+
 #include "user_input.h"
 
-
 void user_input() {
-    transport_struct *transport_data = import_data();
-
-    printf("%lf", transport_data[1].cost);
 
     int number_of_people = scan_number_of_people();
     people_data* people_data_arr = malloc(number_of_people * sizeof(people_data));

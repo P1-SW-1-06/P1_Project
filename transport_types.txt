@@ -1,4 +1,4 @@
-Type    Speed     Cost      CO2
+Type    Speed     Cost      CO2     //This line is not read
 Bus     37.0      10.0      21.0
 Car     20.0      32        59.4
 Bicycle 60        0         0
