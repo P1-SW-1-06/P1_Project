@@ -130,5 +130,5 @@ unsigned int index_city_names(char* name, char** city_name_array, int num_cities
         }
     }
     printf("index function error occurred\nmismatch between city data files\n");
-    exit(0);
+    exit(-1);
 }
