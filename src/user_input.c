@@ -10,6 +10,7 @@
 */
 
 #include "user_input.h"
+int scan_int();
 
 void user_input() {
 
@@ -22,11 +23,11 @@ void user_input() {
 
     for (int i = 0; i < number_of_people; ++i) {
 
-        printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n", i + 1,
+        printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:\n", i + 1,
                people_data_arr[i].name,
                people_data_arr[i].max_time,
                people_data_arr[i].preference_environment, people_data_arr[i].preference_cost,
-               people_data_arr[i].preference_time, people_data_arr[i].place_of_work);
+               people_data_arr[i].preference_time);
 
         printf(" transport types included:\n");
         if (people_data_arr[i].exclusion.include_car == 1){
@@ -78,9 +79,6 @@ void scan_people_preferences(people_data *array, int number_of_people) {
               array[i].name); // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
 
-
-        array[i].place_of_work = place_of_work();
-        printf("%s\n",array[i].place_of_work);
 
         scan_transport_exclusions(array, i, array[i].name);
 
@@ -217,7 +215,7 @@ void commuting_preferences(people_data *array, int person_number) {
         printf("Env \tCost \tTime \tRemaining\n");
         printf("%d \t%d \t%d \t%d\n\n", co2, cost, time, remainder);
         fflush(stdin);
-        scanf("%s \t%d", input, &value);
+        scanf("%s %d", input, &value);
         convert_to_lowercase(input);
         if (strcmp(input, "env") == 0 && (value <= 100 && value > 0) && ((100 - value - time - cost) >= 0)) {
             co2 = value;
@@ -274,51 +272,37 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
     }
 }
 
-char* place_of_work() {
-    char *city;
-    int input;
+char* place_of_work(char** city_array, int number_of_cities) {
+
+    printf("please choose the city you work with\n");
+    printf("Index\t City\n");
+    for (int i = 0; i < number_of_cities; ++i) {
+        printf("%d\t %s\n",i, city_array[i]);
+    }
+
+
+    int city_choice;
 
     do {
-        printf("Where is your job located? Press the given number\n"
-               "[1]:Aalborg\n"
-               "[2]:Noerresundby\n"
-               "[3]:Stoevring\n"
-               "[4]:Frederikshavn\n"
-               "[5]:Broenderslev\n"
-               "[6]:Hjoerring\n"
-               "[7]:Thisted\n"
-               "[8]:Hobro\n");
-        scanf("%d", &input);
+        city_choice = scan_int();
+    }
+    while(city_choice < 0 ||
+          city_choice > number_of_cities);
 
-        switch (input) {
-            case 1:
-                city = "Aalborg";
-                break;
-            case 2:
-                city = "Noerresundby";
-                break;
-            case 3:
-                city = "Stoevring";
-                break;
-            case 4:
-                city = "Frederikshavn";
-                break;
-            case 5:
-                city = "Broenderslev";
-                break;
-            case 6:
-                city = "Hjoerring";
-                break;
-            case 7:
-                city = "Thisted";
-                break;
-            case 8:
-                city = "Hobro";
-                break;
-            default:
-                printf("Invalid input\n");
-                break;
-        }
-    } while (input < 1 || input > 8);
-    return city;
+    return city_array[city_choice];
+}
+
+int scan_int(){
+
+    while(1) {
+        printf("*hello*");
+        int choice;
+        char tempchar;
+        fflush(stdin);
+        if (scanf("%d%c", &choice, &tempchar) != 2
+                                || tempchar != '\n')
+            printf("invalid input\n");
+        else
+            return choice;
+    }
 }
