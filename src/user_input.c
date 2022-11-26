@@ -10,13 +10,14 @@
 */
 
 #include "user_input.h"
+
 int scan_int();
 
 void user_input() {
 
     int number_of_people = scan_number_of_people();
-    people_data* people_data_arr = malloc(number_of_people * sizeof(people_data));
-    if (people_data_arr == NULL){
+    people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
+    if (people_data_arr == NULL) {
         printf("Memmory not allocated");
     }
     scan_people_preferences(people_data_arr, number_of_people);
@@ -30,16 +31,16 @@ void user_input() {
                people_data_arr[i].preference_time);
 
         printf(" transport types included:\n");
-        if (people_data_arr[i].exclusion.include_car == 1){
+        if (people_data_arr[i].exclusion.include_car == 1) {
             printf(" car,");
         }
-        if (people_data_arr[i].exclusion.include_bus == 1){
+        if (people_data_arr[i].exclusion.include_bus == 1) {
             printf(" bus,");
         }
-        if (people_data_arr[i].exclusion.include_bike == 1){
+        if (people_data_arr[i].exclusion.include_bike == 1) {
             printf(" bike,");
         }
-        if (people_data_arr[i].exclusion.include_train == 1){
+        if (people_data_arr[i].exclusion.include_train == 1) {
             printf(" train,");
         }
         printf("\n");
@@ -49,23 +50,18 @@ void user_input() {
 
 int scan_number_of_people() {
     int people = 0;
-    while (people == 0) {
 
-        char tempchar;
+    printf("Please enter number of people you want to optimize for\n");
 
-        fflush(stdin); //Clears buffer to make sure scanf is not skipped
-        printf("Please enter number of people you want to optimize for followed by enter\n");
-        if (scanf("%d%c", &people, &tempchar) != 2
-            || tempchar != '\n') {
-            printf("invalid input\n");
-            people = 0;
-        } else if (people == 9) {
-            printf("Put more information about number of people here\n");
-            people = 0;
-        } else {
-            printf("You chose to optimize for: %d people\n", people);
-        }
-    }
+    do {
+        if (people == 9)
+            printf("put information about number of people here\n");
+        printf("Enter number between 1-5\n");
+        people = scan_int();
+    } while (people < 1 || people > 5);
+
+    printf("You chose to optimize for: %d people\n", people);
+
     return people;
 }
 
@@ -82,28 +78,29 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         scan_transport_exclusions(array, i, array[i].name);
 
+        array[i].max_time = max_time(array[i].name);
 
-        max_time(array, i);
         commuting_preferences(array, i);
 
     }
 }
 
-void max_time(people_data *array, int person_number) {
-    while (array[person_number].max_time == 0) {
-        char tempchar;
-        fflush(stdin); //Clears buffer to make sure scanf is not skipped
-        printf("Please enter the max amount of minutes %s want to commute followed by enter\n",
-               array[person_number].name);
-        if (scanf("%d%c", &array[person_number].max_time, &tempchar) != 2
-            || tempchar != '\n') {
-            printf("invalid input\n");
-            array[person_number].max_time = 0;
-        } else {
-            printf("%s's max travel time is %d minutes\n", array[person_number].name, array[person_number].max_time);
-        }
-    }
+int max_time(char* name) {
+
+    int time = 0;
+    printf("Please enter the max amount of minutes %s want to commute followed by enter\n",name);
+
+    do {
+        time = scan_int();
+    } while(time < 0 || time > 240);
+
+    printf("%s's max travel time is %d minutes\n", name, time);
+    return time;
 }
+
+
+
+
 
 void scan_transport_exclusions(people_data *array, int person_number, char *name) {
     int choice = -1;
@@ -123,65 +120,69 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         if (scanf("%d%c", &choice, &tempchar) != 2
             || tempchar != '\n' || (choice > 4 && choice != 9) || choice < 0) {
             printf("invalid input\n");
-        }else if (ex_car == ' ' && ex_bus == ' ' && ex_bike == ' ' && ex_train == ' '){
+        } else if (ex_car == ' ' && ex_bus == ' ' && ex_bike == ' ' && ex_train == ' ') {
             printf("You must have at least 1 possible mean of transportation\n");
-        }else {
+        } else {
             switch (choice) {
                 case 0: {
                     print_transport_choices(ex_car, ex_bus, ex_bike, ex_train, name);
                     break;
                 }
                 case 1: {
-                    if (ex_car == ' '){
+                    if (ex_car == ' ') {
                         ex_car = 'x';
                     } else if (ex_bus == ' ' && ex_bike == ' ' && ex_train == ' ') {
                         printf("You must have at least 1 possible mean of transportation\n");
                     } else {
                         ex_car = ' ';
-                    } break;
+                    }
+                    break;
                 }
-                case 2:{
-                    if (ex_bus == ' '){
+                case 2: {
+                    if (ex_bus == ' ') {
                         ex_bus = 'x';
                     } else if (ex_bike == ' ' && ex_train == ' ' && ex_car == ' ') {
                         printf("You must have at least 1 possible mean of transportation\n");
                     } else {
                         ex_bus = ' ';
-                    } break;
+                    }
+                    break;
                 }
                 case 3: {
-                    if (ex_bike == ' '){
+                    if (ex_bike == ' ') {
                         ex_bike = 'x';
                     } else if (ex_car == ' ' && ex_bus == ' ' && ex_train == ' ') {
                         printf("You must have at least 1 possible mean of transportation\n");
                     } else {
                         ex_bike = ' ';
-                    } break;
+                    }
+                    break;
                 }
-                case 4:{
-                    if (ex_train == ' '){
+                case 4: {
+                    if (ex_train == ' ') {
                         ex_train = 'x';
                     } else if (ex_car == ' ' && ex_bus == ' ' && ex_bike == ' ') {
                         printf("You must have at least 1 possible mean of transportation\n");
                     } else {
                         ex_train = ' ';
-                    } break;
+                    }
+                    break;
                 }
                 default:
                     choice = -1;
             }
         }
     }
-    if (ex_car == ' '){
+    if (ex_car == ' ') {
         array[person_number].exclusion.include_car = 0;
     }
-    if (ex_bus == ' '){
+    if (ex_bus == ' ') {
         array[person_number].exclusion.include_bus = 0;
     }
-    if (ex_bike == ' '){
+    if (ex_bike == ' ') {
         array[person_number].exclusion.include_bike = 0;
     }
-    if (ex_train == ' '){
+    if (ex_train == ' ') {
         array[person_number].exclusion.include_train = 0;
     }
 }
@@ -272,37 +273,21 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
     }
 }
 
-char* place_of_work(char** city_array, int number_of_cities) {
+char *place_of_work(char **city_array, int number_of_cities) {
 
     printf("please choose the city you work with\n");
     printf("Index\t City\n");
-    for (int i = 0; i < number_of_cities; ++i) {
-        printf("%d\t %s\n",i, city_array[i]);
+    for (int i = 1; i < number_of_cities + 1; ++i) {
+        printf("%d\t %s\n", i, city_array[i-1]);
     }
-
 
     int city_choice;
 
     do {
         city_choice = scan_int();
-    }
-    while(city_choice < 0 ||
-          city_choice > number_of_cities);
+    } while (city_choice < 1 ||
+             city_choice > number_of_cities);
 
-    return city_array[city_choice];
+    return city_array[city_choice - 1];
 }
 
-int scan_int(){
-
-    while(1) {
-        printf("*hello*");
-        int choice;
-        char tempchar;
-        fflush(stdin);
-        if (scanf("%d%c", &choice, &tempchar) != 2
-                                || tempchar != '\n')
-            printf("invalid input\n");
-        else
-            return choice;
-    }
-}

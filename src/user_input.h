@@ -70,7 +70,7 @@ void scan_people_preferences(people_data *array, int number_of_people);
  * @param array the array of person structs taken in, to allocate the max_time to the person struct
  * @param person_number taking in what number person the person has in the array
  */
-void max_time(people_data *array, int person_number);
+int max_time(char* name);
 
 /***
  * a function that facilitates users excluding different transportation types they want to use personally
