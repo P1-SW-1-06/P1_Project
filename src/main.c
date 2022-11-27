@@ -11,12 +11,17 @@
 int main() {
     user_input();
     transport_struct *transport_data = import_data();
-    char* place_of_work = "frederikshavn";
+
     int nr = find_number_of_cities();
     char** city_name = create_city_name_array(nr);
+
+    char* PoW = place_of_work(city_name, nr);
+
+    printf("%s",PoW);
+
     int** city_distance_array = create_city_distance_matrix(nr, city_name);
 
-    int* dijkstra_array = dijkstra(city_distance_array, index_city_names(place_of_work, city_name, nr),nr);
+    int* dijkstra_array = dijkstra(city_distance_array, index_city_names(PoW, city_name, nr),nr);
     printf("The distance from your workplace to\n");
     for (int i = 0; i < nr; ++i) {
         if (dijkstra_array[i] <= 95) { // mangler MAX_distance i if statement i stedet for 95
