@@ -14,4 +14,4 @@ int scan_int();
  * Keeps running loop until user inputs a single char and presses enter
  * @return return a single char
  */
-int scan_char();
+char scan_char();
