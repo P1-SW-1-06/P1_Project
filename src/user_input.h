@@ -66,7 +66,7 @@ int scan_number_of_people();
 void scan_people_preferences(people_data *array, int number_of_people);
 
 /***
- * a function that takes in the max amount of minutes a user wants to commute
+ * a function that takes in the max amount of minutes a user wants to commute one-way
  * @param array the array of person structs taken in, to allocate the max_time to the person struct
  * @param person_number taking in what number person the person has in the array
  */
