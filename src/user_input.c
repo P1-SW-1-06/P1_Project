@@ -11,8 +11,6 @@
 
 #include "user_input.h"
 
-int scan_int();
-
 void user_input() {
 
     int number_of_people = scan_number_of_people();
@@ -27,7 +25,8 @@ void user_input() {
         printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:\n", i + 1,
                people_data_arr[i].name,
                people_data_arr[i].max_time,
-               people_data_arr[i].preference_environment, people_data_arr[i].preference_cost,
+               people_data_arr[i].preference_environment,
+               people_data_arr[i].preference_cost,
                people_data_arr[i].preference_time);
 
         printf(" transport types included:\n");
@@ -97,10 +96,6 @@ int max_time(char* name) {
     printf("%s's max travel time is %d minutes\n", name, time);
     return time;
 }
-
-
-
-
 
 void scan_transport_exclusions(people_data *array, int person_number, char *name) {
     int choice = -1;
