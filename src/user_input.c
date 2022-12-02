@@ -221,7 +221,7 @@ void commuting_preferences(people_data *array, int person_number) {
         } else
             printf("invalid input\n");
 
-        if ((100 - co2 - cost - time) >= 0 && (value > 0) && valid == 1)
+        if (valid == 1)
             remainder = 100 - co2 - cost - time;
         //system("cls");
 
