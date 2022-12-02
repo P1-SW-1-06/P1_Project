@@ -12,20 +12,17 @@
 
 /* -- Includes -- */
 #include "import_handler.h"
+FILE* read_file(const char* input_file);
 
-transport_struct *import_data() {
-    FILE *transport_file = fopen("transport_types.txt", "r");
-    if (!file_exists(transport_file)) {
-        fclose(transport_file);
-        exit(0);
-    }
+transport_struct *import_data(const char* transport_types) {
+    FILE *transport_file = read_file(transport_types);
 
     transport_struct *transport_data;
     transport_data = malloc(NUM_OF_TRANSPORT_TYPES * sizeof(transport_struct));
 
     read_data(transport_data, transport_file);
 
-    // print_data(transport_data);
+    print_data(transport_data);
 
     fclose(transport_file);
 
@@ -57,4 +54,13 @@ void print_data(transport_struct *data) {
         printf("'%s' '%lf' '%lf' '%lf'\n", data[i].name, data[i].speed, data[i].cost, data[i].co2);
         ++i;
     }
+}
+
+FILE* read_file(const char* input_file) {
+    FILE* temp_file = fopen(input_file, "r");
+        if (!file_exists(temp_file)) {
+            fclose(temp_file);
+            exit(0);
+        }
+        return temp_file;
 }

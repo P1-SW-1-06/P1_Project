@@ -14,7 +14,6 @@ int scan_int() {
     }
 }
 
-
 char scan_char() {
     while (1) {
         char choice;
@@ -27,3 +26,4 @@ char scan_char() {
             return choice;
     }
 }
+

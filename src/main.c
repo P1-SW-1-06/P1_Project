@@ -10,7 +10,7 @@
 
 int main() {
     user_input();
-    transport_struct *transport_data = import_data();
+    transport_struct *transport_data = import_data("transport_types.txt");
 
     int num_of_cities = find_number_of_cities();
     char** city_name = create_city_name_array(num_of_cities);

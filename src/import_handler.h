@@ -30,7 +30,7 @@ typedef struct {
  * file exists, allocate space in malloc for transport_data
  * @return Returns a pointer to the input file
  */
-transport_struct *import_data();
+transport_struct *import_data(const char* transport_types);
 
 /**
  * @description A function that checks if the file exists
