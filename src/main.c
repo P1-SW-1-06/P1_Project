@@ -9,7 +9,7 @@
 #include "main.h"
 
 int main() {
-    user_input();
+    collect_user_input();
     transport_struct *transport_data = import_data();
 
     int num_of_cities = find_number_of_cities();

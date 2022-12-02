@@ -50,7 +50,7 @@ typedef struct {
  *
  * @return
  */
-void user_input();
+void collect_user_input();
 
 /***
  * a function that takes the number of people from the user

@@ -11,7 +11,7 @@
 
 #include "user_input.h"
 
-void user_input() {
+void collect_user_input() {
 
     int number_of_people = scan_number_of_people();
     people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
