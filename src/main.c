@@ -9,7 +9,7 @@
 #include "main.h"
 
 int main() {
-    user_input();
+    people_data *final_user_input = user_input();
     transport_struct *transport_data = import_data();
 
     int nr = find_number_of_cities();
@@ -29,7 +29,5 @@ int main() {
         }
     }
     printf("%lf", transport_data[1].cost);
-
-    time_1(dijkstra_array,nr);
-
-}
+    printf("%d",final_user_input[0].max_time);
+    }

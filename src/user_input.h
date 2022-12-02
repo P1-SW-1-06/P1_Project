@@ -16,7 +16,7 @@
 
 /* -- Prototypes -- */
 typedef enum {
-    car, bus, train, bike
+    bus, car, bike
 } transport_types;
 
 typedef enum {
@@ -50,7 +50,7 @@ typedef struct {
  *
  * @return
  */
-void user_input();
+people_data* user_input();
 
 /***
  * a function that takes the number of people from the user

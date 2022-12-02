@@ -13,7 +13,7 @@
 
 int scan_int();
 
-void user_input() {
+people_data* user_input() {
 
     int number_of_people = scan_number_of_people();
     people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
@@ -46,6 +46,7 @@ void user_input() {
         printf("\n");
 
     }
+    return people_data_arr;
 }
 
 int scan_number_of_people() {

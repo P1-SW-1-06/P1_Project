@@ -18,18 +18,26 @@ enviorment
 
  */
 
-double* time_1(int* distance_array,int nr_city) {
+double* time_1(int* distance_array,int nr_city, people_data *final_user) {
 
     transport_struct *transport_data = import_data();
 
-    transport_data[i].speed;
 
 
     for (int i = 0; i < nr_city; ++i) {
+      double timescore = (transport_data[bus].speed / distance_array[i]) / final_user[0].max_time;
+      printf("%lf \n", timescore);
+    }
+
+}
+
+
+    /*for (int i = 0; i < nr_city; ++i) {
         printf("%d \n", distance_array[i]);
     }
 
 }
+     */
 /*
  printf("%lf", transport_data[1].cost);
 
