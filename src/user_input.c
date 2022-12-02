@@ -202,7 +202,7 @@ void commuting_preferences(people_data *array, int person_number) {
            array[person_number].name);
     while (remainder > 0) {
         char input[5];
-        int value = 0, valid = 0;
+        int value = 0;
 
         printf("Env \tCost \tTime \tRemaining\n");
         printf("%d \t%d \t%d \t%d\n\n", co2, cost, time, remainder);
@@ -211,13 +211,10 @@ void commuting_preferences(people_data *array, int person_number) {
         convert_to_lowercase(input);
         if (strcmp(input, "env") == 0 && (value <= 100 && value > 0) && ((100 - value - time - cost) >= 0)) {
             co2 = value;
-            valid = 1;
         } else if (strcmp(input, "cost") == 0 && (value <= 100 && value > 0) && ((100 - value - co2 - time) >= 0)) {
             cost = value;
-            valid = 1;
         } else if (strcmp(input, "time") == 0 && (value <= 100 && value > 0) && ((100 - value - co2 - cost) >= 0)) {
             time = value;
-            valid = 1;
         } else
             printf("invalid input\n");
 
