@@ -14,7 +14,6 @@ int main() {
 
     int num_of_cities = find_number_of_cities();
     char** city_name = create_city_name_array(num_of_cities);
-
     char* workplace = place_of_work(city_name, num_of_cities);
 
     printf("%s",workplace);
