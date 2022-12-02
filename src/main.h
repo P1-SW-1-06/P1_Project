@@ -23,6 +23,7 @@
 #include "user_input.h"
 #include "dijkstra.h"
 #include "utility.h"
+#include "score_algorithm.h"
 
 /* -- Prototypes -- */
 /**

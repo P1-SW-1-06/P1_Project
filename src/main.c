@@ -29,4 +29,7 @@ int main() {
         }
     }
     printf("%lf", transport_data[1].cost);
+
+    time_1(dijkstra_array,nr);
+
 }
