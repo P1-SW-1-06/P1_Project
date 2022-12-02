@@ -49,7 +49,7 @@ int* dijkstra(int** city_dist_matrix, int workplace, int number_of_cities)
         }
     }
     // print the constructed distance array
-    printSolution(dist_from_src, number_of_cities);
+    //printSolution(dist_from_src, number_of_cities);
     return dist_from_src;
 }
 

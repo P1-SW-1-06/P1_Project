@@ -14,15 +14,13 @@
 #include "import_handler.h"
 FILE* read_file(const char* input_file);
 
-transport_struct *import_data(const char* transport_types) {
+transport_struct *import_vehicle_data(const char* transport_types) {
     FILE *transport_file = read_file(transport_types);
 
     transport_struct *transport_data;
     transport_data = malloc(NUM_OF_TRANSPORT_TYPES * sizeof(transport_struct));
 
     read_data(transport_data, transport_file);
-
-    print_data(transport_data);
 
     fclose(transport_file);
 
@@ -55,6 +53,8 @@ void print_data(transport_struct *data) {
         ++i;
     }
 }
+
+
 
 FILE* read_file(const char* input_file) {
     FILE* temp_file = fopen(input_file, "r");
