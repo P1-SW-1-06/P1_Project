@@ -38,7 +38,7 @@ typedef struct {
     int preference_time;
     transport_types included_transport_types[4];
     exclusions exclusion;
-    char *place_of_work;
+    char* place_of_work;
 } people_data;
 
 typedef struct {
@@ -50,7 +50,7 @@ typedef struct {
  *
  * @return
  */
-void user_input();
+people_data* user_input(char** city_name_array, int num_cities);
 
 /***
  * a function that takes the number of people from the user
@@ -71,6 +71,8 @@ void scan_people_preferences(people_data *array, int number_of_people);
  * @param person_number taking in what number person the person has in the array
  */
 int max_time(char* name);
+
+void scan_name(people_data *array, int person_number);
 
 /***
  * a function that facilitates users excluding different transportation types they want to use personally

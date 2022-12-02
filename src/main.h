@@ -8,6 +8,8 @@
  *  Parenting https://stackoverflow.com/questions/48401627/confusion-with-preprocessor-directives
  */
 
+
+
 // "#Pragma once": Current source file to be included only once in a single compilation. Thus, #pragma once serves the same purpose
 // as #include guards, but with several advantages, including: less code, avoiding name clashes, and improved
 // compile speed.
@@ -23,6 +25,7 @@
 #include "user_input.h"
 #include "dijkstra.h"
 #include "utility.h"
+#include "score_algorithm.h"
 
 /* -- Prototypes -- */
 /**
