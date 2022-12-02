@@ -113,8 +113,6 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         if (scanf("%d%c", &choice, &tempchar) != 2
             || tempchar != '\n' || (choice > 4 && choice != 9) || choice < 0) {
             printf("invalid input\n");
-        } else if (ex_car == ' ' && ex_bus == ' ' && ex_bike == ' ' && ex_train == ' ') {
-            printf("You must have at least 1 possible mean of transportation\n");
         } else {
             switch (choice) {
                 case 0: {
