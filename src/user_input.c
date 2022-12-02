@@ -72,7 +72,7 @@ void scan_people_preferences(people_data *array, int number_of_people) {
         scanf("%50[^\n]",array[i].name);
         // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
         printf("%s\n", array[i].name);
-        
+
         scan_transport_exclusions(array, i, array[i].name);
 
         array[i].max_time = max_time(array[i].name);

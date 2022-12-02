@@ -21,7 +21,7 @@ int main() {
 
     int** city_distance_array = create_city_distance_matrix(num_of_cities, city_name);
 
-    int* dijkstra_array = dijkstra(city_distance_array, index_city_names(PoW, city_name, num_of_cities),num_of_cities);
+    int* dijkstra_array = dijkstra(city_distance_array,index_city_names(PoW, city_name, num_of_cities),num_of_cities);
     printf("The distance from your workplace to\n");
     for (int i = 0; i < num_of_cities; ++i) {
         if (dijkstra_array[i] <= 95) { // mangler MAX_distance i if statement i stedet for 95
