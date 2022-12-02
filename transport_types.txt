@@ -1,4 +1,4 @@
 Type        Speed km/min         Cost DKK/km      CO2 kg/km    //This line is not read
-Bus         0.59                 0.78             0.056
-Car         0.81                 4.23             0.225
-Bicycle     0.33                 0.23             0.021
+Bus         0.5894               0.78             0.056
+Car         0.8147               4.23             0.225
+Bicycle     0.3250               0.23             0.021

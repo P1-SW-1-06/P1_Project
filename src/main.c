@@ -28,6 +28,6 @@ int main() {
             printf("%s is %d\n",city_name[i], dijkstra_array[i]);
         }
     }
-    printf("%lf", transport_data[1].cost);
-    printf("%d",final_user_input[0].max_time);
+    time_1(dijkstra_array,nr, final_user_input);
+
     }
