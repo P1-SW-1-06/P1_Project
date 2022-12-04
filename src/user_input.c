@@ -11,7 +11,7 @@
 
 #include "user_input.h"
 
-people_data* user_input(char** city_name_array, int num_cities) {
+people_data* collect_user_input(char** city_name_array, int num_cities) {
 
     int number_of_people = scan_number_of_people();
 
@@ -81,7 +81,7 @@ void scan_name(people_data *array, int person_number){
     fflush(stdin); //Clears buffer to make sure scanf is not skipped
     printf("Please enter name of person nr. %d\n", person_number + 1);
     scanf("%50[^\n]",array[person_number].name);
-    // scanf only reads the first 50 characters and disregards the rest or stops when enter is input
+    // scanf only reads the first 50 characters and disregards the rest, or stops when enter is input
     printf("%s\n", array[person_number].name);
 }
 
@@ -116,8 +116,6 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         if (scanf("%d%c", &choice, &tempchar) != 2
             || tempchar != '\n' || (choice > 4 && choice != 9) || choice < 0) {
             printf("invalid input\n");
-        } else if (ex_car == ' ' && ex_bus == ' ' && ex_bike == ' ' && ex_train == ' ') {
-            printf("You must have at least 1 possible mean of transportation\n");
         } else {
             switch (choice) {
                 case 0: {
@@ -207,7 +205,7 @@ void commuting_preferences(people_data *array, int person_number) {
            array[person_number].name);
     while (remainder > 0) {
         char input[5];
-        int value = 0, valid = 0;
+        int value = 0;
 
         printf("Env \tCost \tTime \tRemaining\n");
         printf("%d \t%d \t%d \t%d\n\n", co2, cost, time, remainder);
@@ -216,18 +214,15 @@ void commuting_preferences(people_data *array, int person_number) {
         convert_to_lowercase(input);
         if (strcmp(input, "env") == 0 && (value <= 100 && value > 0) && ((100 - value - time - cost) >= 0)) {
             co2 = value;
-            valid = 1;
         } else if (strcmp(input, "cost") == 0 && (value <= 100 && value > 0) && ((100 - value - co2 - time) >= 0)) {
             cost = value;
-            valid = 1;
         } else if (strcmp(input, "time") == 0 && (value <= 100 && value > 0) && ((100 - value - co2 - cost) >= 0)) {
             time = value;
-            valid = 1;
         } else
             printf("invalid input\n");
 
-        if ((100 - co2 - cost - time) >= 0 && (value > 0) && valid == 1)
-            remainder = 100 - co2 - cost - time;
+        
+        remainder = 100 - co2 - cost - time;
         //system("cls");
 
         if (remainder == 0) {

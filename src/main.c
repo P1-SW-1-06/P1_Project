@@ -16,7 +16,7 @@ int main() {
 
 
 
-    people_data* user_data = user_input(city_name,num_of_cities);
+    people_data* user_data = collect_user_input(city_name,num_of_cities);
 
 
 
