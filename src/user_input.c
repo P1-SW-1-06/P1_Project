@@ -13,6 +13,7 @@
 
 people_data* collect_user_input(char** city_name_array, int num_cities) {
 
+
     int number_of_people = scan_number_of_people();
 
     people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
@@ -76,6 +77,20 @@ int scan_number_of_people() {
     return people;
 }
 
+
+void scan_people_preferences(people_data *array, int number_of_people) {
+    for (int i = 0; i < number_of_people; ++i) {
+        array[i].max_time = 0;
+
+        fflush(stdin); //Clears buffer to make sure scanf is not skipped
+        printf("Please enter name of person nr. %d\n", i + 1);
+        scanf("%50[^\n]",array[i].name);
+        // scanf only reads the first 50 characters and disregards the rest, or stops when enter is input
+        printf("%s\n", array[i].name);
+
+        scan_transport_exclusions(array, i, array[i].name);
+
+        array[i].max_time = max_time(array[i].name);
 
 void scan_name(people_data *array, int person_number){
     fflush(stdin); //Clears buffer to make sure scanf is not skipped
@@ -220,7 +235,6 @@ void commuting_preferences(people_data *array, int person_number) {
             time = value;
         } else
             printf("invalid input\n");
-
 
         remainder = 100 - co2 - cost - time;
         //system("cls");

@@ -50,7 +50,9 @@ typedef struct {
  *
  * @return
  */
+
 people_data* collect_user_input(char** city_name_array, int num_cities);
+
 
 /***
  * a function that takes the number of people from the user
