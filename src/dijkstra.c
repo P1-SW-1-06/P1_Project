@@ -1,7 +1,6 @@
 #include "dijkstra.h"
 
-// A utility function to print the constructed distance
-// array
+
 void printSolution(int dist[], int number_of_cities)
 {
     printf("Vertex \t\t Distance from Source\n");

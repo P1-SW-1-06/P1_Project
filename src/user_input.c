@@ -13,7 +13,6 @@
 
 people_data* collect_user_input(char** city_name_array, int num_cities, int number_of_people) {
 
-
     people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
     if (people_data_arr == NULL) {
         printf("Memmory not allocated");
@@ -27,7 +26,6 @@ people_data* collect_user_input(char** city_name_array, int num_cities, int numb
         people_data_arr[i].place_of_work = place_of_work(city_name_array,num_cities);
 
     }
-
 
     for (int i = 0; i < number_of_people; ++i) {
 
@@ -74,7 +72,6 @@ int scan_number_of_people() {
 
     return people;
 }
-
 
 void scan_people_preferences(people_data *array, int number_of_people) {
     for (int i = 0; i < number_of_people; ++i) {
@@ -213,7 +210,6 @@ void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char ex_tra
 
 void commuting_preferences(people_data *array, int person_number) {
 
-
     int co2 = 0, cost = 0, time = 0, remainder = 100;
     printf("%s please distribute 100 points in the categories environment, cost and time \n"
            "based on what is most important to you when it comes to commuting\n\n",
@@ -280,7 +276,7 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
 
 char *place_of_work(char **city_array, int number_of_cities) {
 
-    printf("please choose the city you work with\n");
+    printf("please choose the city you work in by entering its index followed by enter\n");
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
         printf("%d\t %s\n", i, city_array[i-1]);
