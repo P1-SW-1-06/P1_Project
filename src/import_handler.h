@@ -30,7 +30,37 @@ typedef struct {
  * file exists, allocate space in malloc for transport_data
  * @return Returns a pointer to the input file
  */
-transport_struct *import_data();
+transport_struct *import_vehicle_data(const char* vehicle_data);
+
+/**
+ *
+ * @return
+ */
+int find_number_of_cities(const char* city_data);
+
+
+/**
+ *
+ * @param number_of_cities
+ * @return
+ */
+char** import_city_names(const char* city_data, int number_of_cities);
+
+/**
+ *
+ * @param number_of_cities
+ * @param city_name_array
+ * @return
+ */
+int** import_city_distances(const char* city_distances, int number_of_cities, char** city_name_array);
+/**
+ *
+ * @param name
+ * @param city_name_array
+ * @param num_cities
+ * @return
+ */
+unsigned int index_city_names(char* name, char** city_name_array, int num_cities);
 
 /**
  * @description A function that checks if the file exists
@@ -46,6 +76,13 @@ int file_exists(FILE *file);
  * @param file The file where the data is drawn from
  */
 void read_data(transport_struct *data, FILE *file);
+
+/**
+ *
+ * @param input_file
+ * @return returns pointer to a file
+ */
+FILE* read_file(const char* input_file);
 
 /**
  * @description A function that prints an array as long as there is something to print

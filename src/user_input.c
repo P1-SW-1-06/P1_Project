@@ -11,23 +11,35 @@
 
 #include "user_input.h"
 
-void collect_user_input() {
+people_data* collect_user_input(char** city_name_array, int num_cities) {
+
 
     int number_of_people = scan_number_of_people();
+
     people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
     if (people_data_arr == NULL) {
         printf("Memmory not allocated");
     }
-    scan_people_preferences(people_data_arr, number_of_people);
+
+    for (int i = 0; i < number_of_people; ++i) {
+        scan_name(people_data_arr,i);
+        scan_transport_exclusions(people_data_arr, i, people_data_arr[i].name);
+        people_data_arr[i].max_time = max_time(people_data_arr[i].name);
+        commuting_preferences(people_data_arr, i);
+        people_data_arr[i].place_of_work = place_of_work(city_name_array,num_cities);
+
+    }
+
 
     for (int i = 0; i < number_of_people; ++i) {
 
-        printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:\n", i + 1,
+        printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n", i + 1,
                people_data_arr[i].name,
                people_data_arr[i].max_time,
                people_data_arr[i].preference_environment,
                people_data_arr[i].preference_cost,
-               people_data_arr[i].preference_time);
+               people_data_arr[i].preference_time,
+               people_data_arr[i].place_of_work);
 
         printf(" transport types included:\n");
         if (people_data_arr[i].exclusion.include_car == 1) {
@@ -44,6 +56,8 @@ void collect_user_input() {
         }
         printf("\n");
     }
+
+    return people_data_arr;
 }
 
 int scan_number_of_people() {
@@ -63,6 +77,7 @@ int scan_number_of_people() {
     return people;
 }
 
+
 void scan_people_preferences(people_data *array, int number_of_people) {
     for (int i = 0; i < number_of_people; ++i) {
         array[i].max_time = 0;
@@ -77,9 +92,12 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         array[i].max_time = max_time(array[i].name);
 
-        commuting_preferences(array, i);
-
-    }
+void scan_name(people_data *array, int person_number){
+    fflush(stdin); //Clears buffer to make sure scanf is not skipped
+    printf("Please enter name of person nr. %d\n", person_number + 1);
+    scanf("%50[^\n]",array[person_number].name);
+    // scanf only reads the first 50 characters and disregards the rest, or stops when enter is input
+    printf("%s\n", array[person_number].name);
 }
 
 int max_time(char* name) {
