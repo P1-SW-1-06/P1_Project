@@ -17,13 +17,7 @@
 /* -- Prototypes -- */
 #define NUM_OF_TRANSPORT_TYPES 10
 
-typedef struct {
-    char name[20];
-    double co2;
-    double cost;
-    double speed;
-    int num_of_vehicle;
-} transport_struct;
+
 
 /**
  * @description A function that has a pointer to a file as input, opens the file transport_types.txt and checks if the

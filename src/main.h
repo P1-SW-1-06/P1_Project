@@ -16,10 +16,12 @@
 #pragma once
 
 /* -- Includes -- */
+#include "structs.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
 
 #include "import_handler.h"
 #include "user_input.h"
