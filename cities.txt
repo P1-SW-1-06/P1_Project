@@ -2,7 +2,7 @@ frederikshavn   hjoerring       33
 frederikshavn   aalborg         65
 frederikshavn   noerresundby    62
 hjoerring       broenderslev    25
-broenderslev    noerresundby    29
-noerresundby    aalborg         4
+broenderslev    noerresundby    28
+noerresundby    aalborg         3
 hobro           aalborg         54
 thisted         noerresundby    88

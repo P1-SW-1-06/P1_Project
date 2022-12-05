@@ -30,4 +30,7 @@ int main() {
     for (int i = 0; i < num_of_cities; ++i) {
             printf("%s is %d\n",city_name[i], distance_from_workplace[i]);
     }
+
+    time_score(distance_from_workplace,num_of_cities, user_data,
+               1,transport_data);
 }
