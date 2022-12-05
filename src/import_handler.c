@@ -88,7 +88,7 @@ int **import_city_distances(const char *city_distances, int number_of_cities, ch
     char city_2[20];
     int value = 0;
     while (fscanf(city_data, "%s %s %d", city_1, city_2, &value) == 3) {
-        /* There's the same distance between the opposite city */
+        /* There's the same distance between the opposite city therefore fx point (1,2) should be the same as (2,1)*/
         djikstra_array[index_city_names(city_1, city_name_array, number_of_cities)]
         [index_city_names(city_2, city_name_array, number_of_cities)] = value;
 

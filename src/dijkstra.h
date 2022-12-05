@@ -21,7 +21,8 @@
 
 
 /**
- *
+ * This function has been made with inspiration from INDSAET LINK
+ * a function to create array of distances to cities from source city
  * @param city_dist_matrix 2d int array of distances between cities
  * @param workplace int correlating to a city
  * @param number_of_cities int for the number of cities in the program
@@ -29,7 +30,7 @@
  */
 int* dijkstra(int** city_dist_matrix, int workplace, int number_of_cities);
 /**
- *
+ * a function that returns the index of the point that is closest to the current point
  * @param distance_array array of distances to the different points
  * @param visited_points bool to check whether a point has been visited
  * @param num_cities int for the number of cities in the program
