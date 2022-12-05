@@ -11,10 +11,8 @@
 
 #include "user_input.h"
 
-people_data* collect_user_input(char** city_name_array, int num_cities) {
+people_data* collect_user_input(char** city_name_array, int num_cities, int number_of_people) {
 
-
-    int number_of_people = scan_number_of_people();
 
     people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
     if (people_data_arr == NULL) {

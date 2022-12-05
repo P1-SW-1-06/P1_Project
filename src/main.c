@@ -17,8 +17,8 @@ int main() {
 
 
 
-
-    people_data* user_data = collect_user_input(city_name,num_of_cities);
+    int number_of_people = scan_number_of_people();
+    people_data* user_data = collect_user_input(city_name,num_of_cities, number_of_people);
 
 
 
@@ -32,5 +32,5 @@ int main() {
     }
 
     time_score(distance_from_workplace,num_of_cities, user_data,
-               1,transport_data);
+               number_of_people,transport_data);
 }

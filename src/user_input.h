@@ -22,7 +22,7 @@
  * @return
  */
 
-people_data* collect_user_input(char** city_name_array, int num_cities);
+people_data* collect_user_input(char** city_name_array, int num_cities, int number_of_people);
 
 
 /***
