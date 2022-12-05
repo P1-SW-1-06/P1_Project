@@ -72,7 +72,7 @@ int file_exists(FILE *file);
 void read_data(transport_struct *data, FILE *file);
 
 /**
- *
+ * a function that wil open a file if it exists
  * @param input_file name of the file that should be read
  * @return returns pointer to a file
  */
