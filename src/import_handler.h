@@ -33,32 +33,32 @@ typedef struct {
 transport_struct *import_vehicle_data(const char* vehicle_data);
 
 /**
- *
- * @return
+ * a functions that reads a file and counts the number of cities
+ * @return returns the number of cities found
  */
 int find_number_of_cities(const char* city_data);
 
 
 /**
- *
- * @param number_of_cities
- * @return
+ * a function that reads a file and stores the names of the different cities
+ * @param number_of_cities int for the number of cities in the program
+ * @return 2d char array containing the names of the cities
  */
 char** import_city_names(const char* city_data, int number_of_cities);
 
 /**
- *
- * @param number_of_cities
- * @param city_name_array
- * @return
+ * a function that read distances between cities and calculate the missing distances
+ * @param number_of_cities int for the number of cities in the program
+ * @param city_name_array array with names of included cities
+ * @return 2d int array of the distances between cities
  */
 int** import_city_distances(const char* city_distances, int number_of_cities, char** city_name_array);
 /**
- *
- * @param name
- * @param city_name_array
- * @param num_cities
- * @return
+ * a function that takes in a city name to give an index of that city
+ * @param name name of the city being compared
+ * @param city_name_array array with names of included cities
+ * @param num_cities int for the number of cities in the program
+ * @return the index of the inputted city
  */
 unsigned int index_city_names(char* name, char** city_name_array, int num_cities);
 
@@ -79,7 +79,7 @@ void read_data(transport_struct *data, FILE *file);
 
 /**
  *
- * @param input_file
+ * @param input_file name of the file that should be read
  * @return returns pointer to a file
  */
 FILE* read_file(const char* input_file);
