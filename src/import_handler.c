@@ -6,7 +6,7 @@
  *  Remember to free memory allocated by malloc.
  *
  *  @author
- *  @bug No known bugs.
+ *  @bug If there's more cities in cities than in city_information it will fail.
  *  @tests !!No tests have been run.!!
 */
 
@@ -43,22 +43,22 @@ int find_number_of_cities(const char *city_data) {
 char **import_city_names(const char *city_data, int number_of_cities) {
     FILE *city_info = read_file(city_data);
 
-    char **citynames;
-    citynames = malloc(number_of_cities * sizeof(char *));
+    char **city_names;
+    city_names = malloc(number_of_cities * sizeof(char *));
     char current_city[20];
     char previous_city[20];
     int index = 0;
 
     while (fscanf(city_info, "%s %*s %*d", current_city) == 1) {
         if (strcmp(current_city, previous_city) != 0) {
-            citynames[index] = malloc((strlen(current_city) * sizeof(char)));
-            strcpy(citynames[index], current_city);
+            city_names[index] = malloc((strlen(current_city) * sizeof(char)));
+            strcpy(city_names[index], current_city);
             index++;
         }
         strcpy(previous_city, current_city);
     }
     fclose(city_info);
-    return citynames;
+    return city_names;
 }
 
 int **import_city_distances(const char *city_distances, int number_of_cities, char **city_name_array) {
@@ -76,16 +76,16 @@ int **import_city_distances(const char *city_distances, int number_of_cities, ch
         }
     }
 
-    char city1[20];
-    char city2[20];
+    char city_1[20];
+    char city_2[20];
     int value = 0;
-    while (fscanf(city_data, "%s %s %d", city1, city2, &value) == 3) {
+    while (fscanf(city_data, "%s %s %d", city_1, city_2, &value) == 3) {
         /* There's the same distance between the opposite city */
-        djikstra_array[index_city_names(city1, city_name_array, number_of_cities)]
-        [index_city_names(city2, city_name_array, number_of_cities)] = value;
+        djikstra_array[index_city_names(city_1, city_name_array, number_of_cities)]
+        [index_city_names(city_2, city_name_array, number_of_cities)] = value;
 
-        djikstra_array[index_city_names(city2, city_name_array, number_of_cities)]
-        [index_city_names(city1, city_name_array, number_of_cities)] = value;
+        djikstra_array[index_city_names(city_2, city_name_array, number_of_cities)]
+        [index_city_names(city_1, city_name_array, number_of_cities)] = value;
     }
     fclose(city_data);
     return djikstra_array;
