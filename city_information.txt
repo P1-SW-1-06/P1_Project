@@ -1,7 +1,7 @@
-aalborg             1000
-frederikshavn       1000
-broenderslev        1000
-noerresundby        1000
-thisted             1000
-hobro               1000
-hjoerring           1000
+aalborg             21956
+frederikshavn       11800
+broenderslev        8910
+noerresundby        18729
+thisted             7964
+hobro               9264
+hjoerring           7946
