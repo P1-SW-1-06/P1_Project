@@ -55,7 +55,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
 
 /***
  * a function that prints the checkboxes for visualization of what transport types are selected
- * @param ex_car a parameter that checks whether car has been excluded as a possible transportation mode
+ * @param ex_car bool for whether car is a possible transportation. (1=excluded, 0=included)
  * @param ex_bus a parameter that checks whether bus has been excluded as a possible transportation mode
  * @param ex_bike a parameter that checks whether bike has been excluded as a possible transportation mode
  * @param ex_train a parameter that checks whether train has been excluded as a possible transportation mode
