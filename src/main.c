@@ -28,19 +28,8 @@ int main() {
     int number_of_people = scan_number_of_people();
     people_data* user_data = collect_user_input(city_name,num_of_cities, number_of_people);
 
-    int* distance_from_workplace =
-            dijkstra(city_distance_array,
-                     index_city_names(user_data[0].place_of_work,
-                                      city_name,
-                                      num_of_cities),
-                     num_of_cities);
 
-    printf("The distance from your workplace to\n");
-    for (int i = 0; i < num_of_cities; ++i) {
-            printf("%s is %d\n",city_name[i], distance_from_workplace[i]);
-    }
-
-    temp_score* score = score_algorithm(distance_from_workplace,user_data,num_of_cities,number_of_people,transport_data);
+    temp_score* score = score_algorithm(city_distance_array,user_data,num_of_cities,number_of_people,transport_data);
 
 
     for (int i = 0; i < num_of_cities; ++i) {
