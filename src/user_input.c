@@ -218,30 +218,15 @@ void commuting_preferences(people_data *array, int person_number) {
         //system("cls");
 
         if (remainder == 0) {
-
             printf("You chose the following distribution:\n");
             printf("Env \tCost \tTime\n");
             printf("%d \t%d \t%d \n", co2, cost, time);
             printf("Are you happy with your choices? Y/N\n");
-
-            while (1) {
-                char tempchar;
-                char choice;
-                fflush(stdin);
-                if (scanf("%c%c", &choice, &tempchar) != 2
-                    || tempchar != '\n') {
-                    printf("invalid input\n");
-                }
-                if (choice == 'y' || choice == 'Y')
-                    break;
-                if (choice == 'n' || choice == 'N') {
-                    remainder = 100;
-                    cost = 0;
-                    co2 = 0;
-                    time = 0;
-                    break;
-                } else
-                    printf("invalid input\n");
+            if(confirm_choice())
+                break;
+            else {
+                remainder = 100;
+                co2 = 0, cost = 0, time = 0;
             }
         }
     }

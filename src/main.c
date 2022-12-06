@@ -49,9 +49,16 @@ int main() {
                score[i].time.score_bus,
                score[i].transport_cost.score_bus,
                score[i].enviroment.score_bus);
+        printf("\nCar\n Time score: %lf\n Trans score: %lf\n Env score: %lf",
+               score[i].time.score_car,
+               score[i].transport_cost.score_car,
+               score[i].enviroment.score_car);
+        printf("\nBike\n Time score: %lf\n Trans score: %lf\n Env score: %lf",
+               score[i].time.score_bike,
+               score[i].transport_cost.score_bike,
+               score[i].enviroment.score_bike);
     }
 
-
-
-
+    printf("hello");
+    return 0;
 }

@@ -27,3 +27,20 @@ char scan_char() {
     }
 }
 
+bool confirm_choice() {
+    while (1) {
+        char tempchar;
+        char choice;
+        fflush(stdin);
+        if (scanf("%c%c", &choice, &tempchar) != 2
+            || tempchar != '\n') {
+            printf("invalid input\n");
+        }
+        if (choice == 'y' || choice == 'Y')
+            return true;
+        if (choice == 'n' || choice == 'N') {
+            return false;
+        } else
+            printf("invalid input\n");
+    }
+}
