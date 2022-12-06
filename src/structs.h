@@ -12,7 +12,6 @@ typedef struct {
     int include_car;
     int include_bus;
     int include_bike;
-    int include_train;
 } exclusions;
 
 typedef struct {
