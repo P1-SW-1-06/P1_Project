@@ -39,4 +39,16 @@ typedef struct {
     int num_of_vehicle;
 } transport_struct;
 
+typedef struct {
+    double score_bus;
+    double score_car;
+    double score_bike;
+} transport_vehicle;
+
+typedef struct{
+    double housing_cost;
+    transport_vehicle transport_cost;
+    transport_vehicle enviroment;
+    transport_vehicle time;
+} temp_score;
 

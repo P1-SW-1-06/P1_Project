@@ -31,6 +31,26 @@ int main() {
             printf("%s is %d\n",city_name[i], distance_from_workplace[i]);
     }
 
-    time_score(distance_from_workplace,num_of_cities, user_data,
-               number_of_people,transport_data);
+    temp_score* score_time = time_score(distance_from_workplace,num_of_cities, user_data,
+                                                number_of_people,transport_data);
+
+
+
+    temp_score* enviromental_score = env_score(distance_from_workplace, num_of_cities,
+                                               user_data, number_of_people, transport_data);
+
+    temp_score* transport_score = transport_cost_score(distance_from_workplace, num_of_cities,
+                                               user_data, number_of_people, transport_data);
+
+    for (int i = 0; i < num_of_cities; ++i) {
+        printf("\nCity name: %s\n Time score: %lf\n Trans score: %lf\n Env score: %lf",
+               city_name[i],
+               score_time[i].time.score_bus,
+               transport_score[i].transport_cost.score_bus,
+               enviromental_score[i].enviroment.score_bus);
+    }
+
+
+
+
 }
