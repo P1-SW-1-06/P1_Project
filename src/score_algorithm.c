@@ -4,9 +4,9 @@
 
 
 temp_score* score_algorithm(int* distance, people_data* final_user, int nr_city, int number_of_people,transport_struct* transport_data){
-    temp_score *score_array = malloc(number_of_people * sizeof(temp_score));
+    temp_score *score_array = malloc(nr_city * sizeof(temp_score));
     if (score_array == NULL) {
-        printf("Memmory not allocated");
+        printf("Memory not allocated");
     }
 
 
