@@ -60,7 +60,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
  * @param ex_bike a parameter that checks whether bike has been excluded as a possible transportation mode
  * @param ex_train a parameter that checks whether train has been excluded as a possible transportation mode
  */
-void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike, char ex_train);
+void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike);
 
 /***
  * a function that prints the final choices of the current user
@@ -70,7 +70,7 @@ void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike, ch
  * @param ex_train a parameter that checks whether train has been excluded as a possible transportation mode
  * @param name the name of the current user
  */
-void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char ex_train, char *name);
+void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char *name);
 
 /**
  *
