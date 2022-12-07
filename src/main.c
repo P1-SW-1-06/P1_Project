@@ -24,42 +24,28 @@ int main() {
     }*/
 
 
-
     int number_of_people = scan_number_of_people();
     people_data* user_data = collect_user_input(city_name,num_of_cities, number_of_people);
 
-    int* distance_from_workplace =
-            dijkstra(city_distance_array,
-                     index_city_names(user_data[0].place_of_work,
-                                      city_name,
-                                      num_of_cities),
-                     num_of_cities);
 
-    printf("The distance from your workplace to\n");
-    for (int i = 0; i < num_of_cities; ++i) {
-            printf("%s is %d\n",city_name[i], distance_from_workplace[i]);
-    }
+    temp_score* score = score_algorithm(city_distance_array,user_data,num_of_cities,number_of_people,transport_data);
 
-    temp_score* score_time = time_score(distance_from_workplace,num_of_cities, user_data,
-                                                number_of_people,transport_data);
-
-
-
-    temp_score* enviromental_score = env_score(distance_from_workplace, num_of_cities,
-                                               user_data, number_of_people, transport_data);
-
-    temp_score* transport_score = transport_cost_score(distance_from_workplace, num_of_cities,
-                                               user_data, number_of_people, transport_data);
 
     for (int i = 0; i < num_of_cities; ++i) {
         printf("\nCity name: %s\n Time score: %lf\n Trans score: %lf\n Env score: %lf",
                city_name[i],
-               score_time[i].time.score_bus,
-               transport_score[i].transport_cost.score_bus,
-               enviromental_score[i].enviroment.score_bus);
+               score[i].time.score_bus,
+               score[i].transport_cost.score_bus,
+               score[i].enviroment.score_bus);
+        printf("\nCar\n Time score: %lf\n Trans score: %lf\n Env score: %lf",
+               score[i].time.score_car,
+               score[i].transport_cost.score_car,
+               score[i].enviroment.score_car);
+        printf("\nBike\n Time score: %lf\n Trans score: %lf\n Env score: %lf",
+               score[i].time.score_bike,
+               score[i].transport_cost.score_bike,
+               score[i].enviroment.score_bike);
     }
 
-
-
-
+    printf("hello");
 }

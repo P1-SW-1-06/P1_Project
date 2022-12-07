@@ -23,6 +23,7 @@ typedef struct {
     transport_types included_transport_types[4];
     exclusions exclusion;
     char* place_of_work;
+    unsigned int place_of_work_index;
 } people_data;
 
 typedef struct {

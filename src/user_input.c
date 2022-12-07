@@ -11,7 +11,7 @@
 
 #include "user_input.h"
 
-people_data* collect_user_input(char** city_name_array, int num_cities, int number_of_people) {
+people_data *collect_user_input(char **city_name_array, int num_cities, int number_of_people) {
 
     people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
     if (people_data_arr == NULL) {
@@ -19,11 +19,13 @@ people_data* collect_user_input(char** city_name_array, int num_cities, int numb
     }
 
     for (int i = 0; i < number_of_people; ++i) {
-        scan_name(people_data_arr,i);
+        scan_name(people_data_arr, i);
         scan_transport_exclusions(people_data_arr, i, people_data_arr[i].name);
         people_data_arr[i].max_time = max_time(people_data_arr[i].name);
         commuting_preferences(people_data_arr, i);
-        people_data_arr[i].place_of_work = place_of_work(city_name_array,num_cities);
+        people_data_arr[i].place_of_work = place_of_work(city_name_array, num_cities);
+        people_data_arr[i].place_of_work_index = index_city_names(people_data_arr[i].place_of_work, city_name_array,
+                                                                  num_cities);
 
     }
 
@@ -86,26 +88,27 @@ void scan_people_preferences(people_data *array, int number_of_people) {
     }
 }
 
-void scan_name(people_data *array, int person_number){
+void scan_name(people_data *array, int person_number) {
     fflush(stdin); //Clears buffer to make sure scanf is not skipped
     printf("Please enter name of person nr. %d\n", person_number + 1);
-    scanf("%50[^\n]",array[person_number].name);
+    scanf("%50[^\n]", array[person_number].name);
     // scanf only reads the first 50 characters and disregards the rest, or stops when enter is input
     printf("%s\n", array[person_number].name);
 }
 
-int max_time(char* name) {
+int max_time(char *name) {
 
     int time = 0;
-    printf("Please enter the max amount of minutes %s want to commute followed by enter\n",name);
+    printf("Please enter the max amount of minutes %s want to commute followed by enter\n", name);
 
     do {
         time = scan_int();
-    } while(time < 0 || time > 240);
+    } while (time < 0 || time > 240);
 
     printf("%s's max travel time is %d minutes\n", name, time);
     return time;
 }
+
 
 void scan_transport_exclusions(people_data *array, int person_number, char *name) {
     int choice = -1;
@@ -176,6 +179,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
     }
 }
 
+
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike) {
     printf("Included transportations types indicated by x\n");
     printf("1-car[%c]  2-bus[%c]  3-bike[%c]\n", ex_car, ex_bus, ex_bike);
@@ -218,30 +222,15 @@ void commuting_preferences(people_data *array, int person_number) {
         //system("cls");
 
         if (remainder == 0) {
-
             printf("You chose the following distribution:\n");
             printf("Env \tCost \tTime\n");
             printf("%d \t%d \t%d \n", co2, cost, time);
             printf("Are you happy with your choices? Y/N\n");
-
-            while (1) {
-                char tempchar;
-                char choice;
-                fflush(stdin);
-                if (scanf("%c%c", &choice, &tempchar) != 2
-                    || tempchar != '\n') {
-                    printf("invalid input\n");
-                }
-                if (choice == 'y' || choice == 'Y')
-                    break;
-                if (choice == 'n' || choice == 'N') {
-                    remainder = 100;
-                    cost = 0;
-                    co2 = 0;
-                    time = 0;
-                    break;
-                } else
-                    printf("invalid input\n");
+            if (confirm_choice())
+                break;
+            else {
+                remainder = 100;
+                co2 = 0, cost = 0, time = 0;
             }
         }
     }
@@ -261,7 +250,7 @@ char *place_of_work(char **city_array, int number_of_cities) {
     printf("please choose the city you work in by entering its index followed by enter\n");
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
-        printf("%d\t %s\n", i, city_array[i-1]);
+        printf("%d\t %s\n", i, city_array[i - 1]);
     }
 
     int city_choice;

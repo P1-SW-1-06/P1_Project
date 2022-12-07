@@ -15,3 +15,9 @@ int scan_int();
  * @return return a single char
  */
 char scan_char();
+
+/**
+ *
+ * @return true if input is Y or y, false if input is N or n.
+ */
+bool confirm_choice();
