@@ -24,7 +24,6 @@ int main() {
     }*/
 
 
-
     int number_of_people = scan_number_of_people();
     people_data* user_data = collect_user_input(city_name,num_of_cities, number_of_people);
 

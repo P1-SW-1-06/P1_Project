@@ -109,7 +109,6 @@ int max_time(char *name) {
     return time;
 }
 
-char check(char test);
 
 void scan_transport_exclusions(people_data *array, int person_number, char *name) {
     int choice = -1;
@@ -155,13 +154,15 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
                     break;
                 }
                 case 3: {
-                    if (ex_car == ' ' && ex_bus == ' ') {
+                    if (ex_bike == ' ') {
+                        ex_bike = 'x';
+                    } else if (ex_bus == ' ' && ex_car == ' ') {
                         printf("You must have at least 1 possible mean of transportation\n");
-                        break;
+                    } else {
+                        ex_bus = ' ';
                     }
-                    ex_bike = check(ex_bike);
                     break;
-
+                }
                     default:
                         choice = -1;
                 }
@@ -179,13 +180,6 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
     }
 }
 
-char check(char test) {
-    if (test == ' ') {
-        return 'x';
-    } else {
-        return ' ';
-    }
-}
 
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike) {
     printf("Included transportations types indicated by x\n");
