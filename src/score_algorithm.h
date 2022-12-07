@@ -8,3 +8,7 @@ void time_score(temp_score *scorearray, int* distance, people_data* final_user, 
 double max_co2(people_data* final_user, transport_struct* transport_data);
 void env_score(temp_score *scorearray ,int* distance, people_data* final_user, transport_struct* transport_data, int city);
 void transport_cost_score(temp_score *scorearray, int* distance, people_data* final_user, transport_struct* transport_data, int city);
+void housing_cost_score(temp_score* scorearray, people_data *final_user, double yearly_max_housing_cost, int current_city, int city);
+double max_housing_price(int* array_housing_cost,int nr_city);
+double max_result_transport_cost(transport_struct *transport_data, people_data *final_user);
+void sum_of_cost_scores(temp_score *scorearray, people_data *final_user, int city, double max_result_transport_cost,double yearly_max_housing_cost);

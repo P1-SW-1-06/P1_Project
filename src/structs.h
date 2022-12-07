@@ -47,8 +47,14 @@ typedef struct {
 
 typedef struct{
     double housing_cost;
+    transport_vehicle final_cost;
     transport_vehicle transport_cost;
     transport_vehicle enviroment;
     transport_vehicle time;
 } temp_score;
+
+typedef struct{
+
+
+} final_cost;
 

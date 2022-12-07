@@ -134,3 +134,17 @@ FILE *read_file(const char *input_file) {
     }
     return temp_file;
 }
+int* find_housing_cost(const char *city_data, int num_cities) {
+    FILE *city_information = read_file(city_data);
+
+    int squaremeter_price = 0;
+    int i = 0;
+    int *array_housing_cost = malloc(num_cities * sizeof(int));
+    while (fscanf(city_information, "%*s %d", &squaremeter_price) == 1) {
+        array_housing_cost[i] = squaremeter_price;
+        i++;
+    }
+
+    fclose(city_information);
+    return array_housing_cost;
+}

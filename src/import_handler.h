@@ -83,3 +83,5 @@ FILE* read_file(const char* input_file);
  * @param data Is a pointer to an array of type transport_struct
  */
 void print_data(transport_struct *data);
+
+int* find_housing_cost(const char *city_data, int num_cities);
