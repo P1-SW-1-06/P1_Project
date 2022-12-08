@@ -21,7 +21,7 @@
 
 
 /**
- * This function has been made with inspiration from INDSAET LINK
+ * This function has been made with inspiration from TODO !!!INDSAET LINK!!!
  * a function to create array of distances to cities from source city
  * @param city_dist_matrix 2d int array of distances between cities
  * @param workplace int correlating to a city
