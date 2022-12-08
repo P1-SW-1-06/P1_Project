@@ -105,16 +105,34 @@ double max_housing_price(int* array_housing_cost,int nr_of_cities){
 
 void time_score(temp_score **scorearray,int person_number, int *distance, people_data *final_user, transport_vehicle_info *transport_data, int city) {
     if (final_user[person_number].exclusion.include_bus == 1) {
-        scorearray[person_number][city].time.score_bus =
-                (distance[city] / transport_data[bus].speed) / final_user[person_number].max_time * final_user[person_number].preference_time;
+        if (distance[city] / transport_data[bus].speed > final_user[person_number].max_time){
+            scorearray[person_number][city].time.score_bus = INT_MAX;
+        }
+        else {
+            scorearray[person_number][city].time.score_bus =
+                    (distance[city] / transport_data[bus].speed) / final_user[person_number].max_time *
+                    final_user[person_number].preference_time;
+        }
     }
     if (final_user[person_number].exclusion.include_car == 1) {
-        scorearray[person_number][city].time.score_car =
-                (distance[city] / transport_data[car].speed) / final_user[person_number].max_time * final_user[person_number].preference_time;
+        if (distance[city] / transport_data[car].speed > final_user[person_number].max_time){
+            scorearray[person_number][city].time.score_car = INT_MAX;
+        }
+        else {
+            scorearray[person_number][city].time.score_car =
+                    (distance[city] / transport_data[car].speed) / final_user[person_number].max_time *
+                    final_user[person_number].preference_time;
+        }
     }
     if (final_user[person_number].exclusion.include_bike == 1) {
-        scorearray[person_number][city].time.score_bike =
-                (distance[city] / transport_data[bike].speed) / final_user[person_number].max_time * final_user[person_number].preference_time;
+        if (distance[city] / transport_data[bike].speed > final_user[person_number].max_time){
+            scorearray[person_number][city].time.score_bike = INT_MAX;
+        }
+        else {
+            scorearray[person_number][city].time.score_bike =
+                    (distance[city] / transport_data[bike].speed) / final_user[person_number].max_time *
+                    final_user[person_number].preference_time;
+        }
     }
 }
 
@@ -135,7 +153,6 @@ void env_score(temp_score **scorearray,int person_number, int *distance, people_
                 (distance[city] * transport_data[bike].co2 * 189 * 2) / max_result_co2 *
                 final_user[person_number].preference_environment;
     }
-
 
 }
 
