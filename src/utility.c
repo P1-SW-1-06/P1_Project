@@ -44,3 +44,4 @@ bool confirm_choice() {
             printf("invalid input\n");
     }
 }
+
