@@ -24,7 +24,7 @@
  * file exists, allocate space in malloc for transport_data
  * @return Returns a pointer to the input file
  */
-transport_struct *import_vehicle_data(const char* vehicle_data);
+transport_vehicle_info *import_vehicle_data(const char* vehicle_data);
 
 /**
  * a functions that reads a file and counts the number of cities
@@ -69,7 +69,7 @@ int file_exists(FILE *file);
  * @param data Is a pointer to an array of type transport_struct
  * @param file The file where the data is drawn from
  */
-void read_data(transport_struct *data, FILE *file);
+void read_data(transport_vehicle_info *data, FILE *file);
 
 /**
  * a function that wil open a file if it exists
@@ -82,6 +82,6 @@ FILE* read_file(const char* input_file);
  * @description A function that prints an array as long as there is something to print
  * @param data Is a pointer to an array of type transport_struct
  */
-void print_data(transport_struct *data);
+void print_data(transport_vehicle_info *data);
 
 int* find_housing_cost(const char *city_data, int num_cities);

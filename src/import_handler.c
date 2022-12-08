@@ -13,11 +13,11 @@
 /* -- Includes -- */
 #include "import_handler.h"
 
-transport_struct *import_vehicle_data(const char *vehicle_data) {
+transport_vehicle_info *import_vehicle_data(const char *vehicle_data) {
     FILE *transport_file = read_file(vehicle_data);
 
-    transport_struct *transport_data;
-    transport_data = malloc(NUM_OF_TRANSPORT_TYPES * sizeof(transport_struct));
+    transport_vehicle_info *transport_data;
+    transport_data = malloc(NUM_OF_TRANSPORT_TYPES * sizeof(transport_vehicle_info));
 
     // * "Do not store this", [^\n] "any character except newline"
     fscanf(transport_file, "%*[^\n]\n");
@@ -117,7 +117,7 @@ int file_exists(FILE *file) {
     return 1;
 }
 
-void print_data(transport_struct *data) {
+void print_data(transport_vehicle_info *data) {
     int i = 0;
     while (i < data[0].num_of_vehicle) {
         printf("----\n");

@@ -37,7 +37,7 @@ typedef struct {
     double cost;
     double speed;
     int num_of_vehicle;
-} transport_struct;
+} transport_vehicle_info;
 
 typedef struct {
     double score_bus;
@@ -46,15 +46,22 @@ typedef struct {
 } transport_vehicle;
 
 typedef struct{
+    char vehicle[10];
+    double final_score;
+} best_score;
+
+typedef struct{
     double housing_cost;
+    transport_vehicle sum_of_scores;
     transport_vehicle final_cost;
     transport_vehicle transport_cost;
-    transport_vehicle enviroment;
+    transport_vehicle environment;
     transport_vehicle time;
+    best_score vehicle_winner;
 } temp_score;
 
 typedef struct{
-
-
-} final_cost;
+    char city_name[50];
+    double output_score;
+} shared_score;
 
