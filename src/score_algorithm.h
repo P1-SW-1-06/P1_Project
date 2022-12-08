@@ -15,3 +15,4 @@ void sum_of_cost_scores(int person_number,temp_score **scorearray, people_data *
 int check_city(int person_number, temp_score **scorearray, int city_number);
 int number_of_available_cities(shared_score *temp_output, int number_of_cities);
 shared_score *final_output(temp_score **scorearray, int number_of_cities, int number_of_people, char **city_name,int *available_cities);
+int final_score_sort_logic(const void *a, const void *b);

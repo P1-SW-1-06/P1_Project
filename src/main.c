@@ -58,7 +58,10 @@ int main() {
     for (int i = 0; i < number_of_people; ++i) {
         printf("%s\n", user_data[i].name);
         for (int j = 0; j < num_of_cities; ++j) {
-            printf("%s %s %lf \n", city_name[j], score[i][j].vehicle_winner.vehicle, score[i][j].vehicle_winner.final_score);
+            if(score[i][j].vehicle_winner.final_score > 100)
+                printf("%s Not reachable with any transport type \n", city_name[j]);
+            else
+                printf("%s %s %lf \n", city_name[j], score[i][j].vehicle_winner.vehicle, score[i][j].vehicle_winner.final_score);
         }
     }
     int number_of_available_cities = 0;
@@ -67,4 +70,14 @@ int main() {
     for (int i = 0; i < number_of_available_cities; ++i) {
         printf("\nCity name: %s Total score: %lf\n", final_combined_city_score[i].city_name, final_combined_city_score[i].output_score);
     }
+
+    qsort(final_combined_city_score,number_of_available_cities, sizeof(shared_score), final_score_sort_logic);
+
+    printf("Number of av cities %d", number_of_available_cities);
+    for (int i = 0; i < number_of_available_cities; ++i) {
+        printf("\nCity name: %s Total score: %lf\n", final_combined_city_score[i].city_name, final_combined_city_score[i].output_score);
+    }
+
 }
+
+
