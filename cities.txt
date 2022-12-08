@@ -6,4 +6,3 @@ broenderslev    noerresundby    28
 noerresundby    aalborg         3
 hobro           aalborg         54
 thisted         noerresundby    88
-mogens          thisted         10
