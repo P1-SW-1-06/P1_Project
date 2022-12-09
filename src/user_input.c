@@ -32,12 +32,10 @@ people_data *collect_user_input(char **city_name_array, int num_cities, int numb
 int scan_number_of_people() {
     int people = 0;
 
-    printf("Please enter number of people you want to optimize for\n");
-    bool info;
+    printf("Please enter number of people you want to optimize for (followed by enter)\n");
     do {
-        people = scan_int(&info);
-        printf("________%d_________",people);
-        if (people == 122)
+        people = scan_int();
+        if (people == 9)
             printf("put information about number of people here\n");
     } while (people < 1 || people > 9);
 
@@ -67,10 +65,9 @@ void scan_name(people_data *array, int person_number) {
 int max_time(char *name) {
 
     int time = 0;
-    printf("Please enter the max amount of minutes %s want to commute followed by enter\n", name);
-    bool info;
+    printf("Please enter the max amount of minutes %s want to commute (followed by enter)\n", name);
     do {
-        time = scan_int(&info);
+        time = scan_int();
     } while (time < 0 || time > 240);
 
     printf("%s's max travel time is %d minutes\n", name, time);
@@ -89,8 +86,8 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         //system("cls");
         printf("%s do you want to exclude any of these transportation types?\n", name);
         print_transport_exclude_checkbox(ex_car, ex_bus, ex_bike);
-        fflush(stdin);
         printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\nPress 0 when satisfied\n");
+        fflush(stdin);
         if (scanf("%d%c", &choice, &tempchar) != 2
             || tempchar != '\n' || (choice > 4 && choice != 9) || choice < 0) {
             printf("invalid input\n");
@@ -164,7 +161,9 @@ void commuting_preferences(people_data *array, int person_number) {
 
     int co2 = 0, cost = 0, time = 0, remainder = 100;
     printf("%s please distribute 100 points in the categories environment, cost and time \n"
-           "based on what is most important to you when it comes to commuting\n\n",
+           "based on what is most important to you when it comes to commuting\n"
+           "To enter a value, type the category and the number of points you want to put in that category i.e 'env 40'"
+           "\n\n",
            array[person_number].name);
     while (remainder > 0) {
         char input[5];
@@ -213,16 +212,15 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
 
 char *place_of_work(char **city_array, int number_of_cities) {
 
-    printf("please choose the city you work in by entering its index followed by enter\n");
+    printf("please choose the city you work in by entering its index (followed by enter)\n");
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
         printf("%d\t %s\n", i, city_array[i - 1]);
     }
 
     int city_choice;
-    bool info;
     do {
-        city_choice = scan_int(&info);
+        city_choice = scan_int();
     } while (city_choice < 1 ||
              city_choice > number_of_cities);
 

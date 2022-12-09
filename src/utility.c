@@ -1,23 +1,15 @@
 #include "utility.h"
 
-int scan_int(bool *info) {
+int scan_int() {
 
     while (1) {
-        char info_string[10];
         int choice;
         char tempchar;
         fflush(stdin);
-        if (scanf("%[a-zA-Z ]%d%c", info_string, &choice, &tempchar) != 2|| tempchar != '\n')
+        if (scanf("%d%c", &choice, &tempchar) != 2|| tempchar != '\n')
             printf("invalid input\n");
-        else {
-            if (strcmp(info_string,"info") == 0){
-                *info = true;
-            }
-            else
-                *info = false;
-
+        else
             return choice;
-        }
     }
 }
 
