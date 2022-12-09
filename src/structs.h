@@ -37,7 +37,7 @@ typedef struct {
     double cost;
     double speed;
 
-    int num_of_vehicle;
+    int num_of_vehicles;
 } transport_vehicle_info;
 
 
