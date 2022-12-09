@@ -87,7 +87,7 @@ void commuting_preferences(people_data *array, int person_number);
  * Ask the user for job location
  * @param city char pointer as a string which contains the name of the city
  * @param input ask user for loaction of job from a list
- * @return the choosen city for workplace
+ * @return the index of chosen city for workplace
  */
 int place_of_work(char** city_array, int number_of_cities);
 
