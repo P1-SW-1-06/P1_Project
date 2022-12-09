@@ -89,8 +89,7 @@ void commuting_preferences(people_data *array, int person_number);
  * @param input ask user for location of job from a list
  * @return the chosen city for workplace
  */
-char* place_of_work(char** city_array, int number_of_cities);
-
+void place_of_work(char **city_array, int number_of_cities, people_data *array, int person_index);
 /**
  * Prints the data of a persons preferences
  * @param preference_data the array that holds all the data of the users preferences
