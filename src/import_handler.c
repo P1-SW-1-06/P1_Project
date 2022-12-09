@@ -21,12 +21,12 @@ transport_struct *import_vehicle_data(const char *vehicle_data) {
 
     // * "Do not store this", [^\n] "any character except newline"
     fscanf(transport_file, "%*[^\n]\n");
-    transport_data[0].num_of_vehicle = 0;
+    transport_data[0].num_of_vehicles = 0;
     int i = 0;
     while (fscanf(transport_file, "%s" "%lf" "%lf" "%lf", transport_data[i].name, &transport_data[i].speed,
                   &transport_data[i].cost, &transport_data[i].co2) == 4) {
         i++;
-        transport_data[0].num_of_vehicle += 1;
+        transport_data[0].num_of_vehicles += 1;
     }
 
     fclose(transport_file);
@@ -119,7 +119,7 @@ int file_exists(FILE *file) {
 
 void print_data(transport_struct *data) {
     int i = 0;
-    while (i < data[0].num_of_vehicle) {
+    while (i < data[0].num_of_vehicles) {
         printf("----\n");
         printf("'%s' '%lf' '%lf' '%lf'\n", data[i].name, data[i].speed, data[i].cost, data[i].co2);
         ++i;
