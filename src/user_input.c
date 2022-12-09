@@ -72,6 +72,7 @@ int scan_number_of_people() {
     return people;
 }
 
+<<<<<<< Updated upstream
 void scan_people_preferences(people_data *array, int number_of_people) {
     for (int i = 0; i < number_of_people; ++i) {
         array[i].max_time = 0;
@@ -86,6 +87,16 @@ void scan_people_preferences(people_data *array, int number_of_people) {
 
         array[i].max_time = max_time(array[i].name);
     }
+=======
+void scan_people_preferences(people_data *array, int person_index, int num_cities, char **city_name_array) {
+    scan_name(array, person_index);
+    scan_transport_exclusions(array, person_index, array[person_index].name);
+    array[person_index].max_time = max_time(array[person_index].name);
+    commuting_preferences(array, person_index);
+    array[person_index].place_of_work_index = place_of_work(city_name_array, num_cities);
+    array[person_index].place_of_work =  city_name_array[array[person_index].place_of_work_index];
+
+>>>>>>> Stashed changes
 }
 
 void scan_name(people_data *array, int person_number) {
@@ -245,7 +256,7 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
     }
 }
 
-char *place_of_work(char **city_array, int number_of_cities) {
+int place_of_work(char **city_array, int number_of_cities) {
 
     printf("please choose the city you work in by entering its index followed by enter\n");
     printf("Index\t City\n");
@@ -260,6 +271,6 @@ char *place_of_work(char **city_array, int number_of_cities) {
     } while (city_choice < 1 ||
              city_choice > number_of_cities);
 
-    return city_array[city_choice - 1];
+    return city_choice - 1;
 }
 
