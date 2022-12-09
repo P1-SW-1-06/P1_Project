@@ -227,7 +227,9 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
         if (output_cities[i].output_score != -1) {
             final_output[city_available_count].output_score = output_cities[i].output_score;
             strcpy(final_output[city_available_count].city_name, output_cities[i].city_name);
+            final_output[city_available_count].city_index = i;
             city_available_count++;
+
         }
     }
     return final_output;

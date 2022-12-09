@@ -67,14 +67,15 @@ int main() {
     int number_of_available_cities = 0;
     shared_score *final_combined_city_score = final_output(score, num_of_cities, number_of_people, city_name, &number_of_available_cities);
 
-    for (int i = 0; i < number_of_available_cities; ++i) {
-        printf("\nCity name: %s Total score: %lf\n", final_combined_city_score[i].city_name, final_combined_city_score[i].output_score);
-    }
 
     qsort(final_combined_city_score,number_of_available_cities, sizeof(shared_score), final_score_sort_logic);
 
     for (int i = 0; i < number_of_available_cities; ++i) {
         printf("\nCity name: %s Total score: %lf\n", final_combined_city_score[i].city_name, final_combined_city_score[i].output_score);
+        for (int j = 0; j < number_of_people; ++j) {
+            printf("%s using %s\n", user_data[j].name, score[j][final_combined_city_score[i].city_index].vehicle_winner.vehicle);
+
+        }
     }
 }
 
