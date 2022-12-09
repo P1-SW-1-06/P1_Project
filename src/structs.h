@@ -36,8 +36,10 @@ typedef struct {
     double co2;
     double cost;
     double speed;
+
     int num_of_vehicle;
 } transport_vehicle_info;
+
 
 typedef struct {
     double score_bus;
