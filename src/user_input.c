@@ -50,8 +50,6 @@ void scan_people_preferences(people_data *array, int person_index, int num_citie
     array[person_index].max_time = max_time(array[person_index].name);
     commuting_preferences(array, person_index);
     place_of_work(city_name_array, num_cities, array, person_index);
-    array[person_index].place_of_work_index = index_city_names(array[person_index].place_of_work,
-                                                               city_name_array, num_cities);
 }
 
 void scan_name(people_data *array, int person_number) {
