@@ -34,7 +34,7 @@ int scan_number_of_people();
 /**
  * a function that takes the preferences of the number of people selected
  * @param array taking in array to store the preferences in the correct structs
- * @param number_of_people taking in the number of people to facilitate how many runs through the loop to take preferrences
+ * @param number_of_people taking in the number of people to facilitate how many runs through the loop to take preferences
  */
 void scan_people_preferences(people_data *array, int person_index, int num_cities, char **city_name_array);
 
@@ -55,7 +55,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
 
 /**
  * a function that prints the checkboxes for visualization of what transport types are selected
- * @param ex_car bool for whether car is a possible transportation. (1=excluded, 0=included)
+ * @param ex_car bool for whether car is a possible transportation. (0=excluded, 1=included)
  * @param ex_bus a parameter that checks whether bus has been excluded as a possible transportation mode
  * @param ex_bike a parameter that checks whether bike has been excluded as a possible transportation mode
  */

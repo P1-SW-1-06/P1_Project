@@ -24,31 +24,31 @@
  * file exists, allocate space in malloc for transport_data
  * @return Returns a pointer to the input file
  */
-transport_struct *import_vehicle_data(const char* vehicle_data);
+transport_vehicle_info *import_vehicle_data(const char* vehicle_data);
 
 /**
- * a functions that reads a file and counts the number of cities
+ * @description a functions that reads a file and counts the number of cities
  * @return returns the number of cities found
  */
 int find_number_of_cities(const char* city_data);
 
 
 /**
- * a function that reads a file and stores the names of the different cities
+ * @description a function that reads a file and stores the names of the different cities
  * @param number_of_cities int for the number of cities in the program
  * @return 2d char array containing the names of the cities
  */
 char** import_city_names(const char* city_data, int number_of_cities);
 
 /**
- * a function that read distances between cities and calculate the missing distances
+ * @description a function that read distances between cities and calculate the missing distances
  * @param number_of_cities int for the number of cities in the program
  * @param city_name_array array with names of included cities
  * @return 2d int array of the distances between cities
  */
 int** import_city_distances(const char* city_distances, int number_of_cities, char** city_name_array);
 /**
- * a function that takes in a city name to give an index of that city
+ * @description a function that takes in a city name to give an index of that city
  * @param name name of the city being compared
  * @param city_name_array array with names of included cities
  * @param num_cities int for the number of cities in the program
@@ -69,10 +69,10 @@ int file_exists(FILE *file);
  * @param data Is a pointer to an array of type transport_struct
  * @param file The file where the data is drawn from
  */
-void read_data(transport_struct *data, FILE *file);
+void read_data(transport_vehicle_info *data, FILE *file);
 
 /**
- * a function that wil open a file if it exists
+ * @description a function that wil open a file if it exists
  * @param input_file name of the file that should be read
  * @return returns pointer to a file
  */
@@ -82,6 +82,6 @@ FILE* read_file(const char* input_file);
  * @description A function that prints an array as long as there is something to print
  * @param data Is a pointer to an array of type transport_struct
  */
-void print_data(transport_struct *data);
+void print_data(transport_vehicle_info *data);
 
 int* find_housing_cost(const char *city_data, int num_cities);
