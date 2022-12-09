@@ -206,7 +206,7 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
     for (int city_count = 0; city_count < number_of_cities; ++city_count) {
         int city_availability = 0;
         for (int person_count = 0; person_count < number_of_people; ++person_count) {
-            if (check_city(person_count, scorearray, city_count) == 1) {
+            if (check_city(person_count, scorearray, city_count) != 0) {
                 city_availability++;
             } else {
                 output_cities[city_count].output_score += scorearray[person_count][city_count].vehicle_winner.final_score;

@@ -221,7 +221,7 @@ void place_of_work(char **city_array, int number_of_cities, people_data *array, 
         city_choice = scan_int();
     } while (city_choice < 1 ||
              city_choice > number_of_cities);
-    array[person_index].place_of_work_index = city_choice;
+    array[person_index].place_of_work_index = city_choice - 1;
     array[person_index].place_of_work = city_array[city_choice - 1];
 }
 

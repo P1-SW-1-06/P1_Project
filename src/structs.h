@@ -65,5 +65,6 @@ typedef struct{
 typedef struct{
     char city_name[50];
     double output_score;
+    int city_index;
 } shared_score;
 
