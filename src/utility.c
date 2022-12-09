@@ -6,8 +6,7 @@ int scan_int() {
         int choice;
         char tempchar;
         fflush(stdin);
-        if (scanf("%d%c", &choice, &tempchar) != 2
-            || tempchar != '\n')
+        if (scanf("%d%c", &choice, &tempchar) != 2|| tempchar != '\n')
             printf("invalid input\n");
         else
             return choice;
