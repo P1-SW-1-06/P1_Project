@@ -7,7 +7,7 @@
  * Keeps running loop until user inputs a single integer and presses enter
  * @return return a single int
  */
-int scan_int();
+int scan_int(bool *info);
 
 /**
  *

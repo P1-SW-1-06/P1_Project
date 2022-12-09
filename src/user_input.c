@@ -18,38 +18,12 @@ people_data *collect_user_input(char **city_name_array, int num_cities, int numb
         printf("Memmory not allocated");
     }
 
-    for (int i = 0; i < number_of_people; ++i) {
-        scan_name(people_data_arr, i);
-        scan_transport_exclusions(people_data_arr, i, people_data_arr[i].name);
-        people_data_arr[i].max_time = max_time(people_data_arr[i].name);
-        commuting_preferences(people_data_arr, i);
-        people_data_arr[i].place_of_work = place_of_work(city_name_array, num_cities);
-        people_data_arr[i].place_of_work_index = index_city_names(people_data_arr[i].place_of_work, city_name_array,
-                                                                  num_cities);
-
+    for (int person_count = 0; person_count < number_of_people; ++person_count) {
+        scan_people_preferences(people_data_arr, person_count, num_cities, city_name_array);
     }
 
     for (int i = 0; i < number_of_people; ++i) {
-
-        printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n", i + 1,
-               people_data_arr[i].name,
-               people_data_arr[i].max_time,
-               people_data_arr[i].preference_environment,
-               people_data_arr[i].preference_cost,
-               people_data_arr[i].preference_time,
-               people_data_arr[i].place_of_work);
-
-        printf(" transport types included:\n");
-        if (people_data_arr[i].exclusion.include_car == 1) {
-            printf(" car,");
-        }
-        if (people_data_arr[i].exclusion.include_bus == 1) {
-            printf(" bus,");
-        }
-        if (people_data_arr[i].exclusion.include_bike == 1) {
-            printf(" bike,");
-        }
-        printf("\n");
+        print_people_preferences(people_data_arr, i);
     }
 
     return people_data_arr;
@@ -59,33 +33,27 @@ int scan_number_of_people() {
     int people = 0;
 
     printf("Please enter number of people you want to optimize for\n");
-
+    bool info;
     do {
-        if (people == 9)
+        people = scan_int(&info);
+        printf("________%d_________",people);
+        if (people == 122)
             printf("put information about number of people here\n");
-        printf("Enter number between 1-5\n");
-        people = scan_int();
-    } while (people < 1 || people > 5);
+    } while (people < 1 || people > 9);
 
     printf("You chose to optimize for: %d people\n", people);
 
     return people;
 }
 
-void scan_people_preferences(people_data *array, int number_of_people) {
-    for (int i = 0; i < number_of_people; ++i) {
-        array[i].max_time = 0;
-
-        fflush(stdin); //Clears buffer to make sure scanf is not skipped
-        printf("Please enter name of person nr. %d\n", i + 1);
-        scanf("%50[^\n]", array[i].name);
-        // scanf only reads the first 50 characters and disregards the rest, or stops when enter is input
-        printf("%s\n", array[i].name);
-
-        scan_transport_exclusions(array, i, array[i].name);
-
-        array[i].max_time = max_time(array[i].name);
-    }
+void scan_people_preferences(people_data *array, int person_index, int num_cities, char **city_name_array) {
+    scan_name(array, person_index);
+    scan_transport_exclusions(array, person_index, array[person_index].name);
+    array[person_index].max_time = max_time(array[person_index].name);
+    commuting_preferences(array, person_index);
+    array[person_index].place_of_work = place_of_work(city_name_array, num_cities);
+    array[person_index].place_of_work_index = index_city_names(array[person_index].place_of_work,
+                                                               city_name_array, num_cities);
 }
 
 void scan_name(people_data *array, int person_number) {
@@ -100,15 +68,14 @@ int max_time(char *name) {
 
     int time = 0;
     printf("Please enter the max amount of minutes %s want to commute followed by enter\n", name);
-
+    bool info;
     do {
-        time = scan_int();
+        time = scan_int(&info);
     } while (time < 0 || time > 240);
 
     printf("%s's max travel time is %d minutes\n", name, time);
     return time;
 }
-
 
 void scan_transport_exclusions(people_data *array, int person_number, char *name) {
     int choice = -1;
@@ -178,7 +145,6 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         array[person_number].exclusion.include_bike = 0;
     }
 }
-
 
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike) {
     printf("Included transportations types indicated by x\n");
@@ -254,12 +220,35 @@ char *place_of_work(char **city_array, int number_of_cities) {
     }
 
     int city_choice;
-
+    bool info;
     do {
-        city_choice = scan_int();
+        city_choice = scan_int(&info);
     } while (city_choice < 1 ||
              city_choice > number_of_cities);
 
     return city_array[city_choice - 1];
+}
+
+void print_people_preferences(people_data *preference_data, int person_index){
+    printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n",
+           person_index + 1,
+           preference_data[person_index].name,
+           preference_data[person_index].max_time,
+           preference_data[person_index].preference_environment,
+           preference_data[person_index].preference_cost,
+           preference_data[person_index].preference_time,
+           preference_data[person_index].place_of_work);
+
+    printf(" transport types included:\n");
+    if (preference_data[person_index].exclusion.include_car == 1) {
+        printf(" car,");
+    }
+    if (preference_data[person_index].exclusion.include_bus == 1) {
+        printf(" bus,");
+    }
+    if (preference_data[person_index].exclusion.include_bike == 1) {
+        printf(" bike,");
+    }
+    printf("\n");
 }
 
