@@ -19,7 +19,7 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
         for (int city_count = 0; city_count < nr_of_cities; ++city_count) {
             time_score(score_array, person_count, distance, final_user, transport_data, city_count);
             env_score(score_array, person_count, distance, final_user, transport_data, city_count);
-            transport_cost_score(score_array, person_count, distance, transport_data, city_count);
+            transport_cost_price(score_array, person_count, distance, transport_data, city_count);
             housing_cost_score(score_array, person_count, array_housing_cost[city_count], city_count);
             sum_of_cost_scores(person_count, score_array, final_user, city_count, max_transport_cost,
                                yearly_max_housing_cost);
@@ -159,7 +159,7 @@ void env_score(temp_score **scorearray, int person_number, int *distance, people
 }
 
 void
-transport_cost_score(temp_score **scorearray, int person_number, int *distance, transport_vehicle_info *transport_data,
+transport_cost_price(temp_score **scorearray, int person_number, int *distance, transport_vehicle_info *transport_data,
                      int city) {
     scorearray[person_number][city].transport_cost.score_bus = distance[city] * transport_data[bus].cost * 189 * 2;
     scorearray[person_number][city].transport_cost.score_car = distance[city] * transport_data[car].cost * 189 * 2;
@@ -206,7 +206,7 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
     for (int city_count = 0; city_count < number_of_cities; ++city_count) {
         int city_availability = 0;
         for (int person_count = 0; person_count < number_of_people; ++person_count) {
-            if (check_city(person_count, scorearray, city_count) != 0) {
+            if (check_city(person_count, scorearray, city_count) == 1) {
                 city_availability++;
             } else {
                 output_cities[city_count].output_score += scorearray[person_count][city_count].vehicle_winner.final_score;
