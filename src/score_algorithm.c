@@ -102,6 +102,11 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
             }
         }
     }
+    for (int i = 0; i < nr_of_cities; ++i) {
+        free(distance_array[i]);
+    }
+    free(distance_array);
+    free(transport_data);
     return score_array;
 }
 
@@ -244,6 +249,12 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
 
         }
     }
+
+    for (int i = 0; i < number_of_cities; ++i) {
+        free(city_name[i]);
+    }
+    free(city_name);
+
     return final_output;
 }
 
@@ -278,4 +289,5 @@ int final_score_sort_logic(const void *a, const void *b) {
 
     return check;
 }
+
 
