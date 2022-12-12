@@ -21,3 +21,4 @@ bool confirm_choice();
 
 void print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
                        temp_score **score, people_data *user_data);
+void print_user_guide();

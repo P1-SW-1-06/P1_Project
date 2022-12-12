@@ -47,7 +47,6 @@ void scan_name(people_data *array, int person_number) {
     printf("Please enter name of person nr. %d\n", person_number + 1);
     scanf("%50[^\n]", array[person_number].name);
     // scanf only reads the first 50 characters and disregards the rest, or stops when enter is input
-    printf("%s\n", array[person_number].name);
 }
 
 int max_time(char *name) {
@@ -71,12 +70,13 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
     array[person_number].exclusion.include_bus = 1;
     array[person_number].exclusion.include_bike = 1;
 
+    printf("%s please specify, if one of the following transportation types should be excluded:\n", name);
+    printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\nPress 0 when satisfied\n");
     char tempchar;
     while (choice != 0) {
         //system("cls");
-        printf("%s please specify, if one of the following transportation types should be excluded:\n", name);
+
         print_transport_exclude_checkbox(ex_car, ex_bus, ex_bike);
-        printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\nPress 0 when satisfied\n");
         fflush(stdin);
         if (scanf("%d%c", &choice, &tempchar) != 2
             || tempchar != '\n' || (choice > 4 && choice != 9) || choice < 0) {
@@ -207,7 +207,7 @@ void place_of_work(char **city_array, int number_of_cities, people_data *array, 
 
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
-        printf("%d\t %s\n", i, city_array[i - 1]);
+        printf("%32d\t %s\n", i, city_array[i - 1]);
     }
 
     int city_choice;

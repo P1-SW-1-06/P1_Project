@@ -46,19 +46,21 @@ bool confirm_choice() {
     }
 }
 
-void free_2D_char_array(char **array, unsigned int array_length) {
-    for (int i = 0; i < array_length; ++i) {
-        free(array[i]);
-    }
-    free(array);
+void print_user_guide(){
+    printf("User guide:\n"
+           "This program is intended to be used as a guide when considering relocating.\n\n"
+           "The numbers that will be outputted after the calculation "
+           "are intended to be a help in deciding where to reside,\n"
+           "and may therefore not be the the best overall solution for your situation.\n"
+           "The output is only based on commuting preferences, and are therefore up for interpretation by the user.\n\n"
+           "All inputs should be finished by pressing <enter>\n"
+           "e.g if prompted to input a number then press the number followed by <enter>\n\n"
+           "If prompted to input more than one value, please separate the inputs with a <space>.\n\n"
+           "When inputting the data in the program please only type the values you are prompted for\n"
+           "please, input only one number at a time when prompted for such e.g '4' or '24'."
+           "\n");
 }
 
-void free_2D_int_array(int **array, unsigned int array_length) {
-    for (int i = 0; i < array_length; ++i) {
-        free(array[i]);
-    }
-    free(array);
-}
 
 void print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
                        temp_score **score, people_data *user_data) {
@@ -77,4 +79,6 @@ void print_final_score(int number_of_people, int number_of_available_cities, sha
     free(final_combined_city_score);
     free(user_data);
 }
+
+
 

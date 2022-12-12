@@ -4,10 +4,6 @@ typedef enum {
     bus, car, bike
 } transport_types;
 
-typedef enum {
-    frederikshavn, aalborg, hjoerring, hobro, stoevring, thisted, noerresundby, broenderslev
-} cities;
-
 typedef struct {
     int include_car;
     int include_bus;
@@ -27,11 +23,6 @@ typedef struct {
 } people_data;
 
 typedef struct {
-    char name[50];
-
-} city_data;
-
-typedef struct {
     char name[20];
     double co2;
     double cost;
@@ -39,7 +30,6 @@ typedef struct {
 
     int num_of_vehicles;
 } transport_vehicle_info;
-
 
 typedef struct {
     double score_bus;
