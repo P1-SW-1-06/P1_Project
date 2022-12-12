@@ -35,6 +35,8 @@ int scan_number_of_people() {
     printf("Please enter number of people you want to optimize for (between 1 and 10)\n");
     do {
         people = scan_int();
+        if (people < 1 || people > 10)
+            printf("invalid input\n");
     } while (people < 1 || people > 10);
 
     printf("You chose to optimize for: %d people\n", people);
