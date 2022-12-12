@@ -207,7 +207,7 @@ void place_of_work(char **city_array, int number_of_cities, people_data *array, 
 
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
-        printf("%32d\t %s\n", i, city_array[i - 1]);
+        printf("%d\t %s\n", i, city_array[i - 1]);
     }
 
     int city_choice;

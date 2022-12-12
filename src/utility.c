@@ -65,7 +65,7 @@ void print_user_guide(){
 void print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
                        temp_score **score, people_data *user_data) {
     for (int i = 0; i < number_of_available_cities; ++i) {
-        printf("\nCity name: %s Total score: %lf\n", final_combined_city_score[i].city_name,
+        printf("Nr.%d\n%s Total score: %15.2lf\n",i, final_combined_city_score[i].city_name,
                final_combined_city_score[i].output_score);
         for (int j = 0; j < number_of_people; ++j) {
             printf("%s using %s\n", user_data[j].name,
