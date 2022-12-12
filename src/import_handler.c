@@ -116,15 +116,6 @@ int file_exists(FILE *file) {
     return 1;
 }
 
-void print_data(transport_vehicle_info *data) {
-    int i = 0;
-    while (i < data[0].num_of_vehicles) {
-        printf("----\n");
-        printf("'%s' '%lf' '%lf' '%lf'\n", data[i].name, data[i].speed, data[i].cost, data[i].co2);
-        ++i;
-    }
-}
-
 FILE *read_file(const char *input_file) {
     FILE *temp_file = fopen(input_file, "r");
     if (!file_exists(temp_file)) {

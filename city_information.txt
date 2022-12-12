@@ -1,7 +1,7 @@
-aalborg             21956
-frederikshavn       11800
-broenderslev        8910
-noerresundby        18729
-thisted             7964
-hobro               9264
-hjoerring           7946
+Aalborg             21956
+Frederikshavn       11800
+Broenderslev        8910
+Noerresundby        18729
+Thisted             7964
+Hobro               9264
+Hjoerring           7946
