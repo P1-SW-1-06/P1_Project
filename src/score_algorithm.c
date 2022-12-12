@@ -21,15 +21,24 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
 
     for (int person_count = 0; person_count < number_of_people; ++person_count) {
         score_array[person_count] = malloc(nr_of_cities * sizeof(temp_score));
-        int *distance = dijkstra(distance_array, final_user[person_count].place_of_work_index, nr_of_cities);
+        int *distance = dijkstra(distance_array, final_user[person_count].place_of_work_index,
+                                 nr_of_cities);
         double max_transport_cost = max_result_transport_cost(person_count, transport_data, final_user);
         for (int city_count = 0; city_count < nr_of_cities; ++city_count) {
-            time_score(score_array, person_count, distance, final_user, transport_data, city_count);
-            env_score(score_array, person_count, distance, final_user, transport_data, city_count);
-            transport_cost_price(score_array, person_count, distance, transport_data, city_count);
-            housing_cost_score(score_array, person_count, array_housing_cost[city_count], city_count);
-            sum_of_cost_scores(person_count, score_array, final_user, city_count, max_transport_cost,
-                               yearly_max_housing_cost);
+            time_score(score_array, person_count, distance, final_user,
+                       transport_data, city_count);
+
+            env_score(score_array, person_count, distance, final_user,
+                      transport_data, city_count);
+
+            transport_cost_price(score_array, person_count, distance,
+                                 transport_data, city_count);
+
+            housing_cost_score(score_array, person_count,
+                               array_housing_cost[city_count],city_count);
+
+            sum_of_cost_scores(person_count, score_array, final_user, city_count,
+                               max_transport_cost, yearly_max_housing_cost);
         }
     }
     for (int person_count = 0; person_count < number_of_people; ++person_count) {
@@ -96,11 +105,6 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
     return score_array;
 }
 
-/* double final_combined_score(temp_score *score_array,){
-     for (int i = 0; i < nr_of_cities; ++i) {
-         score[i].time.score_bus + score[i].cost.score_bus + score[i].enviroment.score_bus + score[i].housing_cost);
- */
-
 double max_housing_price(int *array_housing_cost, int nr_of_cities) {
     int max_square_meter_price = 0;
     for (int i = 0; i < nr_of_cities; ++i) {
@@ -162,7 +166,6 @@ void env_score(temp_score **scorearray, int person_number, int *distance, people
                 (distance[city] * transport_data[bike].co2 * 189 * 2) / max_result_co2 *
                 final_user[person_number].preference_environment;
     }
-
 }
 
 void
@@ -217,7 +220,8 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
             if (check_city(person_count, scorearray, city_count) != 0) {
                 city_availability++;
             } else {
-                output_cities[city_count].output_score += scorearray[person_count][city_count].vehicle_winner.final_score;
+                output_cities[city_count].output_score +=
+                        scorearray[person_count][city_count].vehicle_winner.final_score;
             }
         }
         if (city_availability != 0) {
@@ -230,7 +234,6 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
     }
     *available_cities = number_of_available_cities(output_cities, number_of_cities);
     shared_score *final_output = malloc(sizeof(shared_score) * *available_cities);
-    printf("\n***%d***\n",*available_cities);
     int city_available_count = 0;
     for (int i = 0; i < number_of_cities; ++i) {
         if (output_cities[i].output_score != -1) {
@@ -261,9 +264,9 @@ int check_city(int person_number, temp_score **scorearray, int city_number) {
     return 1;
 }
 
-int final_score_sort_logic(const void *a, const void *b){
-    shared_score *cityscorea = (shared_score*) a;
-    shared_score *cityscoreb = (shared_score*) b;
+int final_score_sort_logic(const void *a, const void *b) {
+    shared_score *cityscorea = (shared_score *) a;
+    shared_score *cityscoreb = (shared_score *) b;
 
     int check;
 
