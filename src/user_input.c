@@ -160,8 +160,8 @@ void commuting_preferences(people_data *array, int person_number) {
     int co2 = 0, cost = 0, time = 0, remainder = 100;
     printf("%s please distribute 100 points in the categories environment, cost and time \n"
            "based on what is most important to you when it comes to commuting\n"
-           "To enter a value, type the category and the number of points you want to put in that category i.e 'env 40'"
-           "\n\n",
+           "To enter a value, type the category and the number of points you want to put in that category "
+           "i.e 'env 40'\n\n",
            array[person_number].name);
     while (remainder > 0) {
         char input[5];
