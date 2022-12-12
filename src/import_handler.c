@@ -43,7 +43,6 @@ int find_number_of_cities(const char *city_data) {
         num_of_cities++;
     }
 
-    //printf("number of cities %d\n",num_of_cities);
     fclose(city_info);
     return num_of_cities;
 }

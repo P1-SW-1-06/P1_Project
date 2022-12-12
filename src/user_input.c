@@ -32,12 +32,10 @@ people_data *collect_user_input(char **city_name_array, int num_cities, int numb
 int scan_number_of_people() {
     int people = 0;
 
-    printf("Please enter number of people you want to optimize for (followed by enter)\n");
+    printf("Please enter number of people you want to optimize for (between 1 and 10)\n");
     do {
         people = scan_int();
-        if (people == 9)
-            printf("put information about number of people here\n");
-    } while (people < 1 || people > 9);
+    } while (people < 1 || people > 10);
 
     printf("You chose to optimize for: %d people\n", people);
 
@@ -63,7 +61,7 @@ void scan_name(people_data *array, int person_number) {
 int max_time(char *name) {
 
     int time = 0;
-    printf("Please enter the max amount of minutes %s want to commute (followed by enter)\n", name);
+    printf("Please enter the max amount of minutes %s want to commute\n", name);
     do {
         time = scan_int();
     } while (time < 0 || time > 240);
@@ -182,7 +180,6 @@ void commuting_preferences(people_data *array, int person_number) {
             printf("invalid input\n");
 
         remainder = 100 - co2 - cost - time;
-        //system("cls");
 
         if (remainder == 0) {
             printf("You chose the following distribution:\n");
@@ -210,7 +207,7 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
 
 void place_of_work(char **city_array, int number_of_cities, people_data *array, int person_index) {
 
-    printf("please choose the city you work in by entering its index (followed by enter)\n");
+    printf("please choose the city you work in by entering its index \n");
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
         printf("%d\t %s\n", i, city_array[i - 1]);
