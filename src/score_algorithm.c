@@ -91,7 +91,7 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
 
 /* double final_combined_score(temp_score *score_array,){
      for (int i = 0; i < nr_of_cities; ++i) {
-         score[i].time.score_bus + score[i].transport_cost.score_bus + score[i].enviroment.score_bus + score[i].housing_cost);
+         score[i].time.score_bus + score[i].cost.score_bus + score[i].enviroment.score_bus + score[i].housing_cost);
  */
 
 double max_housing_price(int *array_housing_cost, int nr_of_cities) {
@@ -204,6 +204,7 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
                            int *available_cities) {
     shared_score output_cities[number_of_cities];
     for (int city_count = 0; city_count < number_of_cities; ++city_count) {
+        output_cities[city_count].output_score = 0;
         int city_availability = 0;
         for (int person_count = 0; person_count < number_of_people; ++person_count) {
             if (check_city(person_count, scorearray, city_count) != 0) {
@@ -222,6 +223,7 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
     }
     *available_cities = number_of_available_cities(output_cities, number_of_cities);
     shared_score *final_output = malloc(sizeof(shared_score) * *available_cities);
+    printf("\n***%d***\n",*available_cities);
     int city_available_count = 0;
     for (int i = 0; i < number_of_cities; ++i) {
         if (output_cities[i].output_score != -1) {
