@@ -15,7 +15,7 @@ people_data *collect_user_input(char **city_name_array, int num_cities, int numb
 
     people_data *people_data_arr = malloc(number_of_people * sizeof(people_data));
     if (people_data_arr == NULL) {
-        printf("Memmory not allocated");
+        printf("Memory not allocated");
     }
 
     for (int person_count = 0; person_count < number_of_people; ++person_count) {
@@ -63,7 +63,7 @@ void scan_name(people_data *array, int person_number) {
 int max_time(char *name) {
 
     int time = 0;
-    printf("Please enter the max amount of minutes %s want to commute (followed by enter)\n", name);
+    printf("Please enter the max amount of minutes %s would like to commute (followed by enter)\n", name);
     do {
         time = scan_int();
     } while (time < 0 || time > 240);
@@ -142,13 +142,13 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
 }
 
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike) {
-    printf("Included transportations types indicated by x\n");
+    printf("Included transportation types are indicated by x\n");
     printf("1-car[%c]  2-bus[%c]  3-bike[%c]\n", ex_car, ex_bus, ex_bike);
     printf("\n");
 }
 
 void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char *name) {
-    printf("%s chose ", name);
+    printf("%s choose ", name);
     if (ex_car == 'x') { printf("car, "); }
     if (ex_bus == 'x') { printf("bus, "); }
     if (ex_bike == 'x') { printf("bike, "); }
@@ -159,8 +159,8 @@ void commuting_preferences(people_data *array, int person_number) {
 
     int co2 = 0, cost = 0, time = 0, remainder = 100;
     printf("%s please distribute 100 points in the categories environment, cost and time \n"
-           "based on what is most important to you when it comes to commuting\n"
-           "To enter a value, type the category and the number of points you want to put in that category i.e 'env 40'"
+           "based on what is most important to you regarding commuting.\n"
+           "To enter a value, type the category and the number of points you would like in the category i.e 'env 40'"
            "\n\n",
            array[person_number].name);
     while (remainder > 0) {
