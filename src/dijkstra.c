@@ -1,3 +1,11 @@
+/** @file dijkstra.c
+ *  @brief
+ *  TODO Tilføj link til hvor koden er inspireret fra!
+ *
+ *  @bug No known bugs.
+ *  @tests !!No tests have been run.!!
+*/
+
 #include "dijkstra.h"
 
 

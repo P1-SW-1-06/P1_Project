@@ -1,3 +1,10 @@
+/** @file utility.c
+ *  @brief
+ *
+ *  @bug No known bugs.
+ *  @tests !!No tests have been run.!!
+*/
+
 #include "utility.h"
 
 int scan_int() {

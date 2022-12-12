@@ -1,3 +1,10 @@
+/** @file score_algorithm.c
+ *  @brief
+ *
+ *  @bug No known bugs.
+ *  @tests !!No tests have been run.!!
+*/
+
 #include "score_algorithm.h"
 #include "structs.h"
 
