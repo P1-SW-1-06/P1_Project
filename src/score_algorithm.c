@@ -1,3 +1,10 @@
+/** @file score_algorithm.c
+ *  @brief
+ *
+ *  @bug No known bugs.
+ *  @tests !!No tests have been run.!!
+*/
+
 #include "score_algorithm.h"
 #include "structs.h"
 
@@ -14,15 +21,24 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
 
     for (int person_count = 0; person_count < number_of_people; ++person_count) {
         score_array[person_count] = malloc(nr_of_cities * sizeof(temp_score));
-        int *distance = dijkstra(distance_array, final_user[person_count].place_of_work_index, nr_of_cities);
+        int *distance = dijkstra(distance_array, final_user[person_count].place_of_work_index,
+                                 nr_of_cities);
         double max_transport_cost = max_result_transport_cost(person_count, transport_data, final_user);
         for (int city_count = 0; city_count < nr_of_cities; ++city_count) {
-            time_score(score_array, person_count, distance, final_user, transport_data, city_count);
-            env_score(score_array, person_count, distance, final_user, transport_data, city_count);
-            transport_cost_price(score_array, person_count, distance, transport_data, city_count);
-            housing_cost_score(score_array, person_count, array_housing_cost[city_count], city_count);
-            sum_of_cost_scores(person_count, score_array, final_user, city_count, max_transport_cost,
-                               yearly_max_housing_cost);
+            time_score(score_array, person_count, distance, final_user,
+                       transport_data, city_count);
+
+            env_score(score_array, person_count, distance, final_user,
+                      transport_data, city_count);
+
+            transport_cost_price(score_array, person_count, distance,
+                                 transport_data, city_count);
+
+            housing_cost_score(score_array, person_count,
+                               array_housing_cost[city_count],city_count);
+
+            sum_of_cost_scores(person_count, score_array, final_user, city_count,
+                               max_transport_cost, yearly_max_housing_cost);
         }
     }
     for (int person_count = 0; person_count < number_of_people; ++person_count) {
@@ -86,13 +102,13 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
             }
         }
     }
+    for (int i = 0; i < nr_of_cities; ++i) {
+        free(distance_array[i]);
+    }
+    free(distance_array);
+    free(transport_data);
     return score_array;
 }
-
-/* double final_combined_score(temp_score *score_array,){
-     for (int i = 0; i < nr_of_cities; ++i) {
-         score[i].time.score_bus + score[i].transport_cost.score_bus + score[i].enviroment.score_bus + score[i].housing_cost);
- */
 
 double max_housing_price(int *array_housing_cost, int nr_of_cities) {
     int max_square_meter_price = 0;
@@ -155,7 +171,6 @@ void env_score(temp_score **scorearray, int person_number, int *distance, people
                 (distance[city] * transport_data[bike].co2 * 189 * 2) / max_result_co2 *
                 final_user[person_number].preference_environment;
     }
-
 }
 
 void
@@ -204,12 +219,14 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
                            int *available_cities) {
     shared_score output_cities[number_of_cities];
     for (int city_count = 0; city_count < number_of_cities; ++city_count) {
+        output_cities[city_count].output_score = 0;
         int city_availability = 0;
         for (int person_count = 0; person_count < number_of_people; ++person_count) {
             if (check_city(person_count, scorearray, city_count) != 0) {
                 city_availability++;
             } else {
-                output_cities[city_count].output_score += scorearray[person_count][city_count].vehicle_winner.final_score;
+                output_cities[city_count].output_score +=
+                        scorearray[person_count][city_count].vehicle_winner.final_score;
             }
         }
         if (city_availability != 0) {
@@ -232,6 +249,12 @@ shared_score *final_output(temp_score **scorearray, int number_of_cities, int nu
 
         }
     }
+
+    for (int i = 0; i < number_of_cities; ++i) {
+        free(city_name[i]);
+    }
+    free(city_name);
+
     return final_output;
 }
 
@@ -252,9 +275,9 @@ int check_city(int person_number, temp_score **scorearray, int city_number) {
     return 1;
 }
 
-int final_score_sort_logic(const void *a, const void *b){
-    shared_score *cityscorea = (shared_score*) a;
-    shared_score *cityscoreb = (shared_score*) b;
+int final_score_sort_logic(const void *a, const void *b) {
+    shared_score *cityscorea = (shared_score *) a;
+    shared_score *cityscoreb = (shared_score *) b;
 
     int check;
 
@@ -266,4 +289,5 @@ int final_score_sort_logic(const void *a, const void *b){
 
     return check;
 }
+
 

@@ -18,8 +18,6 @@
 
 /* -- Prototypes -- */
 
-
-
 /**
  * This function has been made with inspiration from TODO !!!INDSAET LINK!!!
  * a function to create array of distances to cities from source city
