@@ -53,7 +53,7 @@ int max_time(char *name) {
 
     int time = 0;
 
-    printf("Please enter the max amount of minutes %s want to commute\n", name);
+    printf("Please enter the max amount of minutes %s want to commute each way\n", name);
 
     do {
         time = scan_int();
@@ -136,7 +136,6 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike) {
     printf("Included transportation types are indicated by x\n");
     printf("1-car[%c]  2-bus[%c]  3-bike[%c]\n", ex_car, ex_bus, ex_bike);
-    printf("\n");
 }
 
 void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char *name) {
@@ -162,7 +161,7 @@ void commuting_preferences(people_data *array, int person_number) {
         int value = 0;
 
         printf("Env \tCost \tTime \tRemaining\n");
-        printf("%d \t%d \t%d \t%d\n\n", co2, cost, time, remainder);
+        printf("%d \t%d \t%d \t%d\n", co2, cost, time, remainder);
         fflush(stdin);
         scanf("%s %d", input, &value);
         convert_to_lowercase(input);
@@ -220,8 +219,7 @@ void place_of_work(char **city_array, int number_of_cities, people_data *array, 
 }
 
 void print_people_preferences(people_data *preference_data, int person_index){
-    printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n",
-           person_index + 1,
+    printf("Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n",
            preference_data[person_index].name,
            preference_data[person_index].max_time,
            preference_data[person_index].preference_environment,
@@ -237,7 +235,7 @@ void print_people_preferences(people_data *preference_data, int person_index){
         printf(" bus,");
     }
     if (preference_data[person_index].exclusion.include_bike == 1) {
-        printf(" bike,");
+        printf(" bike");
     }
     printf("\n");
 }
