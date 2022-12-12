@@ -151,7 +151,7 @@ void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char *name)
     printf("%s chose ", name);
     if (ex_car == 'x') { printf("car, "); }
     if (ex_bus == 'x') { printf("bus, "); }
-    if (ex_bike == 'x') { printf("bike, "); }
+    if (ex_bike == 'x') { printf("bike"); }
     printf("as possible transportations types to use.\n");
 }
 
