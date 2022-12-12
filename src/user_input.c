@@ -1,8 +1,7 @@
 /** @file user_input
- *  @brief Function and struct prototypes used in user_input.h.
+ *  @brief Handles all user input
+ *  This file handles all inputs from the user.
  *
- *  This contains the prototypes for the
- *  functions and structs used in the program.
  *
  *  @author
  *  @bug No known bugs.
@@ -32,14 +31,14 @@ people_data *collect_user_input(char **city_name_array, int num_cities, int numb
 int scan_number_of_people() {
     int people = 0;
 
-    printf("Please enter number of people you want to optimize for (followed by enter)\n");
+    printf("Please type the number of people you would like to optimize for (followed by <enter>)\n");
     do {
         people = scan_int();
         if (people == 9)
-            printf("put information about number of people here\n");
+            printf("Please, type information about number of people here\n");
     } while (people < 1 || people > 9);
 
-    printf("You chose to optimize for: %d people\n", people);
+    printf("You choose to optimize for: %d people\n", people);
 
     return people;
 }
@@ -63,7 +62,7 @@ void scan_name(people_data *array, int person_number) {
 int max_time(char *name) {
 
     int time = 0;
-    printf("Please enter the max amount of minutes %s would like to commute (followed by enter)\n", name);
+    printf("Please, enter the max amount of minutes %s would like to commute (followed by <enter>)\n", name);
     do {
         time = scan_int();
     } while (time < 0 || time > 240);
@@ -82,7 +81,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
     char tempchar;
     while (choice != 0) {
         //system("cls");
-        printf("%s do you want to exclude any of these transportation types?\n", name);
+        printf("%s please specify, if one of the following transportation types should be excluded:\n", name);
         print_transport_exclude_checkbox(ex_car, ex_bus, ex_bike);
         printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\nPress 0 when satisfied\n");
         fflush(stdin);
@@ -99,7 +98,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
                     if (ex_car == ' ') {
                         ex_car = 'x';
                     } else if (ex_bus == ' ' && ex_bike == ' ') {
-                        printf("You must have at least 1 possible mean of transportation\n");
+                        printf("You must have at least one possible mean of transportation\n");
                     } else {
                         ex_car = ' ';
                     }
@@ -109,7 +108,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
                     if (ex_bus == ' ') {
                         ex_bus = 'x';
                     } else if (ex_bike == ' '&& ex_car == ' ') {
-                        printf("You must have at least 1 possible mean of transportation\n");
+                        printf("You must have at least one possible mean of transportation\n");
                     } else {
                         ex_bus = ' ';
                     }
@@ -119,7 +118,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
                     if (ex_bike == ' ') {
                         ex_bike = 'x';
                     } else if (ex_car == ' ' && ex_bus == ' ') {
-                        printf("You must have at least 1 possible mean of transportation\n");
+                        printf("You must have at least one possible mean of transportation\n");
                     } else {
                         ex_bike = ' ';
                     }
@@ -185,10 +184,10 @@ void commuting_preferences(people_data *array, int person_number) {
         //system("cls");
 
         if (remainder == 0) {
-            printf("You chose the following distribution:\n");
+            printf("You choose the following distribution:\n");
             printf("Env \tCost \tTime\n");
             printf("%d \t%d \t%d \n", co2, cost, time);
-            printf("Are you happy with your choices? Y/N\n");
+            printf("Please, confirm your choice with Y/N\n");
             if (confirm_choice())
                 break;
             else {
@@ -210,7 +209,7 @@ void convert_to_lowercase(char *str) {//runs over every letter in the string and
 
 void place_of_work(char **city_array, int number_of_cities, people_data *array, int person_index) {
 
-    printf("please choose the city you work in by entering its index (followed by enter)\n");
+    printf("Please, choose the city you work in by entering its index (followed by <enter>)\n");
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
         printf("%d\t %s\n", i, city_array[i - 1]);
