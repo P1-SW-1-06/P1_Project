@@ -91,7 +91,7 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
 
 /* double final_combined_score(temp_score *score_array,){
      for (int i = 0; i < nr_of_cities; ++i) {
-         score[i].time.score_bus + score[i].transport_cost.score_bus + score[i].enviroment.score_bus + score[i].housing_cost);
+         score[i].time.score_bus + score[i].cost.score_bus + score[i].enviroment.score_bus + score[i].housing_cost);
  */
 
 double max_housing_price(int *array_housing_cost, int nr_of_cities) {
