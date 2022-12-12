@@ -44,7 +44,7 @@ int main() {
 
         }
     }
-    printf("\n1hello\n");
+
     qsort(final_combined_city_score,number_of_available_cities, sizeof(shared_score), final_score_sort_logic);
 
     for (int i = 0; i < number_of_available_cities; ++i) {
