@@ -111,7 +111,7 @@ unsigned int index_city_names(char *name, char **city_name_array, int num_cities
 
 int file_exists(FILE *file) {
     if (file == NULL) {
-        printf("'transport_types' could not be found. Make sure to select working directory\n");
+        printf("'file' could not be found. Make sure to select working directory\n");
         return 0;
     }
     return 1;
