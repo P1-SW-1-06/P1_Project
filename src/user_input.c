@@ -1,9 +1,8 @@
-/** @file user_input
+/** @file user_input.c
  *  @brief Handles all user input
- *  This file handles all inputs from the user.
+ *  This file handles all inputs from the user,
+ *  and stores each preference in a array of structs for the specific person.
  *
- *
- *  @author
  *  @bug No known bugs.
  *  @tests !!No tests have been run.!!
 */
