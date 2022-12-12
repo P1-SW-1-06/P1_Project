@@ -1,12 +1,3 @@
-/** @file user_input.c
- *  @brief Handles all user input
- *  This file handles all inputs from the user,
- *  and stores each preference in a array of structs for the specific person.
- *
- *  @bug No known bugs.
- *  @tests !!No tests have been run.!!
-*/
-
 #include "user_input.h"
 
 people_data *collect_user_input(char **city_name_array, int num_cities, int number_of_people) {
@@ -204,7 +195,7 @@ void commuting_preferences(people_data *array, int person_number) {
     array[person_number].preference_environment = co2;
 }
 
-void convert_to_lowercase(char *str) {//runs over every letter in the string and converts them to lowercase
+void convert_to_lowercase(char *str) {
     for (int i = 0; i < strlen(str); ++i) {
         str[i] = tolower(str[i]);
     }
