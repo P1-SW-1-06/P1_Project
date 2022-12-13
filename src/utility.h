@@ -19,6 +19,19 @@ char scan_char();
  */
 bool confirm_choice();
 
+/**
+ * Prints the final sorted score of cities to the user. Frees memory allocated with malloc in functions
+ * collect_user_input(), score_algorithm() and final_output. *
+ * @param number_of_people
+ * @param number_of_available_cities
+ * @param final_combined_city_score
+ * @param score
+ * @param user_data
+ */
 void print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
                        temp_score **score, people_data *user_data);
+
+/**
+ * Prints a guide of how to use the program
+ */
 void print_user_guide();

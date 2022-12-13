@@ -25,7 +25,8 @@
  * Checks if the first vehicle is between 0 and 100 and smaller than vehicle.winner.final.score.
  * If it is set the vehicle score as vehicle.winner.final.score and the transport type instead of "none".
  * Every vehicle is checked this way and at last only the best vehicle score is stored in vehicle.winner.final.score
- * and the transport vehicle is stored in vehicle.winner.vehicle.
+ * and the transport vehicle is stored in vehicle.winner.vehicle. Free malloced data allocated in import_vehicle_data()
+ * and dijkstra()
  * @param distance_array a two dimensional array******************
  * @param final_user a pointer to the struct people_data
  * @param nr_of_cities the number of cities in the dataset
@@ -153,7 +154,8 @@ int number_of_available_cities(shared_score *temp_output, int number_of_cities);
 shared_score *final_output(temp_score **scorearray, int number_of_cities, int number_of_people, char **city_name,int *available_cities);
 
 /**
- * @description a function that sorts the available cities in order with the smallest score first.
+ * @description a function that sorts the available cities in order with the smallest score first. Frees memory
+ * allocated in find_city_names()
  * @param a void pointer
  * @param b void pointer
  * @return check = 1 or -1
