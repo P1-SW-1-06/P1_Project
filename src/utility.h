@@ -1,3 +1,10 @@
+/** @file utility.h
+ * Contains prototypes used in utility.c
+ *
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
+*/
+
 #pragma once
 
 #include "main.h"
@@ -15,7 +22,7 @@ int scan_int();
 char scan_char();
 
 /**
- * @return true if input is Y or y, false if input is N or n.
+ * @return true if input is 'Y' or 'y', false if input is 'N' or 'n'.
  */
 bool confirm_choice();
 

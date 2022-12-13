@@ -1,13 +1,12 @@
 /** @file score_algorithm.c
- *  @brief
+ * This file handles all functionality in the calculation of the final score.
  *
- *  @bug No known bugs.
- *  @tests !!No tests have been run.!!
+ * @author P1-SW-1-06
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
 */
 
 #include "score_algorithm.h"
-#include "structs.h"
-
 
 temp_score **score_algorithm(int **distance_array, people_data *final_user, int nr_of_cities, int number_of_people,
                              transport_vehicle_info *transport_data) {
@@ -35,7 +34,7 @@ temp_score **score_algorithm(int **distance_array, people_data *final_user, int 
                                  transport_data, city_count);
 
             housing_cost_score(score_array, person_count,
-                               array_housing_cost[city_count],city_count);
+                               array_housing_cost[city_count], city_count);
 
             sum_of_cost_scores(person_count, score_array, final_user, city_count,
                                max_transport_cost, yearly_max_housing_cost);
@@ -265,7 +264,7 @@ int number_of_available_cities(shared_score *temp_output, int number_of_cities) 
             available_cities++;
         }
     }
-    if (available_cities == 0){
+    if (available_cities == 0) {
         printf("No city was reachable for all parties with your current preferences for maximum commuting time."
                "\nPlease consider increasing maximum commuting time\n");
     }

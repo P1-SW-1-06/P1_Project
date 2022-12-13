@@ -1,3 +1,11 @@
+/** @file user_input.c
+ * This file handles all communication and collection of data from the user.
+ *
+ * @author P1-SW-1-06
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
+*/
+
 #include "user_input.h"
 
 people_data *collect_user_input(char **city_name_array, int num_cities, int number_of_people) {
@@ -96,7 +104,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
                 case 2: {
                     if (ex_bus == ' ') {
                         ex_bus = 'x';
-                    } else if (ex_bike == ' '&& ex_car == ' ') {
+                    } else if (ex_bike == ' ' && ex_car == ' ') {
                         printf("You must have at least one possible mean of transportation\n");
                     } else {
                         ex_bus = ' ';
@@ -215,7 +223,7 @@ void place_of_work(char **city_array, int number_of_cities, people_data *array, 
     array[person_index].place_of_work = city_array[city_choice - 1];
 }
 
-void print_people_preferences(people_data *preference_data, int person_index){
+void print_people_preferences(people_data *preference_data, int person_index) {
     printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n",
            person_index + 1,
            preference_data[person_index].name,

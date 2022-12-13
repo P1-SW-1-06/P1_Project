@@ -1,9 +1,11 @@
 /** @file dijkstra.c
- *  @brief
- *  TODO Tilføj link til hvor koden er inspireret fra!
+ * This file contains the functionality for the calculation of finding the shortest path from source to all other
+ * nodes in the graph. Heavy inspiration has been conducted from TODO Tilføj link til hvor koden er inspireret fra!
+ * It has been rewritten from the button to fit into the projects use case.
  *
- *  @bug No known bugs.
- *  @tests !!No tests have been run.!!
+ * @author P1-SW-1-06
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
 */
 
 #include "dijkstra.h"

@@ -1,16 +1,13 @@
 /** @file import_handler.c
- *  @brief Imports information from transport_types.txt
+ * Handles imports of data from transport_types.txt.
+ * If file is not found, an error can/may occur and an exit might be executed.
+ * Therefore, remember to initialize working directory for the program to work as intended.
  *
- *  Handles imports of data from transport_types.txt.
- *  It will error and exit if FILE if not found.
- *  Remember to free memory allocated by malloc.
- *
- *  @author
- *  @bug If there's more cities in cities than in city_information it will fail.
- *  @tests !!No tests have been run.!!
+ * @author P1-SW-1-06
+ * @bug If there's more cities in cities than in city_information it will fail.
+ * @tests !!No tests have been run.!!
 */
 
-/* -- Includes -- */
 #include "import_handler.h"
 
 transport_vehicle_info *import_vehicle_data(const char *vehicle_data) {

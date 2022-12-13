@@ -2,27 +2,18 @@
 ## Table of contents
 * [Introduction](#introduction)
 * [Technologies](#technologies)
-* [Setup](#setup)
+* [Project Status](#project-status)
 
 ## Introduction
-This project is a semester program. It is created by 7 first semester software students.
-The program aims to recommend a city for the relocation of a group of people,
+This project is a semester program. It is created by 6 first semester software students.
+The program aims to recommend a city for the relocation of a group of people in North Jutland,
 based on job location and the following commuting preferences: Transportation type, carbon
 footprint, commuting time, cost of housing, and travel cost?
 
 ## Technologies
 Project is created with:
 * CMake version: 3.23
-* C version: C99
-
-## Setup
-To run this project, install it locally using npm:
-IDK HAR INGEN IDE
-```
-$ cd ../lorem
-$ npm install
-$ npm start
-```
+* C version: C99 
 
 ## Project status
-Expected to be finished 21/12-2022
+Project was finished 21/12-2022

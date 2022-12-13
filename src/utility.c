@@ -1,8 +1,9 @@
 /** @file utility.c
- *  @brief
+ * Contains a few utility functionality that are used more than once throughout the program.
  *
- *  @bug No known bugs.
- *  @tests !!No tests have been run.!!
+ * @author P1-SW-1-06
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
 */
 
 #include "utility.h"

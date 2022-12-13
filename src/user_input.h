@@ -1,12 +1,8 @@
 /** @file user_input.h
- *  @brief Function and struct prototypes used in user_input.h.
+ * Contains all the prototypes used in user_input.c
  *
- *  This contains the prototypes for the
- *  functions and structs used in the program.
- *
- *  @author
- *  @bug No known bugs.
- *  @tests !!No tests have been run.!!
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
 */
 
 #pragma once
@@ -15,17 +11,13 @@
 #include "import_handler.h"
 
 /* -- Prototypes -- */
-
-
 /**
  * @description a function that allocates memory to an array with people data.
  * A for loop that runs number of people times that calls the function scan_people_preferences.
  * A for loop that runs number of people times that calls the function.
  * @return people_data_array of type struct
  */
-
-people_data* collect_user_input(char** city_name_array, int num_cities, int number_of_people);
-
+people_data *collect_user_input(char **city_name_array, int num_cities, int number_of_people);
 
 /**
  * @description a function that takes the number of people from the user
@@ -45,8 +37,13 @@ void scan_people_preferences(people_data *array, int person_index, int num_citie
  * @param array the array of person structs taken in, to allocate the max_time to the person struct
  * @param person_number taking in what number person the person has in the array
  */
-int max_time(char* name);
+int max_time(char *name);
 
+/**
+ * @description Scans for a name of max 50 characters and disregards the rest, or stops when enter is input
+ * @param array array from people_data
+ * @param person_number index of person
+ */
 void scan_name(people_data *array, int person_number);
 
 /**
@@ -94,6 +91,7 @@ void commuting_preferences(people_data *array, int person_number);
  * @param person_index the person with number "person_index" in the array
  */
 void place_of_work(char **city_array, int number_of_cities, people_data *array, int person_index);
+
 /**
  * @description prints the data of a persons preferences.
  * @param preference_data the array that holds all the data of the users preferences
