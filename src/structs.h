@@ -1,3 +1,10 @@
+/** @file structs.h
+ * Contains all the structs used in other parts of the program.
+ *
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
+*/
+
 #pragma once
 
 typedef enum {

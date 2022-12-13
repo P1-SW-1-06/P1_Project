@@ -1,17 +1,18 @@
 /** @file score_algorithm.h
-
-*  This contains the prototypes for the
-        *  functions and structs used in the program.
-*
-*  @author
-*  @bug No known bugs.
-*  @tests !!No tests have been run.!!
+ * Contains the prototypes for the functions used in the score_algorithm.h.
+ *
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
 */
+
 #pragma once
+/* -- Includes -- */
 #include "main.h"
 #include "user_input.h"
 #include "import_handler.h"
+#include "structs.h"
 
+/* -- Prototypes -- */
 /**
  * @description a function that allocates memory for struct temp_score
  * allocates memory for each person in the already allocated memory.
@@ -34,7 +35,8 @@
  * @param transport_data a pointer to the struct transport_vehicle_info
  * @return
  */
-temp_score **score_algorithm(int **distance_array, people_data* final_user, int nr_of_cities, int number_of_people,transport_vehicle_info* transport_data);
+temp_score **score_algorithm(int **distance_array, people_data *final_user, int nr_of_cities, int number_of_people,
+                             transport_vehicle_info *transport_data);
 
 /**
  * @description a function that checks the value in struct exclusions for bus, car and bike (0=excluded, 1=included).
@@ -49,7 +51,8 @@ temp_score **score_algorithm(int **distance_array, people_data* final_user, int 
  * @param transport_data a pointer to the struct transport_vehicle_info
  * @param city index for a city in the array
  */
-void time_score(temp_score **scorearray,int person_number, int *distance, people_data *final_user, transport_vehicle_info *transport_data, int city);
+void time_score(temp_score **scorearray, int person_number, int *distance, people_data *final_user,
+                transport_vehicle_info *transport_data, int city);
 
 /**
  * @description a function that calculates max amount of co2 for a year (189 workdays).
@@ -63,7 +66,8 @@ void time_score(temp_score **scorearray,int person_number, int *distance, people
  * @param transport_data a pointer to the struct transport_vehicle_info
  * @param city index for a city in the array
  */
-void env_score(temp_score **scorearray,int person_number, int *distance, people_data *final_user, transport_vehicle_info *transport_data, int city);
+void env_score(temp_score **scorearray, int person_number, int *distance, people_data *final_user,
+               transport_vehicle_info *transport_data, int city);
 
 /**
  * @description a function that calculates the yearly price of all transportation types based on
@@ -75,7 +79,9 @@ void env_score(temp_score **scorearray,int person_number, int *distance, people_
  * @param transport_data a pointer to the struct transport_vehicle_info
  * @param city index for a city in the array
  */
-void transport_cost_price(temp_score **scorearray,int person_number, int *distance, transport_vehicle_info *transport_data,int city);
+void
+transport_cost_price(temp_score **scorearray, int person_number, int *distance, transport_vehicle_info *transport_data,
+                     int city);
 
 /**
  * @description a function that calculates the maximal yearly price for transportation based on
@@ -104,7 +110,7 @@ void housing_cost_score(temp_score **scorearray, int person_number, int current_
  * @param nr_of_cities the number of cities in the dataset
  * @return the most expensive yearly housing price in the dataset
  */
-double max_housing_price(int* array_housing_cost,int nr_of_cities);
+double max_housing_price(int *array_housing_cost, int nr_of_cities);
 
 /**
  * @description a function that checks the value in struct exclusions for bus, car and bike (0=excluded, 1=included).
@@ -118,7 +124,8 @@ double max_housing_price(int* array_housing_cost,int nr_of_cities);
  * @param max_result_transport_cost is the function max_result_transport_cost
  * @param yearly_max_housing_cost is the function max_housing_price
  */
-void sum_of_cost_scores(int person_number,temp_score **scorearray, people_data *final_user, int city, double max_result_transport_cost,double yearly_max_housing_cost);
+void sum_of_cost_scores(int person_number, temp_score **scorearray, people_data *final_user, int city,
+                        double max_result_transport_cost, double yearly_max_housing_cost);
 
 /**
  * @description a function that checks if the final.score is <= 100
@@ -151,7 +158,8 @@ int number_of_available_cities(shared_score *temp_output, int number_of_cities);
  * @param available_cities the amount of available cities
  * @return final_output
  */
-shared_score *final_output(temp_score **scorearray, int number_of_cities, int number_of_people, char **city_name,int *available_cities);
+shared_score *final_output(temp_score **scorearray, int number_of_cities, int number_of_people, char **city_name,
+                           int *available_cities);
 
 /**
  * @description a function that sorts the available cities in order with the smallest score first. Frees memory
