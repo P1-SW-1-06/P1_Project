@@ -1,16 +1,18 @@
 /** @file main.c
- *  @brief
+ * This is the main file of the program. All other functions are rooted in this file,
+ * which means that either the other functions are called by main, or called by a function that
+ * is called by main.
  *
- *  @author
- *  @bug No known bugs.
- *  @tests !!No tests have been run.!!
+ * @author P1-SW-1-06
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
 */
 
 #include "main.h"
 
 int main() {
     print_user_guide();
-    do{
+    do {
         transport_vehicle_info *transport_data = import_vehicle_data("transport_types.txt");
         int num_of_cities = find_number_of_cities("city_information.txt");
         char **city_name = import_city_names("city_information.txt", num_of_cities);
@@ -36,5 +38,5 @@ int main() {
         print_final_score(number_of_people, number_of_available_cities, final_combined_city_score, score, user_data);
 
         printf("Do you want to run the program again? Y/N:");
-    }while(confirm_choice());
+    } while (confirm_choice());
 }

@@ -1,20 +1,11 @@
 /** @file main.h
- *  @brief includes childs for parenting and use in main.h.
+ * Includes all functionality from other files. Doesn't include structs.h.
  *
- *  @author
- *  @bug No known bugs.
- *  @tests !!No tests have been run.!!
- *
- *  Parenting https://stackoverflow.com/questions/48401627/confusion-with-preprocessor-directives
+ * @bug No known bugs.
+ * @tests !!No tests have been run.!!
  */
 
-
-
-// "#Pragma once": Current source file to be included only once in a single compilation. Thus, #pragma once serves the same purpose
-// as #include guards, but with several advantages, including: less code, avoiding name clashes, and improved
-// compile speed.
 #pragma once
-
 /* -- Includes -- */
 #include "structs.h"
 #include <stdio.h>
@@ -22,7 +13,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
-
 
 #include "import_handler.h"
 #include "user_input.h"
@@ -32,7 +22,7 @@
 
 /* -- Prototypes -- */
 /**
- *
- * @return Should not return
+ * Has to be called for the program to execute.
+ * @return Should not return.
  */
 int main();

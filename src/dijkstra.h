@@ -1,9 +1,6 @@
 /** @file dijkstra.h
- * @brief functions prototypes
+ * Contains the prototypes and includes used in dijkstra.c
  *
- * This contains the prototypes of the functions used in the dijkstra.c file
- *
- * @author
  * @bug No known bugs.
  * @tests !!No tests have been run.!!
  */
@@ -17,7 +14,6 @@
 #include <stdbool.h>
 
 /* -- Prototypes -- */
-
 /**
  * This function has been made with inspiration from https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
  * a function to create array of distances to cities from source city
@@ -26,7 +22,8 @@
  * @param number_of_cities int for the number of cities in the program
  * @return
  */
-int* dijkstra(int** city_dist_matrix, int workplace, int number_of_cities);
+int *dijkstra(int **city_dist_matrix, int workplace, int number_of_cities);
+
 /**
  * a function that returns the index of the point that is closest to the current point
  * @param distance_array array of distances to the different points
@@ -34,9 +31,10 @@ int* dijkstra(int** city_dist_matrix, int workplace, int number_of_cities);
  * @param num_cities int for the number of cities in the program
  * @return
  */
-int shortest_distance(int* distance_array, bool* visited_points, int num_cities);
+int shortest_distance(int *distance_array, bool *visited_points, int num_cities);
+
 /**
- *
+ * Prints solution.
  * @param dist int the distance to point from source point
  * @param number_of_cities int for the number of cities in the program
  */
