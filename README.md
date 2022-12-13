@@ -13,7 +13,7 @@ footprint, commuting time, cost of housing, and travel cost?
 ## Technologies
 Project is created with:
 * CMake version: 3.23
-* C version: C99
+* C version: C99 
 
 ## Project status
 Project was finished 21/12-2022
