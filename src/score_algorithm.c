@@ -173,16 +173,16 @@ void env_score(temp_score **scorearray, int person_number, int *distance, people
     }
 }
 
-void
-transport_cost_price(temp_score **scorearray, int person_number, int *distance, transport_vehicle_info *transport_data,
-                     int city) {
+void transport_cost_price(temp_score **scorearray, int person_number, int *distance,
+                          transport_vehicle_info *transport_data, int city) {
     scorearray[person_number][city].transport_cost.score_bus = distance[city] * transport_data[bus].cost * 189 * 2;
     scorearray[person_number][city].transport_cost.score_car = distance[city] * transport_data[car].cost * 189 * 2;
     scorearray[person_number][city].transport_cost.score_bike = distance[city] * transport_data[bike].cost * 189 * 2;
 
 }
 
-double max_result_transport_cost(int person_number, transport_vehicle_info *transport_data, people_data *final_user) {
+double max_result_transport_cost(int person_number, transport_vehicle_info *transport_data,
+                                 people_data *final_user) {
 
     return (final_user[person_number].max_time / (1 / transport_data[car].speed) * transport_data[car].cost * 189 * 2);
 }
