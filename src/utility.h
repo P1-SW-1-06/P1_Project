@@ -42,3 +42,4 @@ void print_final_score(int number_of_people, int number_of_available_cities, sha
  * Prints a guide of how to use the program
  */
 void print_user_guide();
+void choose_dataset(char* distance, char* housing);

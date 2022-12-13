@@ -86,5 +86,22 @@ void print_final_score(int number_of_people, int number_of_available_cities, sha
     free(user_data);
 }
 
+void choose_dataset(char* distance, char* housing){
+    printf("Please choose data set\n 1:\t Nordjylland\n 2:\t Aarhus\n");
+    int choice;
+    do {
+        choice = scan_int();
+    }while(choice != 1 && choice != 2);
+
+    if(choice == 1) {
+        strcpy(distance, "data_nordjylland_distance.txt");
+        strcpy(housing, "data_nordjylland_information.txt");
+    }
+    if(choice == 2){
+        strcpy(distance, "data_aarhus_distance.txt");
+        strcpy(housing, "data_aarhus_information.txt");
+    }
+}
+
 
 

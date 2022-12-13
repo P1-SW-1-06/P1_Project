@@ -14,9 +14,16 @@ int main() {
     print_user_guide();
     do {
         transport_vehicle_info *transport_data = import_vehicle_data("transport_types.txt");
-        int num_of_cities = find_number_of_cities("city_information.txt");
-        char **city_name = import_city_names("city_information.txt", num_of_cities);
-        int **city_distance_array = import_city_distances("cities.txt",
+
+        char distance_information[50];
+        char housing_information[50];
+        choose_dataset(distance_information,housing_information);
+
+        printf("Chose dataset: %s\n",housing_information);
+
+        int num_of_cities = find_number_of_cities(housing_information);
+        char **city_name = import_city_names(housing_information, num_of_cities);
+        int **city_distance_array = import_city_distances(distance_information,
                                                           num_of_cities,
                                                           city_name);
 
@@ -25,7 +32,7 @@ int main() {
 
 
         temp_score **score = score_algorithm(city_distance_array, user_data, num_of_cities,
-                                             number_of_people, transport_data);
+                                             number_of_people, transport_data, housing_information);
 
         int number_of_available_cities = 0;
 
