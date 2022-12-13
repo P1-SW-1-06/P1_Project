@@ -58,7 +58,7 @@ void print_user_guide(){
            "If prompted to input more than one value, please separate the inputs with a <space>.\n\n"
            "When inputting the data in the program please only type the values you are prompted for\n"
            "please, input only one number at a time when prompted for such e.g '4' or '24'."
-           "\n");
+           "\n\n\n");
 }
 
 

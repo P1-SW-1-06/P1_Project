@@ -265,6 +265,10 @@ int number_of_available_cities(shared_score *temp_output, int number_of_cities) 
             available_cities++;
         }
     }
+    if (available_cities == 0){
+        printf("No city was reachable for all parties with your current preferences for maximum commuting time."
+               "\nPlease consider increasing maximum commuting time\n");
+    }
     return available_cities;
 }
 

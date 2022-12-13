@@ -11,10 +11,6 @@ people_data *collect_user_input(char **city_name_array, int num_cities, int numb
         scan_people_preferences(people_data_arr, person_count, num_cities, city_name_array);
     }
 
-    for (int i = 0; i < number_of_people; ++i) {
-        print_people_preferences(people_data_arr, i);
-    }
-
     return people_data_arr;
 }
 
@@ -29,7 +25,7 @@ int scan_number_of_people() {
     } while (people < 1 || people > 10);
 
 
-    printf("You choose to optimize for: %d people\n", people);
+    printf("You chose to optimize for: %d people\n", people);
 
     return people;
 }
@@ -53,7 +49,7 @@ int max_time(char *name) {
 
     int time = 0;
 
-    printf("Please enter the max amount of minutes %s want to commute\n", name);
+    printf("Please enter the max amount of minutes %s want to commute one way\n", name);
 
     do {
         time = scan_int();
@@ -136,14 +132,13 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike) {
     printf("Included transportation types are indicated by x\n");
     printf("1-car[%c]  2-bus[%c]  3-bike[%c]\n", ex_car, ex_bus, ex_bike);
-    printf("\n");
 }
 
 void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char *name) {
-    printf("%s choose ", name);
+    printf("%s chose ", name);
     if (ex_car == 'x') { printf("car, "); }
     if (ex_bus == 'x') { printf("bus, "); }
-    if (ex_bike == 'x') { printf("bike"); }
+    if (ex_bike == 'x') { printf("bike, "); }
     printf("as possible transportations types to use.\n");
 }
 
@@ -152,9 +147,10 @@ void commuting_preferences(people_data *array, int person_number) {
     int co2 = 0, cost = 0, time = 0, remainder = 100;
     printf("%s please distribute 100 points in the categories environment, cost and time \n"
 
-           "based on what is most important to you when it comes to commuting\n"
-           "To enter a value, type the category and the number of points you want to put in that category "
-           "i.e 'env 40'\n\n",
+           "based on what is most important to you when it comes to commuting.\n"
+           "You can only input one value at a time.\n"
+           "To enter a value, type the category and the number of points you want to put in that category\n"
+           "i.e 'env 40' 'cost 30' 'time 30'\n",
 
            array[person_number].name);
     while (remainder > 0) {
@@ -162,7 +158,7 @@ void commuting_preferences(people_data *array, int person_number) {
         int value = 0;
 
         printf("Env \tCost \tTime \tRemaining\n");
-        printf("%d \t%d \t%d \t%d\n\n", co2, cost, time, remainder);
+        printf("%d \t%d \t%d \t%d\n", co2, cost, time, remainder);
         fflush(stdin);
         scanf("%s %d", input, &value);
         convert_to_lowercase(input);
@@ -207,7 +203,7 @@ void place_of_work(char **city_array, int number_of_cities, people_data *array, 
 
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
-        printf("%32d\t %s\n", i, city_array[i - 1]);
+        printf("%d\t %s\n", i, city_array[i - 1]);
     }
 
     int city_choice;
