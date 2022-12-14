@@ -5,3 +5,4 @@ Noerresundby        18729
 Thisted             7964
 Hobro               9264
 Hjoerring           7946
+newcity             6000
