@@ -59,13 +59,17 @@ void print_user_guide(){
            "If prompted to input more than one value, please separate the inputs with a <space>.\n\n"
            "When inputting the data in the program please only type the values you are prompted for\n"
            "please, input only one number at a time when prompted for such e.g '4' or '24'."
-           "\n\n\n");
+           "\n\n");
 }
 
 
 void print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
                        temp_score **score, people_data *user_data) {
-    printf("\n");
+    printf("------------------------------------------------\n");
+    printf("\nThis is the final combined average score of the cities available for you,\n"
+           "the scores are on a scale of 0-100 where 0 is the best possible score and 100 is the worst.\n"
+           "In the last column, it is shown which transport types the user(s) should use based on their preferences.\n");
+    printf("--------------------------------------------------\n");
     printf("Rank\t City\t\t Score\tTransport type\n");
     printf("--------------------------------------------------\n");
     for (int i = 0; i < number_of_available_cities; ++i) {
@@ -77,6 +81,7 @@ void print_final_score(int number_of_people, int number_of_available_cities, sha
         }
         printf("\n");
     }
+    printf("--------------------------------------------------\n");
     printf("\n");
     for (int i = 0; i < number_of_people; ++i) {
         free(score[i]);

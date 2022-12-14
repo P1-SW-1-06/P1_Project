@@ -24,7 +24,7 @@ people_data *collect_user_input(char **city_name_array, int num_cities, int numb
 
 int scan_number_of_people() {
     int people = 0;
-
+    printf("------------------------------------------------\n");
     printf("Please enter number of people you want to optimize for (between 1 and 10)\n");
     do {
         people = scan_int();
@@ -47,6 +47,7 @@ void scan_people_preferences(people_data *array, int person_index, int num_citie
 }
 
 void scan_name(people_data *array, int person_number) {
+    printf("------------------------------------------------\n");
     fflush(stdin); //Clears buffer to make sure scanf is not skipped
     printf("Please enter name of person nr. %d\n", person_number + 1);
     scanf("%50[^\n]", array[person_number].name);
@@ -56,7 +57,7 @@ void scan_name(people_data *array, int person_number) {
 int max_time(char *name) {
 
     int time = 0;
-
+    printf("------------------------------------------------\n");
     printf("Please enter the max amount of minutes %s want to commute one way\n", name);
 
     do {
@@ -74,6 +75,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
     array[person_number].exclusion.include_bus = 1;
     array[person_number].exclusion.include_bike = 1;
 
+    printf("------------------------------------------------\n");
     printf("%s please specify, if one of the following transportation types should be excluded:\n", name);
     printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\nPress 0 when satisfied\n");
     char tempchar;
@@ -138,6 +140,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
 }
 
 void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike) {
+    printf("------------------------------------------------\n");
     printf("Included transportation types are indicated by x\n");
     printf("1-car[%c]  2-bus[%c]  3-bike[%c]\n", ex_car, ex_bus, ex_bike);
 }
@@ -153,6 +156,7 @@ void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char *name)
 void commuting_preferences(people_data *array, int person_number) {
 
     int co2 = 0, cost = 0, time = 0, remainder = 100;
+    printf("------------------------------------------------\n");
     printf("%s please distribute 100 points in the categories environment, cost and time \n"
 
            "based on what is most important to you when it comes to commuting.\n"
@@ -206,7 +210,7 @@ void convert_to_lowercase(char *str) {
 }
 
 void place_of_work(char **city_array, int number_of_cities, people_data *array, int person_index) {
-
+    printf("------------------------------------------------\n");
     printf("please choose the city you work in by entering its index \n");
 
     printf("Index\t City\n");
@@ -224,6 +228,7 @@ void place_of_work(char **city_array, int number_of_cities, people_data *array, 
 }
 
 void print_people_preferences(people_data *preference_data, int person_index) {
+    printf("------------------------------------------------\n");
     printf("Person:%d Name:%s\n Maxtime:%d\n Pref\n Env:%d\n Cost:%d\n Time:%d\n Place of work:%s\n",
            person_index + 1,
            preference_data[person_index].name,
