@@ -1,7 +1,8 @@
 /** @file dijkstra.c
  * This file contains the functionality for the calculation of finding the shortest path from source to all other
- * nodes in the graph. Heavy inspiration has been conducted from TODO Tilføj link til hvor koden er inspireret fra!
- * It has been rewritten from the button to fit into the projects use case.
+ * nodes in the graph. Inspiration has been conducted from
+ * https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
+ * It has been rewritten from the scratch to fit into the projects use case.
  *
  * @author P1-SW-1-06
  * @bug No known bugs.
