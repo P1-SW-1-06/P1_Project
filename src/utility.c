@@ -65,10 +65,11 @@ void print_user_guide() {
 
 void print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
                        temp_score **score, people_data *user_data) {
+    clear();
     printf("------------------------------------------------\n");
-    printf("\nThis is the final combined average score of the cities available for you,\n"
+    printf("This is the final combined average score of the cities available for you,\n"
            "the scores are on a scale of 0-100 where 0 is the best possible score and 100 is the worst.\n"
-           "In the last column, it is shown which transport types the user(s) should use based on their preferences.\n");
+           "In the last column, it is shown which transport types the user(s) should use based on their preferences.\n\n");
     printf("--------------------------------------------------\n");
     printf("Rank\t City\t\t Score\tTransport type\n");
     printf("--------------------------------------------------\n");

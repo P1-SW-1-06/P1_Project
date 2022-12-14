@@ -17,6 +17,9 @@ people_data *collect_user_input(char **city_name_array, int num_cities, int numb
 
     for (int person_count = 0; person_count < number_of_people; ++person_count) {
         scan_people_preferences(people_data_arr, person_count, num_cities, city_name_array);
+        if(number_of_people > 1)
+            printf("%s chose %s as their place of work\n",people_data_arr[person_count].name,
+                                                               people_data_arr[person_count].place_of_work);
     }
 
     return people_data_arr;
@@ -32,7 +35,7 @@ int scan_number_of_people() {
             printf("invalid input\n");
     } while (people < 1 || people > 10);
 
-
+    clear();
     printf("You chose to optimize for: %d people\n", people);
 
     return people;
@@ -51,11 +54,11 @@ void scan_name(people_data *array, int person_number) {
     fflush(stdin); //Clears buffer to make sure scanf is not skipped
     printf("Please enter name of person nr. %d\n", person_number + 1);
     scanf("%50[^\n]", array[person_number].name);
+    clear();
     // scanf only reads the first 50 characters and disregards the rest, or stops when enter is input
 }
 
 int max_time(char *name) {
-
     int time = 0;
     printf("------------------------------------------------\n");
     printf("Please enter the max amount of minutes %s want to commute one way\n", name);
@@ -63,7 +66,7 @@ int max_time(char *name) {
     do {
         time = scan_int();
     } while (time < 0 || time > 240);
-
+    clear();
     printf("%s's max travel time is %d minutes\n", name, time);
     return time;
 }
@@ -76,12 +79,12 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
     array[person_number].exclusion.include_bike = 1;
 
     printf("------------------------------------------------\n");
-    printf("%s please specify, if one of the following transportation types should be excluded:\n", name);
-    printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\nPress 0 when satisfied\n");
+
     char tempchar;
     while (choice != 0) {
-        //system("cls");
-
+        clear();
+        printf("%s please specify, if one of the following transportation types should be excluded:\n", name);
+        printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\nPress 0 when satisfied\n");
         print_transport_exclude_checkbox(ex_car, ex_bus, ex_bike);
         fflush(stdin);
         if (scanf("%d%c", &choice, &tempchar) != 2
@@ -146,6 +149,7 @@ void print_transport_exclude_checkbox(char ex_car, char ex_bus, char ex_bike) {
 }
 
 void print_transport_choices(char ex_car, char ex_bus, char ex_bike, char *name) {
+    clear();
     printf("%s chose ", name);
     if (ex_car == 'x') { printf("car, "); }
     if (ex_bus == 'x') { printf("bus, "); }
@@ -168,7 +172,7 @@ void commuting_preferences(people_data *array, int person_number) {
     while (remainder > 0) {
         char input[5];
         int value = 0;
-
+        printf("------------------------------------------------\n");
         printf("Env \tCost \tTime \tRemaining\n");
         printf("%d \t%d \t%d \t%d\n", co2, cost, time, remainder);
         fflush(stdin);
@@ -184,6 +188,7 @@ void commuting_preferences(people_data *array, int person_number) {
             printf("invalid input\n");
 
         remainder = 100 - co2 - cost - time;
+        clear();
 
         if (remainder == 0) {
             printf("You choose the following distribution:\n");
@@ -210,6 +215,7 @@ void convert_to_lowercase(char *str) {
 }
 
 void place_of_work(char **city_array, int number_of_cities, people_data *array, int person_index) {
+    clear();
     printf("------------------------------------------------\n");
     printf("please choose the city you work in by entering its index \n");
 
