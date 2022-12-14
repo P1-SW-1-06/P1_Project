@@ -47,7 +47,7 @@ bool confirm_choice() {
     }
 }
 
-void print_user_guide(){
+void print_user_guide() {
     printf("User guide:\n"
            "This program is intended to be used as a guide when considering relocating.\n\n"
            "The numbers that will be outputted after the calculation "
@@ -73,7 +73,7 @@ void print_final_score(int number_of_people, int number_of_available_cities, sha
     printf("Rank\t City\t\t Score\tTransport type\n");
     printf("--------------------------------------------------\n");
     for (int i = 0; i < number_of_available_cities; ++i) {
-        printf("%d\t %-14s\t %.1lf\t",i+1, final_combined_city_score[i].city_name,
+        printf("%d\t %-14s\t %.1lf\t", i + 1, final_combined_city_score[i].city_name,
                final_combined_city_score[i].output_score);
         for (int j = 0; j < number_of_people; ++j) {
             printf("%s: %-4s  ", user_data[j].name,
@@ -91,21 +91,31 @@ void print_final_score(int number_of_people, int number_of_available_cities, sha
     free(user_data);
 }
 
-void choose_dataset(char* distance, char* housing){
+void choose_dataset(char *distance, char *housing) {
     printf("Please choose data set\n 1:\t Nordjylland\n 2:\t Aarhus\n");
     int choice;
     do {
         choice = scan_int();
-    }while(choice != 1 && choice != 2);
+    } while (choice != 1 && choice != 2);
 
-    if(choice == 1) {
+    if (choice == 1) {
         strcpy(distance, "data_nordjylland_distance.txt");
         strcpy(housing, "data_nordjylland_information.txt");
     }
-    if(choice == 2){
+    if (choice == 2) {
         strcpy(distance, "data_aarhus_distance.txt");
         strcpy(housing, "data_aarhus_information.txt");
     }
+}
+
+void clear(){
+#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+    system("clear");
+#endif
+
+#if defined(_WIN32) || defined(_WIN64)
+    system("cls");
+#endif
 }
 
 

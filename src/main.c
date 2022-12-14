@@ -20,6 +20,7 @@ int main() {
         choose_dataset(distance_information,housing_information);
 
         printf("Chose dataset: %s\n",housing_information);
+        clear();
 
         int num_of_cities = find_number_of_cities(housing_information);
         char **city_name = import_city_names(housing_information, num_of_cities);
