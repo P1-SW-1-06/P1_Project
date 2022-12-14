@@ -166,19 +166,22 @@ void commuting_preferences(people_data *array, int person_number) {
 
            array[person_number].name);
     while (remainder > 0) {
-        char input[5];
+        char input[5] = "qqqq";
         int value = 0;
+
 
         printf("Env \tCost \tTime \tRemaining\n");
         printf("%d \t%d \t%d \t%d\n", co2, cost, time, remainder);
         fflush(stdin);
-        scanf("%s %d", input, &value);
+        if(scanf("%[a-zA-Z] %d", input, &value)!=2)
+            printf("invalid input\n");
+
         convert_to_lowercase(input);
-        if (strcmp(input, "env") == 0 && (value <= 100 && value > 0) && ((100 - value - time - cost) >= 0)) {
+        if (strcmp(input, "env") == 0 && (value <= 100 && value >= 0) && ((100 - value - time - cost) >= 0)) {
             co2 = value;
-        } else if (strcmp(input, "cost") == 0 && (value <= 100 && value > 0) && ((100 - value - co2 - time) >= 0)) {
+        } else if (strcmp(input, "cost") == 0 && (value <= 100 && value >= 0) && ((100 - value - co2 - time) >= 0)) {
             cost = value;
-        } else if (strcmp(input, "time") == 0 && (value <= 100 && value > 0) && ((100 - value - co2 - cost) >= 0)) {
+        } else if (strcmp(input, "time") == 0 && (value <= 100 && value >= 0) && ((100 - value - co2 - cost) >= 0)) {
             time = value;
         } else
             printf("invalid input\n");
