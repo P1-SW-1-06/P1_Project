@@ -61,25 +61,11 @@ unsigned int index_city_names(char *name, char **city_name_array, int num_cities
 int file_exists(FILE *file);
 
 /**
- * @description a function that reads a file and place the input in an array in a loop that runs until it no longer
- * receives 4 input.
- * @param data Is a pointer to an array of type transport_struct.
- * @param file The file where the data is drawn from.
- */
-void read_data(transport_vehicle_info *data, FILE *file);
-
-/**
  * @description a function that will open a file in read mode if it exists.
  * @param input_file name of the file that should be read.
  * @return returns pointer to a file.
  */
 FILE *read_file(const char *input_file);
-
-/**
- * @description a function that prints an array as long as there is something to print.
- * @param data Is a pointer to an array of type transport_struct.
- */
-void print_data(transport_vehicle_info *data);
 
 /**
  * @desription a function that opens city_information.txt and scans the text.
