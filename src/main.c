@@ -41,8 +41,8 @@ int main() {
 
         qsort(final_combined_city_score, number_of_available_cities, sizeof(shared_score),
               final_score_sort_logic);
-
-        print_final_score(number_of_people, number_of_available_cities, final_combined_city_score, score, user_data);
+        if (number_of_available_cities > 0)
+            print_final_score(number_of_people, number_of_available_cities, final_combined_city_score, score, user_data);
 
         printf("Do you want to run the program again? Y/N:");
     } while (confirm_choice());
