@@ -6,4 +6,3 @@ Broenderslev    Noerresundby    28
 Noerresundby    Aalborg         3
 Hobro           Aalborg         54
 Thisted         Noerresundby    88
-newcity         Thisted         10
