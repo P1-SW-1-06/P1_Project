@@ -9,13 +9,13 @@
 #include "score_algorithm.h"
 
 temp_score **score_algorithm(int **distance_array, people_data *final_user, int nr_of_cities, int number_of_people,
-                             transport_vehicle_info *transport_data) {
+                             transport_vehicle_info *transport_data, char* housing) {
     temp_score **score_array;
     score_array = malloc(number_of_people * (sizeof(temp_score *)));
     if (score_array == NULL) {
         printf("Memory not allocated");
     }
-    int *array_housing_cost = find_housing_cost("city_information.txt", nr_of_cities);
+    int *array_housing_cost = find_housing_cost(housing, nr_of_cities);
     double yearly_max_housing_cost = max_housing_price(array_housing_cost, nr_of_cities);
 
     for (int person_count = 0; person_count < number_of_people; ++person_count) {

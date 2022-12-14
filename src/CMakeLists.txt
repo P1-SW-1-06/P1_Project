@@ -3,3 +3,5 @@ add_executable(main main.c import_handler.c import_handler.h user_input.c user_i
 
 add_library(user_input user_input.c)
 add_library(dijkstra dijkstra.c)
+add_library(import_handler import_handler.c)
+add_library(score_algorithm score_algorithm.c)

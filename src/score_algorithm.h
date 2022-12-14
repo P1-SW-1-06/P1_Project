@@ -36,7 +36,7 @@
  * @return
  */
 temp_score **score_algorithm(int **distance_array, people_data *final_user, int nr_of_cities, int number_of_people,
-                             transport_vehicle_info *transport_data);
+                             transport_vehicle_info *transport_data, char* housing);
 
 /**
  * @description a function that checks the value in struct exclusions for bus, car and bike (0=excluded, 1=included).

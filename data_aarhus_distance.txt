@@ -1,0 +1,13 @@
+Aarhus      Risskov     5
+Aarhus      Tilst       7
+Aarhus      Gellerup    5
+Aarhus      Viby        14
+Aarhus      Hoejbjerg   6
+Viby        Stavtrup    4
+Viby        Hasselager  7
+Viby        Tranbjerg   4
+Hasselager  Horning     4
+Hasselager  Tranbjerg   4
+Risskov     Lisberg     6
+Risskov     Egaa        5
+Risskov     Lystrup     6

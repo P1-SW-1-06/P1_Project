@@ -1,0 +1,13 @@
+Aarhus      48000
+Risskov     36914
+Tilst       20914
+Gellerup    22914
+Viby        28290
+Hoejbjerg   34000
+Stavtrup    24290
+Hasselager  21418
+Tranbjerg   23841
+Horning     19849
+Lisberg     32378
+Egaa        30378
+Lystrup     23264
