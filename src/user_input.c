@@ -76,7 +76,8 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
     array[person_number].exclusion.include_bike = 1;
 
     printf("------------------------------------------------\n");
-    printf("%s please specify, if one of the following transportation types should be excluded:\n", name);
+    printf("%s please specify, if one of the following transportation types should be excluded, "
+           "when considering commuting:\n", name);
     printf("To remove or add press\n1 for car\n2 for bus\n3 for bike\nPress 0 when satisfied\n");
     char tempchar;
     while (choice != 0) {

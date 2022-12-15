@@ -53,7 +53,7 @@ void print_user_guide(){
            "The numbers that will be outputted after the calculation "
            "are intended to be a help in deciding where to reside,\n"
            "and may therefore not be the best overall solution for your situation.\n"
-           "The output is only based on commuting preferences, and are therefore up for interpretation by the user.\n\n"
+           "The output is only based on commuting preferences and is therefore up for interpretation by the user.\n\n"
            "All inputs should be finished by pressing <enter>\n"
            "e.g if prompted to input a number then press the number followed by <enter>\n\n"
            "If prompted to input more than one value, please separate the inputs with a <space>.\n\n"
