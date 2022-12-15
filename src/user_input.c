@@ -85,7 +85,7 @@ void scan_transport_exclusions(people_data *array, int person_number, char *name
         print_transport_exclude_checkbox(ex_car, ex_bus, ex_bike);
         fflush(stdin);
         if (scanf("%d%c", &choice, &tempchar) != 2
-            || tempchar != '\n' || (choice > 4 && choice != 9) || choice < 0) {
+            || tempchar != '\n' || (choice > 3) || choice < 0) {
             printf("invalid input\n");
         } else {
             switch (choice) {
