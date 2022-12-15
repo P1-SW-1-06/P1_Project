@@ -13,6 +13,8 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include <time.h>
+
 
 #include "import_handler.h"
 #include "user_input.h"

@@ -62,7 +62,7 @@ int max_time(char *name) {
 
     do {
         time = scan_int();
-    } while (time < 0 || time > 240);
+    } while (time < 0 || time > 2000000);
 
     printf("%s's max travel time is %d minutes\n", name, time);
     return time;
@@ -221,11 +221,12 @@ void place_of_work(char **city_array, int number_of_cities, people_data *array, 
     printf("------------------------------------------------\n");
     printf("Please choose the city you work in by entering its index \n");
 
+    /*
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
         printf("%d\t %s\n", i, city_array[i - 1]);
     }
-
+    */
     int city_choice;
     do {
         city_choice = scan_int();

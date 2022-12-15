@@ -72,7 +72,7 @@ void print_final_score(int number_of_people, int number_of_available_cities, sha
     printf("--------------------------------------------------\n");
     printf("Rank\t City\t\t Score\tTransport type\n");
     printf("--------------------------------------------------\n");
-    for (int i = 0; i < number_of_available_cities; ++i) {
+    for (int i = 0; i < number_of_available_cities && i < 10; ++i) {
         printf("%d\t %-14s\t %.1lf\t",i+1, final_combined_city_score[i].city_name,
                final_combined_city_score[i].output_score);
         for (int j = 0; j < number_of_people; ++j) {
@@ -96,7 +96,7 @@ void choose_dataset(char* distance, char* housing){
     int choice;
     do {
         choice = scan_int();
-    }while(choice != 1 && choice != 2);
+    }while(choice != 1 && choice != 2 && choice != 3 && choice != 4);
 
     if(choice == 1) {
         strcpy(distance, "data_nordjylland_distance.txt");
@@ -106,6 +106,15 @@ void choose_dataset(char* distance, char* housing){
         strcpy(distance, "data_aarhus_distance.txt");
         strcpy(housing, "data_aarhus_information.txt");
     }
+    if(choice == 3){
+        strcpy(distance, "stress_dis.txt");
+        strcpy(housing, "stress_info.txt");
+    }
+    if(choice == 4){
+        strcpy(distance, "stress_dis_4connections.txt");
+        strcpy(housing, "stress_info.txt");
+    }
+
 }
 
 
