@@ -160,6 +160,9 @@ void commuting_preferences(people_data *array, int person_number) {
     printf("%s please distribute 100 points in the categories environment, cost and time \n"
 
            "based on what is most important to you when it comes to commuting.\n"
+           "Env, is carbon footprint of transportation.\n"
+           "Cost, is the general cost of transportation and housing.\n"
+           "Time, is the time of commuting.\n"
            "You can only input one value at a time.\n"
            "To enter a value, type the category and the number of points you want to put in that category\n"
            "i.e 'env 40' 'cost 30' 'time 30'\n",
@@ -167,7 +170,7 @@ void commuting_preferences(people_data *array, int person_number) {
            array[person_number].name);
     while (remainder > 0) {
         char input[5] = "qqqq";
-        int value = 0;
+        int value = -1;
 
 
         printf("Env \tCost \tTime \tRemaining\n");
@@ -214,7 +217,7 @@ void convert_to_lowercase(char *str) {
 
 void place_of_work(char **city_array, int number_of_cities, people_data *array, int person_index) {
     printf("------------------------------------------------\n");
-    printf("please choose the city you work in by entering its index \n");
+    printf("Please choose the city you work in by entering its index \n");
 
     printf("Index\t City\n");
     for (int i = 1; i < number_of_cities + 1; ++i) {
