@@ -49,7 +49,7 @@ bool confirm_choice() {
 
 void print_user_guide(){
     printf("User guide:\n"
-           "This program is intended to be used as a guide when considering relocating.\n\n"
+           "This program is intended to be used by people with a job and considering relocating\n\n"
            "The numbers that will be outputted after the calculation "
            "are intended to be a help in deciding where to reside,\n"
            "and may therefore not be the best overall solution for your situation.\n"
