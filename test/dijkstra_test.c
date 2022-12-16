@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "../src/dijkstra.h"
+#include "../src/distance_calculation.h"
 #include "../src/import_handler.h"
 
 int main(){

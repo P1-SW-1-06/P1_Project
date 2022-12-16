@@ -27,15 +27,15 @@ char scan_char();
 bool confirm_choice();
 
 /**
- * Prints the final sorted score of cities to the user. Frees memory allocated with malloc in functions
- * collect_user_input(), score_algorithm() and final_output. *
+ * Sorts the passed array shared_score array by output_score. Prints the final sorted score of cities to the user.
+ * Frees memory allocated with malloc in functions collect_user_input(), score_algorithm() and final_output. *
  * @param number_of_people Number of people to display
  * @param number_of_available_cities Number of cities to display
  * @param final_combined_city_score Final city score
  * @param score Vehicle winner
  * @param user_data Uses for name of person
  */
-void print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
+void sort_and_print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
                        temp_score **score, people_data *user_data);
 
 /**
