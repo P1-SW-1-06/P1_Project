@@ -16,7 +16,7 @@
 
 #include "import_handler.h"
 #include "user_input.h"
-#include "dijkstra.h"
+#include "distance_calculation.h"
 #include "utility.h"
 #include "score_algorithm.h"
 
