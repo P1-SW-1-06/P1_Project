@@ -39,8 +39,6 @@ int main() {
         shared_score *final_combined_city_score = final_output(score, num_of_cities, number_of_people,
                                                                city_name, &number_of_available_cities);
 
-        qsort(final_combined_city_score, number_of_available_cities, sizeof(shared_score),
-              final_score_sort_logic);
         if (number_of_available_cities > 0)
             print_final_score(number_of_people, number_of_available_cities, final_combined_city_score, score, user_data);
         clock_t end = clock();

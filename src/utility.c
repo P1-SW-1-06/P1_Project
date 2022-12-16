@@ -65,6 +65,8 @@ void print_user_guide(){
 
 void print_final_score(int number_of_people, int number_of_available_cities, shared_score *final_combined_city_score,
                        temp_score **score, people_data *user_data) {
+    qsort(final_combined_city_score, number_of_available_cities, sizeof(shared_score),
+          final_score_sort_logic);
     printf("------------------------------------------------\n");
     printf("\nThis is the final combined average score of the cities available for you,\n"
            "the scores are on a scale of 0-100 where 0 is the best possible score and 100 is the worst.\n"
