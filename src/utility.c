@@ -74,7 +74,7 @@ void sort_and_print_final_score(int number_of_people, int number_of_available_ci
     printf("--------------------------------------------------\n");
     printf("Rank\t City\t\t Score\tTransport type\n");
     printf("--------------------------------------------------\n");
-    for (int i = 0; i < number_of_available_cities; ++i) {
+    for (int i = 0; i < number_of_available_cities && i < 10; ++i) {
         printf("%d\t %-14s\t %.1lf\t",i+1, final_combined_city_score[i].city_name,
                final_combined_city_score[i].output_score);
         for (int j = 0; j < number_of_people; ++j) {

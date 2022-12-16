@@ -58,11 +58,13 @@ int max_time(char *name) {
 
     int time = 0;
     printf("------------------------------------------------\n");
-    printf("Please enter the max amount of minutes %s want to commute one way\n", name);
+    printf("Please enter the max amount of minutes %s want to commute one way(Between 1-240)\n", name);
 
     do {
         time = scan_int();
-    } while (time < 0 || time > 240);
+            if(time > 0 || time < 240)
+                printf("invalid input\n");
+    } while (time < 1 || time > 240);
 
     printf("%s's max travel time is %d minutes\n", name, time);
     return time;
