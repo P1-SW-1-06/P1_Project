@@ -282,7 +282,7 @@ int final_score_sort_logic(const void *a, const void *b) {
     shared_score *cityscorea = (shared_score *) a;
     shared_score *cityscoreb = (shared_score *) b;
 
-    int check;
+    int check = 0;
 
     if (cityscorea->output_score > cityscoreb->output_score)
         check = 1;
