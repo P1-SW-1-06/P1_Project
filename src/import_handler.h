@@ -39,7 +39,7 @@ char **import_city_names(const char *city_data, int number_of_cities);
 
 /**
  * @description a function that read distances between cities by reading the file cities.txt
- * and calculate the shortest path between each city.
+ * and calculate the shortest path between each city. This assumes you can travel both ways between the cities.
  * @param city_distances a const char pointer.
  * @param number_of_cities int for the number of cities in the dataset.
  * @param city_name_array array with names of included cities.
