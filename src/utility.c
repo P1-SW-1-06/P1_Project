@@ -98,6 +98,11 @@ void choose_dataset(char* distance, char* housing){
     int choice;
     do {
         choice = scan_int();
+        if(choice != 1 && choice != 2) {
+            printf("Invalid input\n");
+            choice = 0;
+        }
+
     }while(choice != 1 && choice != 2);
 
     if(choice == 1) {
