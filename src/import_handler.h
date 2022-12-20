@@ -13,9 +13,12 @@
 #define NUM_OF_TRANSPORT_TYPES 10
 
 /**
- * @description a function that has a pointer to a file as input, opens the file transport_types.txt and checks if the
- * file exists, allocate space in malloc for transport_data.
- * @return Returns a pointer to the input file
+ * @description The function uses stdlib.h to open the file, checks if the file is found,
+ * and allocates memory in malloc for the data.
+ * Further, it scans the file for 4 inputs with the following type: "%s" "%lf" "%lf" "%lf".
+ * Stops when there are no longer 4 inputs. Closes the file. Does not free memory.
+ * @param vehicle_data pointer to the corresponding .txt file.
+ * @return A pointer to the array of the  struct types transport_vehicle_info.
  */
 transport_vehicle_info *import_vehicle_data(const char *vehicle_data);
 
